@@ -1,0 +1,112 @@
+<style>
+    body {
+        background: #eeeeee;
+    }
+	.thead_list {
+		color: #fff;
+		background: #41a2e6;
+		border-style: solid;
+        border-color: black;
+	}
+	.tbody_list {
+		color: black;
+		background: white;
+		border-style: solid;
+        border-color: black;
+	}
+    .buttonsize {
+        font-size:30px;
+        width:200px;
+        height:50px;
+        background-color:lightyellow;
+    };
+    .saturday {
+        background-color:lightskyblue
+    };
+    .div10 {
+        height:10px;
+    };
+    .div30 {
+        height:30px;
+    };
+    .div50 {
+        height:50px;
+    };
+</style>
+
+<!DOCTYPE HTML>
+<html>
+    <head></head>
+    <body>
+        <input type="button" style="width:200px;height:50px;background-color:lightyellow;font-size:20px;" value="戻る" onclick="location.href='../input'">
+        <table>
+            <tr>
+                <td>
+                    <H1>申請</H1>
+                    <H2>AAAさんようこそ(会員ID:12345)</H2>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>2021年8月1日9時22分32秒(Ajaxにする)</span><br>
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tbody class="tbody_list">
+                <tr>
+	　　　　　　　　<td>8/1</td>
+	                <td>(日)</td>
+　　　　　　　　</tr>
+	             <div class="div10"></div>
+                <tr>
+	                <td>出勤時間</td>
+	                <td><input type="text" style="width:100p"></td>
+　　　　　　　　</tr>
+                <tr>
+	                <td>退出時間</td>
+	                <td><input type="text" style="width:100p"></td>
+　　　　　　　　</tr>
+                <tr>
+	                <td>備考</td>
+	                <td><textarea rows=5 cols=50></textarea></td>
+　　　　　　　　</tr>
+                <tr>
+	                <td>ステータス</td>
+                    <td>
+	                    <select name="ステータス">
+	                        <option value="normal">通常</option>
+	                        <option value="paid">有給</option>
+	                        <option value="halfdayoff">午前半休</option>
+	                        <option value="halfafternoon">午後半休</option>
+	                        <option value="temporaryvacation">臨時休暇</option>
+	                    </select>
+                    </td>
+　　　　　　　　</tr>
+            </tbody>
+        </table>
+        <input type="button" value="申請する" style="width:200px;height:50px;background-color:lightskyblue;font-size:20px;" onclick="">
+
+      <form action="/change/" method="post">
+        {% csrf_token %}
+        <div>
+          <label for="name">名前</label>
+          <input type="text" id="name" name="name" value="{{ name }}">
+        </div>
+        <div>
+          <label for="email">メールアドレス</label>
+          <input type="mail" id="email" name="email" value="{{ email }}">
+        </div>
+        <div>
+          <label for="message">内容</label>
+          <textarea id="message" name="message">{{ message }}</textarea>
+        </div>
+        <input type="submit" value="送信する">
+      </form>
+
+    </body>
+<html>
+
+
+
+

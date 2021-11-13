@@ -1,0 +1,78 @@
+<style>
+    body {
+        background: #eeeeee;
+    }
+/*
+    table th{
+        border:1px solid gray;
+    }
+    table tr{
+        border:1px solid gray;
+    }
+    table td{
+        border:1px solid gray;
+    }
+*/
+    .buttonsize {
+        font-size:30px;
+        width:200px;
+        height:50px;
+        background-color:lightyellow;
+    };
+    .div10 {
+        height:10px;
+    };
+    .div30 {
+        height:30px;
+    };
+    .div50 {
+        height:50px;
+    };
+</style>
+
+<!DOCTYPE HTML>
+<html>
+    <head></head>
+    <body>
+        <table>
+            <tr>
+                <td>
+                    <H1>出退勤登録</H1>
+                    <H2>AAAさんようこそ(会員ID:12345)</H2>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>2021年8月1日9時22分32秒(Ajaxにする)</span><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" name="attendance" class="buttonsize" value="出勤" onclick="alert('出勤しました。(9:23:23)')"></button>
+                </td>
+            </tr>
+             <div class="div30"></div>
+            <tr>
+                <td>
+                    <input type="button" name="departure" class="buttonsize" value="退勤" onclick="alert('退勤しました。(19:22:22)')"></button>
+                </td>
+            </tr>
+             <div class="div30"></div>
+            <tr>
+                <td>
+                    <input type="button" name="rosterlist" class="buttonsize" value="出退勤一覧" onclick="location.href='../list'"></button>
+                </td>
+            </tr>
+             <div class="div30"></div>
+            <tr>
+                <td>
+                    <input type="button" name="logout" class="buttonsize" value="ログアウト" onclick="alert('ログアウト')"></button>
+                </td>
+            </tr>
+        </table>
+    </body>
+<html>
+
+
+
+

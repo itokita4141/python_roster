@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "even-dream-331809",
+  "private_key_id": "e915b10b77834425be927816a79efedf3d300c13",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDNTpFDyUqpiCSC\ngkj7C4gCIBbdLpNOxD8iSBvnimcX6TZtXAEDirfTOwHIbP12g98Pf5H2+q7bqmE/\naJO6bmQOIDPaeJeC6PR0tEObRHL7z9GAQRX49SW8V+2itqoZBhCY0hUiLKIuJchU\nD32DSBf4/Cjd0aj4xrfqkAKlGfGK3pDt06+iTu8RSsrqhtiGtI3MQQxvtujzTHpW\nZV0c4TX4+9tGGmDZSQocQlx/G4o9TOgxERG6jmTyz8EuAYlF2AnGMs+V+qI2QtTv\n3PR3PqAAlriuFiCYOGBaXc6yA/s32RgzscY++aavHK8qfZzm69SQWuP4i9iEncoi\njpaQvVprAgMBAAECggEAGiE2wc7brsoCA447ZaApFkQpRMtJukul0WImEwj9aACp\nia+c/WtpS/wFlRGyDKRp/ln5JNrw6Eo+CEjyDFdCar3Ue6i/d8zYWAYdWKSUkdH4\nUv91oXLp85epSf0/luG7uQd74xaVKZRrc69pBQ1m56yIMvsdK1R3UeY0P/kWUdsZ\ncVX4oKDaM6enoCqg5DqfLCJB7rj5QmKEUkajSm+rU3qn4E0amUyfU5j8fJESfIq2\nNUOVGLLM7+AHrO4DV9VTDiYYsnXhP6l2guRzxAzN+9chsOBi4b1QJ22bIxyj2tfI\ncEZzN1aBZPGC82HKHFdaD8Fc1iq5voLmieq5prbfGQKBgQDm2V/Ody4fyWGfeKll\nBG3I2MTir5bjyW6PoW+jao1FmswZyp6tqxxckivhyvxWwTNTwgUiOb73VKflriM0\nvEfds5W6K1R7iFMqt8uOuHhrRnvHPujTBfbSPV6FPdPEnvOowVtHjwu6ZcEf1KcX\naFjflnSjLrxQWYNa0eh/MwnqrwKBgQDjrMs6vUSCacSrKKBvJ7B1ntLtOhjWvyC2\nC9GdTe+0+Yx+0jf/OOEQmwz+M2oGp+vy511hZEUkbYp73Xzn/DzgzU6UL+sAa74v\nOekcEc8Dcmfe/QBQ+We1UIk6o24HCneE/Y8jBHaKTf64dy1dMS+YaBHg6/QOzk1h\nsYja833LBQKBgA01hvvjaeo7tbBQUTEMjdOeQ7XM4k9qaT8it6acJDVFZERdibLa\nRacuXgBvgvzb1ToHsg+BSmIQoALOcglEdMBE1F5wuEbRSCD7n1QtTgalY9PEz8Gz\nZ6okBNKO9R0dE0gmuDhiAQPLar+NhXobaGpyy33C4NegJ5n8xNbybrDVAoGBAMfr\n15mA0UPjNHtHdXml1GG0UWtWdLE9q6+vuST0ZuT3rNNALUPD4n3+aO5en1+w3JOz\nbmAy+DQArHYQC7p518te/P1LBoScF6jIpVWsnaddMrCwYTK5jsO8MIR5NgigvErf\njG0nYiAYVPAOVptasXyXBfwHtYu6xGBg0NfSsEcxAoGAJVwLiB7b2P/KkV2qL22Q\naXowXso7BHCNZfSkhyTE5dLRO5rl8VdPeXoQPvAqQdJKqH6d5Ee73MQNRxIG5N0l\nAIkalt2ri52COBj5hxbx5fe57pLQozr9Qfe9E/ycns1DLPZMfiU2b+6bEJEEHXd2\nXOfMI5GwXJtke2EAsf2cln4=\n-----END PRIVATE KEY-----\n",
+  "client_email": "roster-python@even-dream-331809.iam.gserviceaccount.com",
+  "client_id": "114939952470901058228",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/roster-python%40even-dream-331809.iam.gserviceaccount.com"
+}

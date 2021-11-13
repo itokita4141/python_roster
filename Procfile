@@ -1,0 +1,1 @@
+web: gunicorn prj_roster.wsgi --log-file -
