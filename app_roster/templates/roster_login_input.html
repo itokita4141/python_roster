@@ -1,0 +1,88 @@
+<style>
+    body {
+        background: #eeeeee;
+    }
+    .textsize {
+        font-size:12px;
+        width:200px;
+        height:30px;
+        background-color:lightyellow;
+    };
+    .buttonsize {
+        background-color:lightyellow;
+    };
+    .div10 {
+        height:10px;
+    };
+    .div30 {
+        height:30px;
+    };
+    .div50 {
+        height:50px;
+    };
+</style>
+
+<!DOCTYPE HTML>
+<html>
+    <head></head>
+    <body>
+        <table>
+            <tr>
+                <td style="width:50px;">
+                    <H1>会員登録画面</H1>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>名前</span>
+                    <input type="text" name="name" class="textsize"></button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>住所</span>
+                    <input type="text" name="addr" class="textsize"></button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>電話番号</span>
+                    <input type="text" name="tel" class="textsize"></button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>性別</span>
+                    <input type="radio" name="sex" value="male">男性
+                    <input type="radio" name="sex" value="female">女性
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>社員区分</span>
+                    <select name="contract">
+                        <option value="1">社員</option>
+                        <option value="2">契約社員</option>
+                        <option value="3">パート</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>備考</span>
+                    <textarea name="memo" class="textsize" cols="30" rows="20" style="height:100px"></textarea>
+                </td>
+            </tr>
+             <div class="div30"></div>
+            <tr>
+                <td>
+                    <input type="button" name="login" value="ログイン" class="buttonsize">
+                </td>
+            </tr>
+        </table>
+    </body>
+<html>
+
+
+
+

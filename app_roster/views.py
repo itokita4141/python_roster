@@ -1,6 +1,22 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 
+class RosterLoginView(TemplateView):
+    # ログイン画面
+    template_name = "roster_login.html"
+    def get_context_data(self):
+        ctxt = super().get_context_data()
+        ctxt ["user"] = "testUser"
+        return ctxt
+
+# ログイン登録画面
+class RosterLoginInputView(TemplateView):
+    template_name = "roster_login_input.html"
+    def get_context_data(self):
+        ctxt = super().get_context_data()
+        ctxt ["user"] = "testUser"
+        return ctxt
+
 # 出退勤登録画面
 class RosterInputView(TemplateView):
     template_name = "roster_input.html"
