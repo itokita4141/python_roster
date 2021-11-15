@@ -7,3 +7,5 @@ getting-started/*
 .git/*
 .idea/*
 .gitignore/*
+.git
+.gitignore
