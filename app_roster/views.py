@@ -1,20 +1,131 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 
-class RosterLoginView(TemplateView):
-    # ログイン画面
-    template_name = "roster_login.html"
-    def get_context_data(self):
-        ctxt = super().get_context_data()
-        ctxt ["user"] = "testUser"
-        return ctxt
+from django.shortcuts import render
+from django.views.generic import TemplateView #テンプレートタグ
+# from .forms import AccountForm, AddAccountForm #ユーザーアカウントフォーム
+# ログイン・ログアウト処理に利用
+from django.contrib.auth import authenticate, login, logout
+from django.http import HttpResponseRedirect, HttpResponse
+from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 
-# ログイン登録画面
-class RosterLoginInputView(TemplateView):
-    template_name = "roster_login_input.html"
+# ======画面遷移==================
+# ログイン
+# ===============================
+def login(request):
+    if request.method == 'POST':
+        # フォーム入力のユーザーID・パスワード取得
+        ID = request.POST.get('userid')
+        Pass = request.POST.get('password')
+        # Djangoの認証機能
+        user = authenticate(username=ID, password=Pass)
+        # ユーザー認証
+        if user:
+            # ユーザーアクティベート判定
+            if user.is_active:
+                # ログイン
+                login(request, user)
+                # ホームページ遷移
+                return HttpResponseRedirect(reverse('roster_login'))
+            else:
+                # アカウント利用不可
+                return HttpResponse("アカウントが有効ではありません")
+        # ユーザー認証失敗
+        else:
+            return HttpResponse("ログインIDまたはパスワードが間違っています")
+    # GET
+    else:
+        return render(request, 'App_Folder_HTML/login.html')
+
+# #ログアウト
+# @login_required
+# def Logout(request):
+#     logout(request)
+#     # ログイン画面遷移
+#     return HttpResponseRedirect(reverse('Login'))
+#
+# #ホーム
+# @login_required
+# def home(request):
+#     params = {"UserID":request.user,}
+#     return render(request, "App_Folder2_HTML/home.html",context=params)
+#
+#新規登録
+# class  AccountRegistration(TemplateView):
+#
+#     def __init__(self):
+#         self.params = {
+#         "AccountCreate":False,
+#         "account_form": AccountForm(),
+#         "add_account_form":AddAccountForm(),
+#         }
+#
+#     #Get処理
+#     def get(self,request):
+#         self.params["account_form"] = AccountForm()
+#         self.params["add_account_form"] = AddAccountForm()
+#         self.params["AccountCreate"] = False
+#         return render(request,"App_Folder_HTML/register.html",context=self.params)
+#
+#     #Post処理
+#     def post(self,request):
+#         self.params["account_form"] = AccountForm(data=request.POST)
+#         self.params["add_account_form"] = AddAccountForm(data=request.POST)
+#
+#         #フォーム入力の有効検証
+#         if self.params["account_form"].is_valid() and self.params["add_account_form"].is_valid():
+#             # アカウント情報をDB保存
+#             account = self.params["account_form"].save()
+#             # パスワードをハッシュ化
+#             account.set_password(account.password)
+#             # ハッシュ化パスワード更新
+#             account.save()
+#
+#             # 下記追加情報
+#             # 下記操作のため、コミットなし
+#             add_account = self.params["add_account_form"].save(commit=False)
+#             # AccountForm & AddAccountForm 1vs1 紐付け
+#             add_account.user = account
+#
+#             # 画像アップロード有無検証
+#             if 'account_image' in request.FILES:
+#                 add_account.account_image = request.FILES['account_image']
+#
+#             # モデル保存
+#             add_account.save()
+#
+#             # アカウント作成情報更新
+#             self.params["AccountCreate"] = True
+#
+#         else:
+#             # フォームが有効でない場合
+#             print(self.params["account_form"].errors)
+#
+#         return render(request,"App_Folder_HTML/register.html",context=self.params)
+
+#     def post(self, request, *args, **kwargs):
+#         print("post")
+#         template_name = "roster_change_application.html"
+#         context = {
+#             'name': request.POST['name'],
+#             'email': request.POST['email'],
+#             'message': request.POST['message'],
+#         }
+#         return render(request, template_name, context)
+# change = RosterChangeView.as_view()
+#     # template_name = "roster_change_application.html"
+#     # def get_context_data(self):
+#     #     ctxt = super().get_context_data()
+#     #     ctxt ["user"] = "testUser"
+#     #     return ctxt
+
+# ======画面遷移==================
+class IndexView(TemplateView):
+    template_name = "index.html"
     def get_context_data(self):
         ctxt = super().get_context_data()
-        ctxt ["user"] = "testUser"
+        ctxt["username"] = "太郎"
         return ctxt
 
 # 出退勤登録画面
@@ -34,62 +145,6 @@ class RosterChangeView(TemplateView):
         }
         return render(request, template_name, context)
 
-    def post(self, request, *args, **kwargs):
-        print("post")
-        template_name = "roster_change_application.html"
-        context = {
-            'name': request.POST['name'],
-            'email': request.POST['email'],
-            'message': request.POST['message'],
-        }
-        return render(request, template_name, context)
-change = RosterChangeView.as_view()
-    # template_name = "roster_change_application.html"
-    # def get_context_data(self):
-    #     ctxt = super().get_context_data()
-    #     ctxt ["user"] = "testUser"
-    #     return ctxt
-
-class RosterListView(TemplateView):
-    template_name = "roster_list.html"
-    def get_context_data(self):
-        ctxt = super().get_context_data()
-        ctxt["user"] = "testUser"
-        return ctxt
-
-class RosterUserInputView(TemplateView):
-    template_name = "roster_change_application.html"
-    def get_context_data(self):
-        ctxt = super().get_context_data()
-        ctxt["user"] = "testUser"
-        return ctxt
-
-# class MsgboxView(TemplateView):
-#     def get(self, request, *args, **kwargs):
-#         context = {
-#             'message': "Hello World! from View!!",
-#         }
-#         return render(request,  "change.html", context)
-#
-#     def post(self, request, *args, **kwargs):
-#         context = {
-#             'name': request.POST['name'],
-#             'email': request.POST['email'],
-#             'message': request.POST['message'],
-#         }
-#         return render(request, 'change.html', context)
-#
-# hello = MsgboxView.as_view()
-
-# ここはサンプル
-class IndexView(TemplateView):
-    template_name = "index.html"
-    def get_context_data(self):
-        ctxt = super().get_context_data()
-        ctxt["username"] = "太郎"
-        return ctxt
-
-# ここはサンプル
 class AboutView(TemplateView):
     template_name = "about.html"
     def get_context_data(self):
@@ -105,7 +160,6 @@ class AboutView(TemplateView):
         ctxt["num_services"] = 1234567
         return ctxt
 
-
 def some_view(request):
     if request.method == 'POST':
         # if 'attendance' in request.POST:
@@ -117,7 +171,51 @@ def some_view(request):
         if 'logout' in request.POST:
             logout()
 
+class RosterLoginView(TemplateView):
+    # ログイン画面
+    template_name = "roster_login.html"
+    def get_context_data(self):
+        ctxt = super().get_context_data()
+        ctxt ["user"] = "testUser"
+        return ctxt
+
+# ログイン登録画面
+class RosterLoginInputView(TemplateView):
+    template_name = "roster_login_input.html"
+    def get_context_data(self):
+        ctxt = super().get_context_data()
+        ctxt ["user"] = "testUser"
+        return ctxt
+
+class RosterListView(TemplateView):
+    template_name = "roster_list.html"
+    def get_context_data(self):
+        ctxt = super().get_context_data()
+        ctxt["user"] = "testUser"
+        return ctxt
+
+class RosterUserInputView(TemplateView):
+    template_name = "roster_change_application.html"
+    def get_context_data(self):
+        ctxt = super().get_context_data()
+        ctxt["user"] = "testUser"
+        return ctxt
+
+class MsgboxView(TemplateView):
+    def get(self, request, *args, **kwargs):
+        context = {
+            'message': "Hello World! from View!!",
+        }
+        return render(request,  "change.html", context)
+
+    def post(self, request, *args, **kwargs):
+        context = {
+            'name': request.POST['name'],
+            'email': request.POST['email'],
+            'message': request.POST['message'],
+        }
+        return render(request, 'change.html', context)
+# hello = MsgboxView.as_view()
+
 def logout():
     print("logout")
-
-

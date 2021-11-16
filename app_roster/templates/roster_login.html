@@ -26,32 +26,39 @@
 <html>
     <head></head>
     <body>
-        <table>
-            <tr>
-                <td style="width:50px;">
-                    <H1>ログイン画面</H1>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span">ユーザー名</span>
-                    <input type="text" name="name" class="textsize"></button>
-                </td>
-            </tr>
-             <div class="div30"></div>
-            <tr>
-                <td>
-                    <span>パスワード</span>
-                    <input type="password" name="pass" class="textsize"></button>
-                </td>
-            </tr>
-             <div class="div30"></div>
-            <tr>
-                <td>
-                    <input type="button" name="login" value="ログイン" class="buttonsize">
-                </td>
-            </tr>
-        </table>
+        <form method="post" action="{% url 'login' %}">
+            <table>
+                <tr>
+                    <td style="width:50px;">
+                        <H1>ログイン画面</H1>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>ユーザー名</span>
+                        <input type="text" name="name" class="textsize"></button>
+                    </td>
+                </tr>
+                 <div class="div30"></div>
+                <tr>
+                    <td>
+                        <span>パスワード</span>
+                        <input type="password" name="pass" class="textsize"></button>
+                    </td>
+                </tr>
+                 <div class="div30"></div>
+                <tr>
+                    <td>
+                        <input type="submit" name="login" value="ログイン" class="buttonsize">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        ログイン画面をお持ちですか？<a href="./roster_login_input.html"></a>
+                    </td>
+                </tr>
+            </table>
+        </form>
     </body>
 <html>
 
