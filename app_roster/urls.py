@@ -30,17 +30,21 @@
 from django.contrib import admin
 from django.urls import path
 
-from .views import IndexView, AboutView, RosterLoginInputView, RosterLoginView, RosterInputView, RosterListView, RosterChangeView\
+# from .views import IndexView, AboutView, RosterLoginInputView, RosterLoginView, RosterInputView, RosterListView, RosterChangeView\
     # , MsgboxView
+from .views import AboutView, RosterLoginInputView, RosterLoginView, RosterInputView, RosterListView, RosterChangeView\
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', IndexView.as_view(), name="index"),
-    path('aboutus/', AboutView.as_view(), name="about"),
     path('login/', RosterLoginView.as_view(), name="login"),
-    path('input/', RosterInputView.as_view(), name="input"),
     path('logininput/', RosterLoginInputView.as_view(), name="loginInput"),
     path('list/', RosterListView.as_view(), name="list"),
+    path('input/', RosterInputView.as_view(), name="input"),
     path('change/', RosterChangeView.as_view(), name="change"),
     # path('msgbox/', MsgboxView.as_view(), name="msgbox"),
+    # 管理画面
+    path('admin/', admin.site.urls),
+    # テスト確認用
+    path('aboutus/', AboutView.as_view(), name="about"),
+    # 廃止
+    # path('', IndexView.as_view(), name="index"),
 ]

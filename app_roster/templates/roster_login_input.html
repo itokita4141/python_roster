@@ -1,32 +1,12 @@
-<style>
-    body {
-        background: #eeeeee;
-    }
-    .textsize {
-        font-size:12px;
-        width:200px;
-        height:30px;
-        background-color:lightyellow;
-    };
-    .buttonsize {
-        background-color:lightyellow;
-    };
-    .div10 {
-        height:10px;
-    };
-    .div30 {
-        height:30px;
-    };
-    .div50 {
-        height:50px;
-    };
-</style>
-
-<!DOCTYPE HTML>
+{% load static %}
+<!doctype HTML>
 <html>
-    <head></head>
+    <head>
+        <link rel="stylesheet" href="{% static 'roster_main.css' %}">
+    </head>
     <body>
         <table>
+            <input type="button" style="width:200px;height:50px;background-color:lightgreen;font-size:20px;" value="戻る" onclick="location.href='../login'">
             <tr>
                 <td style="width:50px;">
                     <H1>会員登録画面</H1>
@@ -76,7 +56,7 @@
              <div class="div30"></div>
             <tr>
                 <td>
-                    <input type="button" name="login" value="ログイン" class="buttonsize">
+                    <input type="button" name="login" value="ログイン" style="width:200px;height:50px;background-color:lightgreen;font-size:20px;">
                 </td>
             </tr>
         </table>

@@ -121,12 +121,12 @@ def login(request):
 #     #     return ctxt
 
 # ======画面遷移==================
-class IndexView(TemplateView):
-    template_name = "roster_login.html"
-    def get_context_data(self):
-        ctxt = super().get_context_data()
-        ctxt["username"] = "太郎"
-        return ctxt
+# class IndexView(TemplateView):
+#     template_name = "roster_login.html"
+#     def get_context_data(self):
+#         ctxt = super().get_context_data()
+#         ctxt["username"] = "太郎"
+#         return ctxt
 
 # 出退勤登録画面
 class RosterInputView(TemplateView):

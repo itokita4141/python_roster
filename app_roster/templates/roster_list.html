@@ -1,35 +1,11 @@
-<style>
-    body {
-        background: #eeeeee;
-    }
-    .thead_list {
-        color: white;
-        background: #41a2e6;
-        text-align:center;
-    }
-    .application_button {
-        width:70px;
-        background-color:lightyellow;
-    };
-    .saturday {
-        background-color:lightskyblue
-    };
-    .div10 {
-        height:10px;
-    };
-    .div30 {
-        height:30px;
-    };
-    .div50 {
-        height:50px;
-    };
-</style>
-
-<!DOCTYPE HTML>
+{% load static %}
+<!doctype HTML>
 <html>
-    <head></head>
+    <head>
+        <link rel="stylesheet" href="{% static 'roster_main.css' %}">
+    </head>
     <body>
-        <input type="button" style="width:200px;height:50px;background-color:lightyellow;font-size:20px;" value="戻る" onclick="location.href='../input'">
+        <input type="button" class="back_button" value="戻る" onclick="location.href='../input'">
         <table>
             <tr>
                 <td>
