@@ -122,7 +122,7 @@ def login(request):
 
 # ======画面遷移==================
 class IndexView(TemplateView):
-    template_name = "index.html"
+    template_name = "roster_login.html"
     def get_context_data(self):
         ctxt = super().get_context_data()
         ctxt["username"] = "太郎"
