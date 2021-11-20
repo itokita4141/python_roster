@@ -3,13 +3,20 @@
 <html>
     <head>
         <link rel="stylesheet" href="{% static 'roster_main.css' %}">
+        <meta name="viewport"
+           content="width=320,
+              height=480,
+              initial-scale=1.0,
+              minimum-scale=1.0,
+              maximum-scale=2.0,
+              user-scalable=yes" />
     </head>
     <body>
         <form method="post" action="{% url 'login' %}">
             <table>
                 <tr>
                     <td>
-                        <H1 class="title_header">ログイン画面</H1>
+                        <H1 class="title-header">ログイン画面</H1>
                     </td>
                 </tr>
                 <tr>
@@ -26,12 +33,12 @@
                 </tr>
                 <tr>
                     <td>
-                        <input type="submit" name="login" value="ログイン" class="application_button">
+                        <input type="submit" name="login" value="ログイン" class="application-button">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <a href="../logininput">ログイン画面をお持ちですか？</a>
+                        <a href="../logininput">新規に登録する場合はこちら</a>
                     </td>
                 </tr>
             </table>

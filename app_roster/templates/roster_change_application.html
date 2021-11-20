@@ -5,12 +5,12 @@
         <link rel="stylesheet" href="{% static 'roster_main.css' %}">
     </head>
     <body>
-        <input type="button" class="back_button" value="戻る" onclick="location.href='../input'">
+        <input type="button" class="back-button" value="戻る" onclick="location.href='../input'">
         <table>
             <tr>
                 <td>
-                    <H1 class="title_header">申請</H1>
-                    <H2 class="title_header">AAAさんようこそ(会員ID:12345)</H2>
+                    <H1 class="title-header">申請</H1>
+                    <H2 class="title-header">AAAさんようこそ(会員ID:12345)</H2>
                 </td>
             </tr>
             <tr>
@@ -51,7 +51,7 @@
                 </tr>
             </tbody>
         </table>
-        <input type="button" value="申請する" style="width:200px;height:50px;background-color:lightskyblue;font-size:20px;" onclick="">
+        <input type="button" value="申請する" class="application-button" onclick="">
     <form action="/change/" method="post">
         {% csrf_token %}
         <div>
@@ -66,11 +66,7 @@
           <label for="message">内容</label>
           <textarea id="message" name="message">{{ message }}</textarea>
         </div>
-<input type="submit" value="送信する">
+<input type="submit" class="application-button" value="送信する">
         </form>
     </body>
 <html>
-
-
-
-
