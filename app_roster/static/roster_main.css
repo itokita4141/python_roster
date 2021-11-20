@@ -5,15 +5,14 @@
 body {
     background: #eeeeee;
 }
-
+.title_header{
+    margin:0px;
+    width:200px;
+}
 .thead_list {
     color: white;
     background: #41a2e6;
     text-align:center;
-}
-.application_button {
-    width:70px;
-    background-color:lightgreen;
 }
 .saturday {
     background-color:lightskyblue;
@@ -31,7 +30,11 @@ body {
     width:70px;
     background-color:lightgreen;
 }
-.buttonbigsize {
+.application_button {
+    width:70px;
+    background-color:lightgreen;
+}
+.bug_button {
     font-size:30px;
     width:200px;
     height:50px;
