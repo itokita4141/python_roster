@@ -34,44 +34,51 @@ from django.db import models
 from django.utils import timezone
 
 class user(models.Model):
-    # hange_count = models.IntegerField('変更回数', null=True, blank=False)
-    # author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    # title = models.CharField(max_length=200)
-    # text = models.TextField()
-    # created_date = models.DateTimeField(default=timezone.now)
-    # published_date = models.DateTimeField(blank=True, null=True)
     id = models.IntegerField('id', null=True, blank=False)
-    # name
-    # address
-    # tell
-    # sex
-    # contract
-    # delteFlag
-    # updateTime
-    # addTime
+    name = models.CharField(max_length=20)
+    address = models.CharField(max_length=100)
+    tell = models.IntegerField('tel',null=True,blank=false)
+    sex = models.CharField(max_length=1)
+    contract = models.IntegerField('contrach',null=False,blank=False)
+    deleteFlag = models.IntegerField('deleteFlag',null=False,blank=False)
+    updateTime = models.DateTimeField(blank=False,null=False)
+    addTime = models.DateTimeField(blank=False,null=False)
     def publish(self):
         self.published_date = timezone.now()
         self.save()
-
     def __str__(self):
         return self.title
 
+class attendance(models.Model):
+    attendanceId = models.IntegerField('attendanceid',null=False,blank=False)
+    userId = models.IntegerField('userId',null=False,blank=False)
+    yearMonth = models.IntegerField(max_length=6)
+    day = models.IntegerField(null=False,blank=False)
+    startTime = models.DateTimeField(blank=False,null=False)
+    endTime = models.DateTimeField(blank=False,null=False)
+    restStartTime = models.DateTimeField(blank=False,null=False)
+    restEndTime = models.DateTimeField(blank=False,null=False)
+    updateTime = models.DateTimeField(blank=False,null=False)
+    addTime = models.DateTimeField(blank=False,null=False)
+    def publish(self):
+        self.published_date = timezone.now()
+        self.save()
+    def __str__(self):
+        return self.title
+#######
+# test
+#######
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
-
     def publish(self):
         self.published_date = timezone.now()
         self.save()
-
     def __str__(self):
         return self.title
-
-
-
 
     # ===============================================================
     # (参考) https://qiita.com/okoppe8/items/4cc0f87ea933749f5a49
