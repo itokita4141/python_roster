@@ -1,9 +1,60 @@
+#-------------------------------------------------
+#テーブル作成予定
+#=====
+# user
+#=====
+# id
+# name
+# address
+# tell
+# sex
+# contract
+# delteFlag
+# updateTime
+# addTime
+#=====
+# attendance
+#=====
+# id
+# userId
+# yearMonth
+# day
+# startTime
+# endTime
+# restStartTime
+# restEndTime
+# updateTime
+# addTime
+#-------------------------------------------------
 from django.db import models
 #
 # # Create your models here.
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
+
+class user(models.Model):
+    # hange_count = models.IntegerField('変更回数', null=True, blank=False)
+    # author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    # title = models.CharField(max_length=200)
+    # text = models.TextField()
+    # created_date = models.DateTimeField(default=timezone.now)
+    # published_date = models.DateTimeField(blank=True, null=True)
+    id = models.IntegerField('id', null=True, blank=False)
+    # name
+    # address
+    # tell
+    # sex
+    # contract
+    # delteFlag
+    # updateTime
+    # addTime
+    def publish(self):
+        self.published_date = timezone.now()
+        self.save()
+
+    def __str__(self):
+        return self.title
 
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -18,6 +69,9 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+
+
 
     # ===============================================================
     # (参考) https://qiita.com/okoppe8/items/4cc0f87ea933749f5a49

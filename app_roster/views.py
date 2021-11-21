@@ -13,7 +13,9 @@ from django.contrib.auth.decorators import login_required
 # ======画面遷移==================
 # ログイン
 # ===============================
-def login(request):
+# def loginCheck(request):
+def roster_login(request):
+    print("login")
     if request.method == 'POST':
         # フォーム入力のユーザーID・パスワード取得
         ID = request.POST.get('userid')
@@ -36,7 +38,9 @@ def login(request):
             return HttpResponse("ログインIDまたはパスワードが間違っています")
     # GET
     else:
-        return render(request, 'App_Folder_HTML/login.html')
+        # return render(request, 'App_Folder_HTML/login.html')
+        return render(request, './roster_login.html')
+        # return RosterLoginInputView.as_view()
 
 # #ログアウト
 # @login_required
@@ -173,6 +177,7 @@ def some_view(request):
 
 class RosterLoginView(TemplateView):
     # ログイン画面
+    print("RosterLoginView")
     template_name = "roster_login.html"
     def get_context_data(self):
         ctxt = super().get_context_data()

@@ -32,10 +32,13 @@ from django.urls import path
 
 # from .views import IndexView, AboutView, RosterLoginInputView, RosterLoginView, RosterInputView, RosterListView, RosterChangeView\
     # , MsgboxView
-from .views import AboutView, RosterLoginInputView, RosterLoginView, RosterInputView, RosterListView, RosterChangeView\
+from .views import AboutView, RosterLoginInputView\
+    , RosterLoginView, RosterInputView, RosterListView, RosterChangeView\
+    , roster_login
 
 urlpatterns = [
     path('login/', RosterLoginView.as_view(), name="login"),
+    path('login/post/', roster_login, name="roster_login"),
     path('logininput/', RosterLoginInputView.as_view(), name="loginInput"),
     path('list/', RosterListView.as_view(), name="list"),
     path('input/', RosterInputView.as_view(), name="input"),
