@@ -37,7 +37,7 @@ class user(models.Model):
     id = models.IntegerField('id', null=True, blank=False)
     name = models.CharField(max_length=20)
     address = models.CharField(max_length=100)
-    tell = models.IntegerField('tel',null=True,blank=false)
+    tell = models.IntegerField('tell',null=True,blank=False)
     sex = models.CharField(max_length=1)
     contract = models.IntegerField('contrach',null=False,blank=False)
     deleteFlag = models.IntegerField('deleteFlag',null=False,blank=False)
