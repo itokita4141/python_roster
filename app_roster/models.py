@@ -34,7 +34,7 @@ from django.db import models
 from django.utils import timezone
 
 class user(models.Model):
-    id = models.IntegerField('id', null=True, blank=False)
+    userId = models.IntegerField('userId', null=True, blank=False)
     name = models.CharField(max_length=20)
     address = models.CharField(max_length=100)
     tell = models.IntegerField('tell',null=True,blank=False)
@@ -52,7 +52,7 @@ class user(models.Model):
 class attendance(models.Model):
     attendanceId = models.IntegerField('attendanceid',null=False,blank=False)
     userId = models.IntegerField('userId',null=False,blank=False)
-    yearMonth = models.IntegerField(max_length=6)
+    yearMonth = models.IntegerField(null=False,blank=False)
     day = models.IntegerField(null=False,blank=False)
     startTime = models.DateTimeField(blank=False,null=False)
     endTime = models.DateTimeField(blank=False,null=False)
