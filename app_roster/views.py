@@ -23,7 +23,7 @@ def roster_login(request):
     # ユーザー認証
     if len(userid)!=0 and len(password)!=0 :
         # ホームページ遷移
-        return redirect("../../logininput")
+        return redirect("../../input")
     # ユーザー認証失敗
     else:
         return HttpResponse("ログインIDまたはパスワードが間違っています")
