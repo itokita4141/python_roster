@@ -7,40 +7,26 @@ from django.views.generic import TemplateView #テンプレートタグ
 # ログイン・ログアウト処理に利用
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
+from django.shortcuts import redirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
 
 # ======画面遷移==================
 # ログイン
 # ===============================
-# def loginCheck(request):
 def roster_login(request):
-    print("login")
-    if request.method == 'POST':
-        # フォーム入力のユーザーID・パスワード取得
-        ID = request.POST.get('userid')
-        Pass = request.POST.get('password')
-        # Djangoの認証機能
-        user = authenticate(username=ID, password=Pass)
-        # ユーザー認証
-        if user:
-            # ユーザーアクティベート判定
-            if user.is_active:
-                # ログイン
-                login(request, user)
-                # ホームページ遷移
-                return HttpResponseRedirect(reverse('roster_login'))
-            else:
-                # アカウント利用不可
-                return HttpResponse("アカウントが有効ではありません")
-        # ユーザー認証失敗
-        else:
-            return HttpResponse("ログインIDまたはパスワードが間違っています")
-    # GET
+    print("login") # どこに出力されてる？要確認
+    # フォーム入力のユーザーID・パスワード取得
+    userid = request.GET.get('userid')
+    password = request.GET.get('password')
+    # ユーザー認証
+    if len(userid)!=0 and len(password)!=0 :
+        # ホームページ遷移
+        return redirect("../../logininput")
+    # ユーザー認証失敗
     else:
-        # return render(request, 'App_Folder_HTML/login.html')
-        return render(request, './roster_login.html')
-        # return RosterLoginInputView.as_view()
+        return HttpResponse("ログインIDまたはパスワードが間違っています")
 
 # #ログアウト
 # @login_required
