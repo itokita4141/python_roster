@@ -11,11 +11,14 @@ from django.shortcuts import redirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
+from .models import user, attendance
 
 # ======画面遷移==================
 # ログイン
 # ===============================
 def roster_login(request):
+    users = user.objects.all()
+    test = user.userId
     print("login") # どこに出力されてる？要確認
     # フォーム入力のユーザーID・パスワード取得
     userid = request.GET.get('userid')
