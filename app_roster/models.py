@@ -34,37 +34,33 @@ from django.db import models
 from django.utils import timezone
 
 class user(models.Model):
-    userId = models.IntegerField('userId', null=False, blank=False,primary_key=True)
-    name = models.CharField(max_length=20)
-    address = models.CharField(max_length=100)
-    tell = models.CharField(max_length=20,null=True,blank=True)
-    sex = models.CharField(max_length=1)
-    contract = models.CharField(max_length=100,null=False,blank=False)
-    deleteFlag = models.IntegerField('deleteFlag',null=False,blank=False)
-    updateTime = models.DateTimeField(blank=False,null=False)
-    addTime = models.DateTimeField(blank=False,null=False)
-    def publish(self):
-        self.published_date = timezone.now()
-        self.save()
+    userId = models.IntegerField(null=False, blank=False,primary_key=True,verbose_name="ユーザーID")
+    name = models.CharField(max_length=20,verbose_name="名前")
+    address = models.CharField(max_length=100,verbose_name="住所")
+    tell = models.CharField(max_length=20,null=True,blank=True,verbose_name="電話番号")
+    sex = models.CharField(max_length=1,verbose_name="性別(m:男性,f:女性)")
+    contract = models.CharField(max_length=100,null=False,blank=False,verbose_name="社員パートなど")
+    deleteFlag = models.BooleanField(default=True,verbose_name="削除フラグ")
+    updateTime = models.DateTimeField(blank=False,null=False,default=timezone.now,verbose_name="更新日時")
+    addTime = models.DateTimeField(blank=False,null=False,default=timezone.now,verbose_name="追加日時")
     def __str__(self):
-        return self.title
+        return str(self.userId) + " " + str(self.name)
 
 class attendance(models.Model):
-    attendanceId = models.IntegerField('attendanceid',null=False,blank=False,primary_key=True)
-    userId = models.IntegerField('userId',null=False,blank=False)
-    yearMonth = models.CharField(max_length=6,null=True,blank=True)
-    day = models.CharField(max_length=2,null=True,blank=True)
-    startTime = models.CharField(max_length=8,blank=True,null=True)
-    endDateTime = models.DateTimeField(blank=True,null=True)
-    restStartTime = models.DateTimeField(blank=True,null=True)
-    restEndTime = models.DateTimeField(blank=True,null=True)
-    updateTime = models.DateTimeField(blank=True,null=True)
-    addTime = models.DateTimeField(blank=True,null=True)
-    def publish(self):
-        self.published_date = timezone.now()
-        self.save()
+    attendanceId = models.IntegerField(null=False,blank=False,primary_key=True,verbose_name="出勤ID")
+    userId = models.IntegerField(null=False,blank=False,verbose_name="ユーザーID")
+    yearMonth = models.CharField(max_length=6,null=True,blank=True,verbose_name="対象年月")
+    day = models.CharField(max_length=2,null=True,blank=True,verbose_name="対象日")
+    startTime = models.CharField(max_length=8,blank=True,null=True,verbose_name="勤務開始時間")
+    endDateTime = models.DateTimeField(blank=True,null=True,verbose_name="勤務終了時間")
+    restStartTime = models.DateTimeField(blank=True,null=True,verbose_name="休憩開始時間")
+    restEndTime = models.DateTimeField(blank=True,null=True,verbose_name="休憩終了時間")
+    deleteFlag = models.BooleanField(default=True,verbose_name="削除フラグ")
+    updateTime = models.DateTimeField(blank=True,null=True,default=timezone.now,verbose_name="更新時間")
+    addTime = models.DateTimeField(blank=True,null=True,default=timezone.now,verbose_name="追加時間")
     def __str__(self):
-        return self.title
+        return str(self.attendanceId) + " " + str(self.userId) + " " + str(self.yearMonth) + str(self.day)
+
 #######
 # test
 #######
