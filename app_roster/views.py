@@ -12,6 +12,11 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from .models import user, attendance
+# sql alchemy
+from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm.exc import NoResultFound
 
 # ======画面遷移==================
 # ログイン
