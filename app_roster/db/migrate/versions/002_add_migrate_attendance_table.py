@@ -25,7 +25,7 @@ table = Table(
     Column('userId', BIGINT(unsigned=True)),
     Column('yearMonth', VARCHAR(6), nullable=False),
     Column('day', VARCHAR(2), nullable=False),
-    Column('startTime', TIMESTAMP),
+    Column('startTime', TIME),
     Column('endDateTime', TIMESTAMP),
     Column('restStartTime', TIMESTAMP),
     Column('restEndTime', TIMESTAMP),
