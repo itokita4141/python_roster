@@ -33,6 +33,7 @@ import sys
 sys.path.append("app_roster/db/config")
 from setting_alchemy import Base
 from setting_alchemy import ENGINE
+from setting_alchemy import DATABASE
 
 # ======画面遷移==================
 # ログイン
@@ -62,13 +63,30 @@ def roster_login(request):
     # #read
     # users = session.query(user).all()
     # engine = create_engine("postgresql://rrkwiepojqjmww:172d2d30c807aeca359c780861f63bcaa276bd8b9c25e2e6444ab6b8ec5dbf2c@ec2-35-172-16-31.compute-1.amazonaws.com:5432/de5q7mpd4qi77e",echo=True)
-    engine = create_engine(ENGINE,echo=True)
+    str_database = str(DATABASE)
+# 'Engine(postgresql://rrkwiepojqjmww:***@ec2-35-172-16-31.compute-1.amazonaws.com:5432/de5q7mpd4qi77e)'
+    engine = create_engine(str_database,echo=True)
     Session = sessionmaker()
     Session.configure(bind=engine)
     session = Session()
     #######
     #read
     usersAll = session.query(users).all()
+
+    #///////////////////////////////
+    # usersテーブル取得時のエラー
+    #///////////////////////////////
+    # ArgumentError
+    # at / login / post /
+    # Column
+    # expression or FROM
+    # clause
+    # expected, got < module
+    # 'app_roster.db.model.users'
+    # from
+    # 'C:\\Users\\user\\OneDrive\\デスクトップ\\ito\\3.勤務表ツール\\4.git_docker_heroku_source\\app_roster\\db\\model\\users.py' >.
+    #///////////////////////////////
+
     #######
     #update
     # ed_user = session.query(User).filter(User.name == 'ed').first()
