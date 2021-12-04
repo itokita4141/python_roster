@@ -3,8 +3,10 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, Float, DateTime
 from sqlalchemy import (Text, Time, Boolean)
 sys.path.append("../config")
-from setting_alchemy import Base
-from setting_alchemy import ENGINE
+# from setting_alchemy import Base
+# from setting_alchemy import ENGINE
+# from .. .config.setting_alchemy import Base
+# from .. .config.setting_alchemy import ENGINE
 
 class Users(Base):
     __tablename__ = 'users'

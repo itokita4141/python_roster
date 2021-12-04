@@ -42,7 +42,7 @@ def roster_login(request):
     #######################
     # 標準のquelyBuilder
     #######################
-    users.
+    # users.
 
 
     # フォーム入力のユーザーID・パスワード取得
