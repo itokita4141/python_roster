@@ -11,16 +11,8 @@ from django.shortcuts import redirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
-# from .models import user, attendance
-from .db.model import users,attendances
-
-# sql alchemy
-# from sqlalchemy import create_engine, Column, Integer, String
-# from sqlalchemy.ext.declarative import declarative_base
-# from sqlalchemy.orm import sessionmaker
-# from sqlalchemy.orm.exc import NoResultFound
-
 from .models import user, attendance
+
 # sql alchemy
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
@@ -31,54 +23,12 @@ from sqlalchemy.orm.exc import NoResultFound
 # ログイン
 # ===============================
 def roster_login(request):
+    users = user.objects.all()
+    test = user.userId
     print("login") # どこに出力されてる？要確認
-    #######################
-    # 標準のquelyBuilder
-    #######################
-    # users = user.objects.all()
-    # test = user.userId
-    # for usr in users:
-    #     print(usr.userId)
-    #######################
-    # 標準のquelyBuilder
-    #######################
-    users.
-
-
     # フォーム入力のユーザーID・パスワード取得
     userid = request.GET.get('userid')
     password = request.GET.get('password')
-    #######################
-    # sqlAlchemy
-    #######################
-    #######
-    # read
-    # engine = create_engine("postgresql://rrkwiepojqjmww:172d2d30c807aeca359c780861f63bcaa276bd8b9c25e2e6444ab6b8ec5dbf2c@ec2-35-172-16-31.compute-1.amazonaws.com:5432/de5q7mpd4qi77e",echo=True)
-    # Session = sessionmaker()
-    # Session.configure(bind=engine)
-    # session = Session()
-    # #######
-    # #read
-    # users = session.query(user).all()
-
-    #######
-    #update
-    # ed_user = session.query(User).filter(User.name == 'ed').first()
-    # ed_user.name = 'edy'
-    # session.commit()
-
-    #######
-    #delete
-    #######
-    # session.query(User).filter(User.name == 'edy').delete()
-    # ed_user = session.query(User).filter(User.name == 'edy').first()
-
-    #######
-    #insert
-    #######
-    # ed_user = User('ed', 'Ed Jones', 'edspassword')
-    # session.add(ed_user)
-    # session.commit()
     # ユーザー認証
     if len(userid)!=0 and len(password)!=0 :
         # ホームページ遷移

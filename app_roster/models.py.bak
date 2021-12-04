@@ -34,7 +34,6 @@ from django.db import models
 from django.utils import timezone
 
 class user(models.Model):
-    # __tablename__ = "user"
     userId = models.IntegerField(null=False, blank=False,primary_key=True,verbose_name="ユーザーID")
     name = models.CharField(max_length=20,verbose_name="名前")
     address = models.CharField(max_length=100,verbose_name="住所")
@@ -46,19 +45,6 @@ class user(models.Model):
     addTime = models.DateTimeField(blank=False,null=False,default=timezone.now,verbose_name="追加日時")
     def __str__(self):
         return str(self.userId) + " " + str(self.name)
-    # id以外のカラム名のインスタンス変数を作成(idはDBに登録される際に自動で割り振られるので不要)
-    # def __init__(self, userId, name, address, tell, sex, contract, deleteFlag, updateTime, addTime):
-    #     self.userId = userId
-    #     self.name = name
-    #     self.address = address
-    #     self.tell = tell
-    #     self.sex = sex
-    #     self.contract = contract
-    #     self.deleteFlag = deleteFlag
-    #     self.updateTime = updateTime
-    #     self.addTime = addTime
-    # def userInfo(self):
-    #     return "{self.userId} {self.name} {self.address} {self.tell} {self.sex} {self.contract}"
 
 class attendance(models.Model):
     attendanceId = models.IntegerField(null=False,blank=False,primary_key=True,verbose_name="出勤ID")
