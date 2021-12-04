@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
 #    "hello",
     "app_roster",
-#     'aldjemy',
+    'aldjemy',
 ]
 
 MIDDLEWARE = [
