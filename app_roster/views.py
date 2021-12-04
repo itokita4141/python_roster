@@ -20,12 +20,19 @@ from .db.model import users,attendances
 # from sqlalchemy.orm import sessionmaker
 # from sqlalchemy.orm.exc import NoResultFound
 
+# from .models import user, attendance
+
 from .models import user, attendance
 # sql alchemy
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.exc import NoResultFound
+
+import sys
+sys.path.append("app_roster/db/config")
+from setting_alchemy import Base
+from setting_alchemy import ENGINE
 
 # ======画面遷移==================
 # ログイン
@@ -40,14 +47,8 @@ def roster_login(request):
     # for usr in users:
     #     print(usr.userId)
     #######################
-    # 標準のquelyBuilder
+    # sqlAlchemy
     #######################
-    # users.
-
-
-    # フォーム入力のユーザーID・パスワード取得
-    userid = request.GET.get('userid')
-    password = request.GET.get('password')
     #######################
     # sqlAlchemy
     #######################
@@ -60,7 +61,14 @@ def roster_login(request):
     # #######
     # #read
     # users = session.query(user).all()
-
+    # engine = create_engine("postgresql://rrkwiepojqjmww:172d2d30c807aeca359c780861f63bcaa276bd8b9c25e2e6444ab6b8ec5dbf2c@ec2-35-172-16-31.compute-1.amazonaws.com:5432/de5q7mpd4qi77e",echo=True)
+    engine = create_engine(ENGINE,echo=True)
+    Session = sessionmaker()
+    Session.configure(bind=engine)
+    session = Session()
+    #######
+    #read
+    usersAll = session.query(users).all()
     #######
     #update
     # ed_user = session.query(User).filter(User.name == 'ed').first()
@@ -79,6 +87,9 @@ def roster_login(request):
     # ed_user = User('ed', 'Ed Jones', 'edspassword')
     # session.add(ed_user)
     # session.commit()
+    # フォーム入力のユーザーID・パスワード取得
+    userid = request.GET.get('userid')
+    password = request.GET.get('password')
     # ユーザー認証
     if len(userid)!=0 and len(password)!=0 :
         # ホームページ遷移

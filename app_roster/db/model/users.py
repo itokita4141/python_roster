@@ -13,7 +13,7 @@ print("test start")
 print(sys.path)
 print("test end")
 
-sys.path.append("db/config")
+sys.path.append("app_roster/db/config")
 from setting_alchemy import Base
 from setting_alchemy import ENGINE
 # from .setting_alchemy import *
