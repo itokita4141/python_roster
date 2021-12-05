@@ -44,24 +44,36 @@ from attendances import *
 # ===============================
 def roster_login(request):
     # フォーム入力のユーザーID・パスワード取得
-    userid = request.GET.get('userid')
-    password = request.GET.get('password')
+    uid = request.GET.get('userid')
+    pwd = request.GET.get('password')
     # 未入力がある場合は抜ける
-    if len(userid)!=0 and len(password)!=0 :
-        return HttpResponse("ユーザーIDまたはパスワードが入力されていません。\n入力してください。")
+    if len(uid)==0 or len(pwd)==0 :
+        return HttpResponse("ユーザーIDまたはパスワードが入力されていません。<br/>入力してください。")
+    print("〓〓〓〓〓〓〓")
+    print("ユーザーID="+uid)
+    print("password="+pwd)
+    print("〓〓〓〓〓〓〓")
     # userテーブル読み込み
-    users = session.query(Users).all()
-    for user in users:
-        print(user.userId)
-        print(user.name)
-
-    # ユーザー認証
-    if len(userid)!=0 and len(password)!=0 :
-        # ホームページ遷移
+    usersListcount = session.query(Users).filter(Users.email==uid,Users.password==pwd).count()
+    usersListcount2 = session.query(Users).all()
+    print("=======================")
+    print("users.count="+str(usersListcount))
+    print("=======================")
+    #ログインチェック
+    if (usersListcount==1):
         return redirect("../../input")
-    # ユーザー認証失敗
-    else:
-        return HttpResponse("ログインIDまたはパスワードが間違っています")
+    if usersListcount==0:
+        return HttpResponse("ログインIDまたはパスワードが間違っています。")
+    elif(usersListcount>1):
+        return HttpResponse("複数ユーザーのログインID、パスワードが一致しています。<br/>データ不正のため運営に連絡してください。<br/>itokita41@gmail.com")
+
+    # # ユーザー認証
+    # if len(userid)!=0 and len(password)!=0 :
+    #     # ホームページ遷移
+    #     return redirect("../../input")
+    # # ユーザー認証失敗
+    # else:
+    #     return HttpResponse("ログインIDまたはパスワードが間違っています")
 
     #///////////////////////////////
     # usersテーブル取得時のエラー
