@@ -9,10 +9,6 @@ from sqlalchemy import Column, Integer, String, Float, DateTime
 import datetime
 from sqlalchemy import (Text, Time, Boolean)
 
-print("test start")
-print(sys.path)
-print("test end")
-
 sys.path.append("app_roster/db/config")
 from setting_alchemy import Base
 from setting_alchemy import ENGINE
@@ -26,6 +22,8 @@ class Users(Base):
     tell = Column('tell', String(64), nullable=False)
     sex = Column('sex', String(64), nullable=False)
     contract = Column('contract', String(64), nullable=False)
+    email = Column('email', String(20), nullable=False)
+    password = Column('password', String(8), nullable=False)
     deleteFlag = Column('deleteFlag', Boolean, default=0)
     updateTime = Column('updateTime', DateTime)
     addTime = Column('addTime', DateTime)

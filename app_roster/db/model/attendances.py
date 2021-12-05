@@ -13,7 +13,7 @@ class Attenances(Base):
     # """
     # ユーザモデル
     # """
-    __tablename__ = 'attenances'
+    __tablename__ = 'attendances'
     attendanceId = Column('attendanceId', Integer, primary_key=True)
     userId = Column('userId', Integer)
     yearMonth = Column('yearMonth', String(6), nullable=False)

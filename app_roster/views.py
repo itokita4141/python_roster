@@ -12,7 +12,7 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 # from .models import user, attendance
-from .db.model import users,attendances
+# from .db.model import users,attendances
 
 # sql alchemy
 # from sqlalchemy import create_engine, Column, Integer, String
@@ -33,45 +33,35 @@ import sys
 sys.path.append("app_roster/db/config")
 from setting_alchemy import Base
 from setting_alchemy import ENGINE
-from setting_alchemy import DATABASE
+# from setting_alchemy import DATABASE
+from setting_alchemy import session
+sys.path.append("app_roster/db/model")
+from users import *
+from attendances import *
 
 # ======画面遷移==================
 # ログイン
 # ===============================
 def roster_login(request):
-    print("login") # どこに出力されてる？要確認
-    #######################
-    # 標準のquelyBuilder
-    #######################
-    # users = user.objects.all()
-    # test = user.userId
-    # for usr in users:
-    #     print(usr.userId)
-    #######################
-    # sqlAlchemy
-    #######################
-    #######################
-    # sqlAlchemy
-    #######################
-    #######
-    # read
-    # engine = create_engine("postgresql://rrkwiepojqjmww:172d2d30c807aeca359c780861f63bcaa276bd8b9c25e2e6444ab6b8ec5dbf2c@ec2-35-172-16-31.compute-1.amazonaws.com:5432/de5q7mpd4qi77e",echo=True)
-    # Session = sessionmaker()
-    # Session.configure(bind=engine)
-    # session = Session()
-    # #######
-    # #read
-    # users = session.query(user).all()
-    # engine = create_engine("postgresql://rrkwiepojqjmww:172d2d30c807aeca359c780861f63bcaa276bd8b9c25e2e6444ab6b8ec5dbf2c@ec2-35-172-16-31.compute-1.amazonaws.com:5432/de5q7mpd4qi77e",echo=True)
-    str_database = str(DATABASE)
-# 'Engine(postgresql://rrkwiepojqjmww:***@ec2-35-172-16-31.compute-1.amazonaws.com:5432/de5q7mpd4qi77e)'
-    engine = create_engine(str_database,echo=True)
-    Session = sessionmaker()
-    Session.configure(bind=engine)
-    session = Session()
-    #######
-    #read
-    usersAll = session.query(users).all()
+    # フォーム入力のユーザーID・パスワード取得
+    userid = request.GET.get('userid')
+    password = request.GET.get('password')
+    # 未入力がある場合は抜ける
+    if len(userid)!=0 and len(password)!=0 :
+        return HttpResponse("ユーザーIDまたはパスワードが入力されていません。\n入力してください。")
+    # userテーブル読み込み
+    users = session.query(Users).all()
+    for user in users:
+        print(user.userId)
+        print(user.name)
+
+    # ユーザー認証
+    if len(userid)!=0 and len(password)!=0 :
+        # ホームページ遷移
+        return redirect("../../input")
+    # ユーザー認証失敗
+    else:
+        return HttpResponse("ログインIDまたはパスワードが間違っています")
 
     #///////////////////////////////
     # usersテーブル取得時のエラー
@@ -105,16 +95,6 @@ def roster_login(request):
     # ed_user = User('ed', 'Ed Jones', 'edspassword')
     # session.add(ed_user)
     # session.commit()
-    # フォーム入力のユーザーID・パスワード取得
-    userid = request.GET.get('userid')
-    password = request.GET.get('password')
-    # ユーザー認証
-    if len(userid)!=0 and len(password)!=0 :
-        # ホームページ遷移
-        return redirect("../../input")
-    # ユーザー認証失敗
-    else:
-        return HttpResponse("ログインIDまたはパスワードが間違っています")
 
 # #ログアウト
 # @login_required
