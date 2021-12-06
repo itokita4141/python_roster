@@ -2,12 +2,12 @@
 <!doctype HTML>
 <html>
     <head>
-        <link rel="stylesheet" href="{% static 'roster_main.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'app_rosters/roster_main.css' %}">
         <meta name="viewport" content="width=device-width, user-scale=yes, initial-scale=1.0, maximum-scale=5.0" />
     </head>
     <body>
 <!--        <form method="post" action="{% url 'login' %}">-->
-    <form action="post">
+        <form action="post">
             <table>
                 <tr>
                     <td>
@@ -24,6 +24,11 @@
                     <td>
                         <span>パスワード</span>
                         <input type="password" name="password" class="textsize"></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="error-message">ログインIDまたはパスワードが間違っています。</div>
                     </td>
                 </tr>
                 <tr>

@@ -40,4 +40,8 @@ body {
     height:50px;
     background-color:lightyellow;
 }
+.error-message {
+    color:red;
+    font-size:20px;
+}
 
