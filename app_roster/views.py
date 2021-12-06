@@ -43,12 +43,16 @@ from attendances import *
 # ログイン
 # ===============================
 def roster_login(request):
+    returnMessageParams={
+        "errorMessage" : ""
+    }
     # フォーム入力のユーザーID・パスワード取得
     uid = request.GET.get('userid')
     pwd = request.GET.get('password')
     # 未入力がある場合は抜ける
     if len(uid)==0 or len(pwd)==0 :
-        return HttpResponse("ユーザーIDまたはパスワードが入力されていません。<br/>入力してください。")
+        returnMessageParams["errorMessage"] = "ユーザーIDまたはパスワードが入力されていません。<br/>入力してください。"
+        return render(request, "../../login", returnMessageParams)
     print("〓〓〓〓〓〓〓")
     print("ユーザーID="+uid)
     print("password="+pwd)
@@ -63,9 +67,11 @@ def roster_login(request):
     if (usersListcount==1):
         return redirect("../../input")
     if usersListcount==0:
-        return HttpResponse("ログインIDまたはパスワードが間違っています。")
+        returnMessageParams["errorMessage"] = "ログインIDまたはパスワードが間違っています。"
+        return render(request, "roster_login.html", returnMessageParams)
     elif(usersListcount>1):
-        return HttpResponse("複数ユーザーのログインID、パスワードが一致しています。<br/>データ不正のため運営に連絡してください。<br/>itokita41@gmail.com")
+        returnMessageParams["errorMessage"] = "複数ユーザーのログインID、パスワードが一致しています。<br/>データ不正のため運営に連絡してください。<br/>itokita41@gmail.com"
+        return render(request, "roster_login.html", returnMessageParams)
 
     # # ユーザー認証
     # if len(userid)!=0 and len(password)!=0 :

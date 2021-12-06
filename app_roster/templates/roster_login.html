@@ -2,7 +2,7 @@
 <!doctype HTML>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="{% static 'app_rosters/roster_main.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/roster_main.css' %}">
         <meta name="viewport" content="width=device-width, user-scale=yes, initial-scale=1.0, maximum-scale=5.0" />
     </head>
     <body>
@@ -28,7 +28,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <div class="error-message">ログインIDまたはパスワードが間違っています。</div>
+                        <div class="error-message">{{ errorMessage }}</div>
                     </td>
                 </tr>
                 <tr>
