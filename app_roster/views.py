@@ -47,8 +47,8 @@ def roster_login(request):
         "errorMessage" : ""
     }
     # フォーム入力のユーザーID・パスワード取得
-    uid = request.GET.get('userid')
-    pwd = request.GET.get('password')
+    uid = request.GET.get('txt_userid')
+    pwd = request.GET.get('txt_password')
     # 未入力がある場合は抜ける
     if len(uid)==0 or len(pwd)==0 :
         returnMessageParams["errorMessage"] = "ユーザーIDまたはパスワードが入力されていません。<br/>入力してください。"
