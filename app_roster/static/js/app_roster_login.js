@@ -1,6 +1,19 @@
 jQuery(document).ready(function(){
  //jQueryで実行する内容
 $(function(){
+    // login画面load時
+    $(document).ready(function(){
+//  const data = $.parseJSON('{{ data_json|safe }}');
+//
+//  console.log(data.sample1);  // [1, 2, 3]
+//        alert("document.load");
+//        const data = JSON.parse("{{ data_json|safe }}");
+//        var data_json = JSON.parse('{{data_json | safe}}');
+//        var json = $.parseJSON("{{ data_json | safe }});
+//        var data_json={{"errorMessage"|returnMessageParams}};
+//        $("div_errorMessage").html(json.errorMessage);
+    });
+
     $('#btn_login').click(function() {
             uid = $("#txt_userid").val()
             pwd = $("#txt_password").val()

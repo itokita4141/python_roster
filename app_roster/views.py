@@ -1,3 +1,5 @@
+import json
+
 from django.shortcuts import render
 from django.views.generic import TemplateView
 
@@ -43,35 +45,40 @@ from attendances import *
 # ログイン
 # ===============================
 def roster_login(request):
-    returnMessageParams={
-        "errorMessage" : ""
+    returnMessageParams = {
+        'errorMessage': 'dummy'
     }
     # フォーム入力のユーザーID・パスワード取得
     uid = request.GET.get('txt_userid')
     pwd = request.GET.get('txt_password')
     # 未入力がある場合は抜ける
-    if len(uid)==0 or len(pwd)==0 :
-        returnMessageParams["errorMessage"] = "ユーザーIDまたはパスワードが入力されていません。<br/>入力してください。"
-        return render(request, "../../login", returnMessageParams)
+    # if len(uid) == 0 or len(pwd) == 0:
+    #     returnMessageParams["errorMessage"] = "ユーザーIDまたはパスワードが入力されていません。<br/>入力してください。"
+    #     return render(request, "../../login", returnMessageParams)
     print("〓〓〓〓〓〓〓")
     print("ユーザーID="+uid)
     print("password="+pwd)
     print("〓〓〓〓〓〓〓")
     # userテーブル読み込み
-    usersListcount = session.query(Users).filter(Users.email==uid,Users.password==pwd).count()
-    usersListcount2 = session.query(Users).all()
+    usersListCount = session.query(Users).filter(Users.email == uid, Users.password == pwd).count()
+    # usersListCount2 = session.query(Users).all()
     print("=======================")
-    print("users.count="+str(usersListcount))
+    print("users.count="+str(usersListCount))
     print("=======================")
-    #ログインチェック
-    if (usersListcount==1):
+    # ログインチェック
+    if (usersListCount == 1):
         return redirect("../../input")
-    if usersListcount==0:
-        returnMessageParams["errorMessage"] = "ログインIDまたはパスワードが間違っています。"
+    if usersListCount == 0:
+        returnMessageParams["errorMessage"] = 'ログインIDまたはパスワードが間違っています。'
         return render(request, "roster_login.html", returnMessageParams)
-    elif(usersListcount>1):
-        returnMessageParams["errorMessage"] = "複数ユーザーのログインID、パスワードが一致しています。<br/>データ不正のため運営に連絡してください。<br/>itokita41@gmail.com"
+        # return render(request, "roster_login.html", {'data_json': json.dumps(returnMessageParams)})
+        # return redirect(request.META['HTTP_REFERER']) # 元のURLに戻す
+    elif(usersListCount > 1):
+        returnMessageParams["errorMessage"] = '複数ユーザーのログインID、パスワードが一致しています。' \
+                                              '<br/>データ不正のため運営に連絡してください。<br/>itokita41@gmail.com'
         return render(request, "roster_login.html", returnMessageParams)
+        # return render(request, "roster_login.html", {'data_json': json.dumps(returnMessageParams)})
+        # return redirect(request.META['HTTP_REFERER']) # 元のURLに戻す
 
     # # ユーザー認証
     # if len(userid)!=0 and len(password)!=0 :
