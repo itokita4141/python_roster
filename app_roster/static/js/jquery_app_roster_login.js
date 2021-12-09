@@ -3,9 +3,13 @@ jQuery(document).ready(function(){
 $(function(){
     // login画面load時
     $(document).ready(function(){
-//  const data = $.parseJSON('{{ data_json|safe }}');
+        alert('{{data_json|safe}}')
+        // ボタン押下時の入力チェック時の結果をDjangoより取得
+        // djangoより値を受け取れない
+        // todo
+//      const data = $.parseJSON('{{ data_json|safe }}');
 //
-//  console.log(data.sample1);  // [1, 2, 3]
+//      console.log(data.sample1);  // [1, 2, 3]
 //        alert("document.load");
 //        const data = JSON.parse("{{ data_json|safe }}");
 //        var data_json = JSON.parse('{{data_json | safe}}');
@@ -15,8 +19,9 @@ $(function(){
     });
 
     $('#btn_login').click(function() {
-            uid = $("#txt_userid").val()
-            pwd = $("#txt_password").val()
+            // ユーザー名パスワードの値を取得
+            uid = $("#txt_userid").val();
+            pwd = $("#txt_password").val();
             // 初期化
             $("#txt_userid").css("background-color","white");
             $("#txt_password").css("background-color","white");
@@ -32,8 +37,11 @@ $(function(){
                 $("#div_errorMessage").html("ユーザーIDまたはパスワードが入力されていません。<br/>入力してください。");
             } else {
                 // サーバーチェック
-                $("form").submit()
+                $("#ajax-form-login").submit()
             }
         });
     });
+    function ajax_login(){
+         alert("ajax_login");
+    }
  });

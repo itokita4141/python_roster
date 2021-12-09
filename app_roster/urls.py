@@ -32,13 +32,20 @@ from django.urls import path
 
 # from .views import IndexView, AboutView, RosterLoginInputView, RosterLoginView, RosterInputView, RosterListView, RosterChangeView\
     # , MsgboxView
-from .views import AboutView, RosterLoginInputView\
-    , RosterLoginView, RosterInputView, RosterListView, RosterChangeView\
-    , roster_login
+# from .views import AboutView, RosterLoginInputView\
+#     , RosterLoginView, RosterInputView, RosterListView, RosterChangeView\
+#     , roster_login, ajax_roster_login
+import sys
+sys.path.append("view/")
+from .views import *
+from .view.login_view import *
+
+# app_name = 'rosterApp'
 
 urlpatterns = [
     path('login/', RosterLoginView.as_view(), name="login"),
-    path('login/post/', roster_login, name="roster_login"),
+    path('login/post/', roster_login, name="loginpost"),
+    path('login/ajax_roster_login/', ajax_roster_login, name="ajax_roster_login"),
     path('logininput/', RosterLoginInputView.as_view(), name="loginInput"),
     path('list/', RosterListView.as_view(), name="list"),
     path('input/', RosterInputView.as_view(), name="input"),

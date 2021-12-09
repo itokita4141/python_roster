@@ -1,14 +1,17 @@
 {% load static %}
-<!doctype HTML>
+<!--<!doctype HTML>-->
 <html>
     <head>
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
-        <script type="text/javascript" src="{% static 'js/app_roster_login.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery_app_roster_login.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/js_app_roster_login.js' %}"></script>
         <link rel="stylesheet" type="text/css" href="{% static 'css/roster_main.css' %}">
         <meta name="viewport" content="width=device-width, user-scale=yes, initial-scale=1.0, maximum-scale=5.0" />
     </head>
     <body>
-        <form action="post">
+        <form id="ajax-form-login" action="{% url 'ajax_roster_login' %}" method="POST">
+<!--        <form action="post">-->
+            {% csrf_token %}
             <table>
                 <tr>
                     <td>
