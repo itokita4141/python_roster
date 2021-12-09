@@ -22,7 +22,7 @@ $(function(){
             // ユーザー名パスワードの値を取得
             uid = $("#txt_userid").val();
             pwd = $("#txt_password").val();
-            // 初期化
+            // 画面上のデータ取得
             $("#txt_userid").css("background-color","white");
             $("#txt_password").css("background-color","white");
             // 空チェック
@@ -41,7 +41,27 @@ $(function(){
             }
         });
     });
-    function ajax_login(){
-         alert("ajax_login");
-    }
+    // ログイン
+    $('#ajax-form-login')..click(function(){
+        alert("jquery.loginボタンがクリックされました");
+        // ユーザー名パスワードの値を取得
+        uid = $("#txt_userid").val();
+        pwd = $("#txt_password").val();
+        $.ajax({
+            'url': '{% url "ajax_roster_login" %}',
+            'type': 'POST',
+            'data': {
+                    'uid': uid,
+                    'uid': pwd,
+            },
+            'dataType': 'json'
+        })
+        .done(function(){
+//            通信成功時の処理
+        })
+        .fail(function(){
+//            通信失敗時の処理
+        })
+    }};
+
  });
