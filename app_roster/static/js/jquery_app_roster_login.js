@@ -1,67 +1,62 @@
-jQuery(document).ready(function(){
- //jQueryで実行する内容
-$(function(){
+jQuery(function($){
+    // ready
+    jQuery(document).ready(function(){
+    //jQueryで実行する内容
+    });
+
     // login画面load時
     $(document).ready(function(){
-        alert('{{data_json|safe}}')
         // ボタン押下時の入力チェック時の結果をDjangoより取得
         // djangoより値を受け取れない
         // todo
-//      const data = $.parseJSON('{{ data_json|safe }}');
-//
-//      console.log(data.sample1);  // [1, 2, 3]
-//        alert("document.load");
-//        const data = JSON.parse("{{ data_json|safe }}");
-//        var data_json = JSON.parse('{{data_json | safe}}');
-//        var json = $.parseJSON("{{ data_json | safe }});
-//        var data_json={{"errorMessage"|returnMessageParams}};
-//        $("div_errorMessage").html(json.errorMessage);
     });
 
-    $('#btn_login').click(function() {
-            // ユーザー名パスワードの値を取得
-            uid = $("#txt_userid").val();
-            pwd = $("#txt_password").val();
-            // 画面上のデータ取得
-            $("#txt_userid").css("background-color","white");
-            $("#txt_password").css("background-color","white");
-            // 空チェック
-            if(uid == ""){
-                $("#txt_userid").css("background-color","red");
-            } else if (pwd == ""){
-                $("#txt_password").css("background-color","red");
-            }
-            if(uid=="" || pwd==""){
-                $("#txt_userid").css("background-color","red");
-                $("#txt_password").css("background-color","red");
-                $("#div_errorMessage").html("ユーザーIDまたはパスワードが入力されていません。<br/>入力してください。");
-            } else {
-                // サーバーチェック
-                $("#ajax-form-login").submit()
-            }
-        });
-    });
     // ログイン
-    $('#ajax-form-login')..click(function(){
-        alert("jquery.loginボタンがクリックされました");
+    $('#btn_login').click(function(){
+        console.log("jqueryのlogin関数 start");
         // ユーザー名パスワードの値を取得
         uid = $("#txt_userid").val();
         pwd = $("#txt_password").val();
-        $.ajax({
-            'url': '{% url "ajax_roster_login" %}',
-            'type': 'POST',
-            'data': {
-                    'uid': uid,
-                    'uid': pwd,
-            },
-            'dataType': 'json'
-        })
-        .done(function(){
-//            通信成功時の処理
-        })
-        .fail(function(){
-//            通信失敗時の処理
-        })
-    }};
-
- });
+        console.log("uid=" + uid);
+        console.log("password" + pwd);
+        // 画面上のデータ取得
+        $("#txt_userid").css("background-color","white");
+        $("#txt_password").css("background-color","white");
+        // 空チェック
+        if(uid == "" || pwd==""){
+            if(uid == "")$("#txt_userid").css("background-color","red");
+            if(pwd == "")$("#txt_password").css("background-color","red");
+            $("#div_errorMessage").html("ユーザーIDまたはパスワードが入力されていません。<br/>入力してください。");
+        } else {
+            console.log("画面上入力チェックok");
+            console.log("ajax start");
+            $.ajax({
+                'url': 'ajaxlogincheck/',
+                'type': 'POST',
+                'data': {
+                        'uid': uid,
+                        'pwd': pwd,
+                },
+                'dataType': 'json'
+            }).done((data) => {
+                // 成功時はserver側のredirectで次画面へ遷移
+                console.log("ajax_roster_login:success");
+                if(data.result == 'ok'){
+                    // 次ページへ遷移
+                    window.location.href = '../input/';
+                } else if (data.result == 'ng'){
+                    // エラーメッセージをセット
+                    $("#div_errorMessage").html(data.errorMessage);
+                } else {
+                    alert('ログイン結果の戻り値が不正です。result');
+                }
+            }).fail(() => {
+              console.log("ajax end");
+              // 失敗した時の処理
+              alert("メッセージの送信に失敗しました。");
+              console.log("ajax_roster_login:fail");
+            });
+        }
+        console.log("jqueryのlogin関数 end");
+    });
+});
