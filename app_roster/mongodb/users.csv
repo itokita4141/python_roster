@@ -1,0 +1,4 @@
+userId,name,address,tell,sex,contract,email,password,deleteFlag,updateTime,addTime
+1,ito,東京都大田区,09011111111,f,社員,itokita@gmail.com,abcdefgi,FALSE,2021/08/01 23:59:59,2021/08/01 00:00:00
+2,yama,神奈川県川崎市,09011111112,f,社員,itokita@gmail.com,abcdefgi,FALSE,2021/08/01 23:59:60,2021/08/01 00:00:01
+3,taka,大阪府豊中市,09011111113,m,パート,itokita@gmail.com,abcdefgi,FALSE,2021/08/01 23:59:60,2021/08/01 00:00:02
