@@ -1,0 +1,4 @@
+_id,addTime,address,contract,deleteFlag,email,name,password,sex,tell,updateTime,userId
+61b9e01d0da1c3893c3712a8,2021-07-31T15:00:00.000Z,東京都大田区,社員,false,itokita@gmail.com,ito,abcdefgi,f,9011111111,2021-08-01T14:59:59.000Z,1
+61b9e01d0da1c3893c3712a9,2021-07-31T15:00:01.000Z,神奈川県川崎市,社員,false,itokita@gmail.com,yama,abcdefgi,f,9011111112,1970-01-01T00:00:00.000Z,2
+61b9e01d0da1c3893c3712aa,2021-07-31T15:00:02.000Z,大阪府豊中市,パート,false,itokita@gmail.com,taka,abcdefgi,m,9011111113,1970-01-01T00:00:00.000Z,3

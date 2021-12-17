@@ -1,0 +1,58 @@
+[{
+  "_id": {
+    "$oid": "61b9e01d0da1c3893c3712a8"
+  },
+  "userId": 1,
+  "name": "ito",
+  "address": "東京都大田区",
+  "tell": 9011111111,
+  "sex": "f",
+  "contract": "社員",
+  "email": "itokita@gmail.com",
+  "password": "abcdefgi",
+  "deleteFlag": false,
+  "updateTime": {
+    "$date": "2021-08-01T14:59:59Z"
+  },
+  "addTime": {
+    "$date": "2021-07-31T15:00:00Z"
+  }
+},{
+  "_id": {
+    "$oid": "61b9e01d0da1c3893c3712a9"
+  },
+  "userId": 2,
+  "name": "yama",
+  "address": "神奈川県川崎市",
+  "tell": 9011111112,
+  "sex": "f",
+  "contract": "社員",
+  "email": "itokita@gmail.com",
+  "password": "abcdefgi",
+  "deleteFlag": false,
+  "updateTime": {
+    "$date": "1970-01-01T00:00:00Z"
+  },
+  "addTime": {
+    "$date": "2021-07-31T15:00:01Z"
+  }
+},{
+  "_id": {
+    "$oid": "61b9e01d0da1c3893c3712aa"
+  },
+  "userId": 3,
+  "name": "taka",
+  "address": "大阪府豊中市",
+  "tell": 9011111113,
+  "sex": "m",
+  "contract": "パート",
+  "email": "itokita@gmail.com",
+  "password": "abcdefgi",
+  "deleteFlag": false,
+  "updateTime": {
+    "$date": "1970-01-01T00:00:00Z"
+  },
+  "addTime": {
+    "$date": "2021-07-31T15:00:02Z"
+  }
+}]

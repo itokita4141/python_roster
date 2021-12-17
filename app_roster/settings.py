@@ -90,16 +90,29 @@ WSGI_APPLICATION = "prj_roster.wsgi.application"
 #     }
 # }
 
+# MongoDB
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'de5q7mpd4qi77e',
-        'USER': 'rrkwiepojqjmww',
-        'PASSWORD': '172d2d30c807aeca359c780861f63bcaa276bd8b9c25e2e6444ab6b8ec5dbf2c',
-        'HOST': 'ec2-35-172-16-31.compute-1.amazonaws.com',
-        'PORT': '5432',
+        'NAME': 'rosterdb',
+        'USER': 'itokita41',
+        'PASSWORD': 'itokita41pass',
+        'HOST': 'cluster0-shard-00-02.tx265.mongodb.net:27017',
+        'PORT': '27017',
     }
 }
+
+# postgresSQL
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'de5q7mpd4qi77e',
+#         'USER': 'rrkwiepojqjmww',
+#         'PASSWORD': '172d2d30c807aeca359c780861f63bcaa276bd8b9c25e2e6444ab6b8ec5dbf2c',
+#         'HOST': 'ec2-35-172-16-31.compute-1.amazonaws.com',
+#         'PORT': '5432',
+#     }
+# }
 
 
 
