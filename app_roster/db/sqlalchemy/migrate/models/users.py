@@ -1,6 +1,7 @@
 import sys
 # sqlAchemy
-sys.path.append("app_roster/db/config")
+# sys.path.append("app_roster/db/config")
+sys.path.append("../config")
 from setting_alchemy import Base
 from setting_alchemy import ENGINE
 from sqlalchemy.ext.declarative import declarative_base
@@ -9,7 +10,8 @@ from sqlalchemy import Column, Integer, String, Float, DateTime
 import datetime
 from sqlalchemy import (Text, Time, Boolean)
 
-sys.path.append("app_roster/db/config")
+
+sys.path.append("../config")
 from setting_alchemy import Base
 from setting_alchemy import ENGINE
 # from .setting_alchemy import *

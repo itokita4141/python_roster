@@ -20,7 +20,6 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.exc import NoResultFound
 import sys
-# sys.path.append("/app_roster/db/config")
 from setting_alchemy import Base
 from setting_alchemy import ENGINE
 # from setting_alchemy import DATABASE

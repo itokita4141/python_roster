@@ -2,7 +2,8 @@ import sys
 # sqlalchemy
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, Float, DateTime
-sys.path.append("app_roster/db/config")
+# sys.path.append("app_roster/db/config")
+sys.path.append("../config")
 from setting_alchemy import Base
 from setting_alchemy import ENGINE
 # dnの型用
