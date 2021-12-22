@@ -93,15 +93,53 @@ WSGI_APPLICATION = "prj_roster.wsgi.application"
 # MongoDB
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'rosterdb',
+        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        # 'ENGINE': 'django.db.backends.',
+        # 'ENGINE': 'django',
+        'ENGINE': 'django_mongodb_engine',
+        'NAME': 'admin',
         'USER': 'itokita41',
         'PASSWORD': 'itokita41pass',
-        'HOST': 'cluster0-shard-00-02.tx265.mongodb.net:27017',
+        'HOST': 'cluster0-shard-00-02.tx265.mongodb.net',
         'PORT': '27017',
+        'SSL': False,
     }
 }
 
+# DATABASES= {
+#     "default": {
+#         'ENGINE': 'django.db.backends.',
+#         "NAME": "rosterdb",
+#         "CLIENT": {
+#             'USER': 'itokita41',
+#             'PASSWORD': 'itokita41pass',
+#             'HOST': 'cluster0-shard-00-02.tx265.mongodb.net',
+#             'PORT': '27017',
+#             'SSL': False,
+# # venv\Lib\site-packages\certifi
+#         },
+#     },
+# }
+
+# mongo cluster0-shard-00-02.tx265.mongodb.net:27017/admin --ssl -u itokita41 -p
+# DATABASES= {
+#         'default': {
+#             'ENGINE': 'djongo',
+#             'ENFORCE_SCHEMA': True
+#             'NAME': 'your-db-name',
+#             'HOST': 'host-name or ip address',
+#             'PORT': port_number,
+#             'USER': 'db-username',
+#             'PASSWORD': 'password',
+#             'AUTH_SOURCE': 'db-name',
+#             'AUTH_MECHANISM': 'SCRAM-SHA-1',
+#             'REPLICASET': 'replicaset',
+#             'SSL': 'ssl',
+#             'SSL_CERTFILE': 'ssl_certfile',
+#             'SSL_CA_CERTS': 'ssl_ca_certs',
+#             'READ_PREFERENCE': 'read_preference'
+#         }
+#     }
 # postgresSQL
 # DATABASES = {
 #     'default': {

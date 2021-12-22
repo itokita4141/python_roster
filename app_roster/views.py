@@ -24,7 +24,8 @@ from django.shortcuts import render
 
 # from .models import user, attendance
 
-from .models import user, attendance
+# from .models import user, attendance
+from .models import Question,Choice
 # sql alchemy
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
@@ -32,12 +33,12 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.exc import NoResultFound
 
 import sys
-sys.path.append("app_roster/db/config")
+sys.path.append("app_roster/db/sqlalchemy/migrate/config")
 from setting_alchemy import Base
 from setting_alchemy import ENGINE
 # from setting_alchemy import DATABASE
 from setting_alchemy import session
-sys.path.append("app_roster/db/model")
+sys.path.append("app_roster/db/sqlalchemy/migrate/models")
 from users import *
 from attendances import *
 

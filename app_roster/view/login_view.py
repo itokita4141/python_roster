@@ -13,7 +13,7 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 # from .models import user, attendance
-from ..models import user, attendance
+from ..models import Question, Choice
 # sql alchemy
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
