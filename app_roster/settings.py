@@ -137,6 +137,7 @@ DATABASES = {
         'NAME': 'rosterdb',                                # Or path to database file if using sqlite3.
         'USER': 'itokita41',                               # Not used with sqlite3.
         'PASSWORD': 'itokita41pass',                       # Not used with sqlite3.
+        # 'SSL': True,
         'HOST': 'cluster0-shard-00-02.tx265.mongodb.net',  # Set to empty string for localhost. Not used with sqlite3.
         'PORT': 27017,                                     # Set to empty string for default. Not used with sqlite3.
     }
