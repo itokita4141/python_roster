@@ -91,35 +91,56 @@ WSGI_APPLICATION = "prj_roster.wsgi.application"
 # }
 
 # MongoDB
-DATABASES = {
-    'default': {
-        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        # 'ENGINE': 'django.db.backends.',
-        # 'ENGINE': 'django',
-        'ENGINE': 'django_mongodb_engine',
-        'NAME': 'admin',
-        'USER': 'itokita41',
-        'PASSWORD': 'itokita41pass',
-        'HOST': 'cluster0-shard-00-02.tx265.mongodb.net',
-        'PORT': '27017',
-        'SSL': False,
-    }
-}
+# DATABASES = {
+#     'default': {
+#         # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         # 'ENGINE': 'django.db.backends.',
+#         # 'ENGINE': 'django',
+#         'ENGINE': 'django_mongodb_engine',
+#         'NAME': 'admin',
+#         'USER': 'itokita41',
+#         'PASSWORD': 'itokita41pass',
+#         'HOST': 'cluster0-shard-00-02.tx265.mongodb.net',
+#         'PORT': '27017',
+#         'SSL': True,
+#     }
+# }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django_mongodb_engine',
+#         'NAME': 'rosterdb',
+#         'CLIENT': {
+#            # 'host': 'mongodb://{user_name}:{pass}@{ip_adress}:{port_num}/{your_dbname}',
+#            'host': 'mongodb://itokita41:itokita41pass@cluster0-shard-00-02.tx265.mongodb.net:27107/rosterdb',
+#         }
+#     }
+# }
 
-# DATABASES= {
-#     "default": {
-#         'ENGINE': 'django.db.backends.',
-#         "NAME": "rosterdb",
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'djongo',
+#         "NAME": 'admin',
 #         "CLIENT": {
 #             'USER': 'itokita41',
 #             'PASSWORD': 'itokita41pass',
 #             'HOST': 'cluster0-shard-00-02.tx265.mongodb.net',
 #             'PORT': '27017',
-#             'SSL': False,
+#             'SSL': True,
 # # venv\Lib\site-packages\certifi
 #         },
 #     },
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django_mongodb_engine', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': '[DB名]',                      # Or path to database file if using sqlite3.
+        'USER': '[DBユーザ名]',                      # Not used with sqlite3.
+        'PASSWORD': '[DBパスワード]',                  # Not used with sqlite3.
+        'HOST': 'localhost',                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': 27017,                      # Set to empty string for default. Not used with sqlite3.
+    }
+}
 
 # mongo cluster0-shard-00-02.tx265.mongodb.net:27017/admin --ssl -u itokita41 -p
 # DATABASES= {
