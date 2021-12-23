@@ -133,12 +133,12 @@ WSGI_APPLICATION = "prj_roster.wsgi.application"
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django_mongodb_engine', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '[DB名]',                      # Or path to database file if using sqlite3.
-        'USER': '[DBユーザ名]',                      # Not used with sqlite3.
-        'PASSWORD': '[DBパスワード]',                  # Not used with sqlite3.
-        'HOST': 'localhost',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': 27017,                      # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'djongo',             # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'rosterdb',                                # Or path to database file if using sqlite3.
+        'USER': 'itokita41',                               # Not used with sqlite3.
+        'PASSWORD': 'itokita41pass',                       # Not used with sqlite3.
+        'HOST': 'cluster0-shard-00-02.tx265.mongodb.net',  # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': 27017,                                     # Set to empty string for default. Not used with sqlite3.
     }
 }
 
