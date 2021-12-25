@@ -1,4 +1,4 @@
-#!C:\Users\user\OneDrive\デスクトップ\ito\3.勤務表ツール\2.heroku_roster_source\python-getting-started\venv\Scripts\python.exe
+#!C:\Users\user\OneDrive\デスクトップ\ito\3.勤務表ツール\4.git_docker_heroku_source\venv\Scripts\python.exe
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 
