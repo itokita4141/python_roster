@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 
 from django.shortcuts import render
-from django.views.generic import TemplateView #テンプレートタグ
+from django.views.generic import TemplateView  # テンプレートタグ
 # from .forms import AccountForm, AddAccountForm #ユーザーアカウントフォーム
 # ログイン・ログアウト処理に利用
 from django.contrib.auth import authenticate, login, logout
@@ -25,7 +25,8 @@ from django.shortcuts import render
 # from .models import user, attendance
 
 # from .models import user, attendance
-from .models import Question,Choice
+# from .models import Question,Choice
+from .models import Users, Attendance
 # sql alchemy
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
