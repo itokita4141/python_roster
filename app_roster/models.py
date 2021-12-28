@@ -3,7 +3,7 @@ from djongo import models
 
 
 class Users(models.Model):
-    userId = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID'),
+    userId = models.BigAutoField(auto_created=False, primary_key=False, serialize=False, verbose_name='ID'),
     name = models.CharField(max_length=20),
     address = models.CharField(max_length=100),
     tell = models.CharField(max_length=20),
@@ -19,7 +19,7 @@ class Users(models.Model):
         return str(self.__dict__)
 
 class Attendance(models.Model):
-    attendanceId = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID'),
+    attendanceId = models.BigAutoField(auto_created=False, primary_key=False, serialize=False, verbose_name='ID'),
     userId = models.BigIntegerField(),
     yearMonth = models.CharField(max_length=6),
     day = models.CharField(max_length=2),
