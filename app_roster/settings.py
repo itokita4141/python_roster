@@ -43,9 +43,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'django.contrib.humanize',
-#    "hello",
     "app_roster",
-    # 'aldjemy',
 ]
 
 MIDDLEWARE = [
@@ -86,7 +84,7 @@ WSGI_APPLICATION = "prj_roster.wsgi.application"
 
 
 # MongoDB
-DATABASES= {
+DATABASES = {
     "default": {
         "ENGINE": "djongo",
         "NAME": "rosterdb",

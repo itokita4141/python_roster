@@ -14,7 +14,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 # from .models import user, attendance
 # from ..models import Question, Choice
-from ..models import Users, Attendance
+from ..models import Users, Attendances
 # sql alchemy
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
