@@ -55,6 +55,13 @@ def ajax_roster_login(request):
         print("ユーザーID="+uid)
         print("password="+pwd)
         print("〓〓〓〓〓〓〓")
+
+        # mongoengine
+
+        # mongoalchemy
+
+
+
         # userテーブル読み込み
         usersListCount = session.query(Users).filter(Users.email == uid, Users.password == pwd).count()
         # usersListCount2 = session.query(Users).all()
