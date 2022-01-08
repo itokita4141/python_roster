@@ -9,7 +9,7 @@
         <meta name="viewport" content="width=device-width, user-scale=yes, initial-scale=1.0, maximum-scale=5.0" />
     </head>
     <body>
-        <form id="ajax-form-login" method="POST">
+        <form id="ajax-form-login" method="POST">{% csrf_token %}
             <table>
                 <tr>
                     <td>
