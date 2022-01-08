@@ -14,6 +14,7 @@ jQuery(function($){
     // ログイン
     $('#btn_login').click(function(){
         console.log("jqueryのlogin関数 start");
+        var csrf_token = getCookie("csrftoken");
         // ユーザー名パスワードの値を取得
         uid = $("#txt_userid").val();
         pwd = $("#txt_password").val();
@@ -37,8 +38,24 @@ jQuery(function($){
                         'uid': uid,
                         'pwd': pwd,
                 },
-                'dataType': 'json'
+                'dataType': 'json',
+                // 送信前にヘッダにcsrf_tokenを付与。
+                beforeSend: function(xhr, settings) {
+                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                        xhr.setRequestHeader("X-CSRFToken", csrf_token);
+                    }
+                },
+                success: function(data) {
+                    alert("beforeSend:success");
+//                    alert(data);
+                },
+                error: function(xhr, status, error) {
+                    alert("beforeSend:error");
+                    alert(status + "\n" +
+                            "Status: " + xhr.status + "\n" + error);
+                }
             }).done((data) => {
+                alert("done:success");
                 // 成功時はserver側のredirectで次画面へ遷移
                 console.log("ajax_roster_login:success");
                 if(data.result == 'ok'){
@@ -51,12 +68,65 @@ jQuery(function($){
                     alert('ログイン結果の戻り値が不正です。result');
                 }
             }).fail(() => {
-              console.log("ajax end");
-              // 失敗した時の処理
-              alert("メッセージの送信に失敗しました。");
-              console.log("ajax_roster_login:fail");
+                alert("done:fail");
+                console.log("ajax end");
+                // 失敗した時の処理
+                alert("メッセージの送信に失敗しました。");
+                console.log("ajax_roster_login:fail");
             });
         }
         console.log("jqueryのlogin関数 end");
+    });
+
+    // csrf_tokenの取得に使う
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+
+    $(document).on("click", "#button_id", function() {
+        var button = $(this);
+        var csrf_token = getCookie("csrftoken");
+        var rslt = window.confirm("Do you really want to do?");
+        if (rslt) {
+            $.ajax({
+               type: "POST",
+               url: "ajaxlogincheck/",
+               data: {
+                   "key1": "value1",
+                   "k2": "v2",
+               },
+               contentType: "application/json",
+               // 送信前にヘッダにcsrf_tokenを付与。
+               beforeSend: function(xhr, settings) {
+                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                        xhr.setRequestHeader("X-CSRFToken", csrf_token);
+                    }
+                },
+                success: function(data) {
+                    alert(data);
+                },
+                error: function(xhr, status, error) {
+                    alert(status + "\n" +
+                            "Status: " + xhr.status + "\n" + error);
+                }
+            });
+        }
     });
 });
