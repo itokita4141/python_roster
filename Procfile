@@ -1,1 +1,1 @@
-web: gunicorn prj_roster.wsgi --log-file -
+web: gunicorn app_roster.wsgi --log-file -

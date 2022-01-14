@@ -46,16 +46,16 @@ jQuery(function($){
                     }
                 },
                 success: function(data) {
-                    alert("beforeSend:success");
-//                    alert(data);
+//                    alert("beforeSend:success");
+                    console.log(data);
                 },
                 error: function(xhr, status, error) {
-                    alert("beforeSend:error");
+//                    alert("beforeSend:error");
                     alert(status + "\n" +
                             "Status: " + xhr.status + "\n" + error);
                 }
             }).done((data) => {
-                alert("done:success");
+//                alert("done:success");
                 // 成功時はserver側のredirectで次画面へ遷移
                 console.log("ajax_roster_login:success");
                 if(data.result == 'ok'){
@@ -68,7 +68,7 @@ jQuery(function($){
                     alert('ログイン結果の戻り値が不正です。result');
                 }
             }).fail(() => {
-                alert("done:fail");
+//                alert("done:fail");
                 console.log("ajax end");
                 // 失敗した時の処理
                 alert("メッセージの送信に失敗しました。");
