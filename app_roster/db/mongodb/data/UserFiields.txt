@@ -1,0 +1,11 @@
+id
+userId
+name.address
+tell
+sex
+contract
+email
+password
+deleteFlag
+updateTime
+addTime

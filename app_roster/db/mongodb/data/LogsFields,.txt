@@ -1,0 +1,6 @@
+logId
+userId
+content
+deleteFlag
+updateTime
+addTime

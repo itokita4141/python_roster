@@ -36,3 +36,14 @@ class Attendances(models.Model):
     def __str__(self):
         return str(self.__dict__)
 
+    class Logs(models.Model):
+        logId = models.BigAutoField(auto_created=False, primary_key=False, serialize=False, verbose_name='ID'),
+        userId = models.BigIntegerField(primary_key=True),
+        content = models.TextField(null=True,blank=True,max_length=1000),
+        deleteFlag = models.BooleanField(default=False),
+        updateTime = models.DateField(null=False),
+        addTime = models.BooleanField(null=True),
+
+        def __str__(self):
+            return str(self.__dict__)
+

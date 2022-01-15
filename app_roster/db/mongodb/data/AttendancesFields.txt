@@ -1,0 +1,12 @@
+id
+attendanceId
+userId
+yearMonth
+day
+startTime
+endDateTime
+restStartTime
+restEndTime
+deleteFlag
+updateTime
+addTime
