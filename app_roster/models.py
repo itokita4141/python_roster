@@ -37,6 +37,7 @@ class Attendances(models.Model):
         return str(self.__dict__)
 
     class Logs(models.Model):
+        id = models.BigAutoField(auto_created=False, primary_key=False, serialize=False, verbose_name='ID'),
         logId = models.BigAutoField(auto_created=False, primary_key=False, serialize=False, verbose_name='ID'),
         userId = models.BigIntegerField(primary_key=True),
         content = models.TextField(null=True,blank=True,max_length=1000),

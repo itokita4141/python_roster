@@ -57,6 +57,12 @@ def ajax_roster_login(request):
         print("〓〓〓〓〓〓〓")
 
         # mongoengine
+        print(Users.objects.all())
+
+
+
+
+
 
         # mongoalchemy
 
