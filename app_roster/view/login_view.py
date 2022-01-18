@@ -14,7 +14,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 # from .models import user, attendance
 # from ..models import Question, Choice
-from ..models import Users, Attendances
+from ..models import Users, Attendances, Logs
 # sql alchemy
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
@@ -28,6 +28,10 @@ from setting_alchemy import session
 # sys.path.append("/app_roster/db/model")
 from users import *
 from attendances import *
+# mongodb read
+from rest_framework import viewsets
+# sys.path.append("/app_roster")
+from app_roster.seliarizers import UsersSerializer, AttendancesSerializer,LogsSerializer
 
 # ======画面遷移==================
 # ログイン
@@ -57,10 +61,8 @@ def ajax_roster_login(request):
         print("〓〓〓〓〓〓〓")
 
         # mongoengine
-        print(Users.objects.all())
-
-
-
+        usersData = Users.find_all()
+        # print(Users.objects.all())
 
 
 

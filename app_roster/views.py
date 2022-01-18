@@ -311,3 +311,31 @@ def logout():
     print("logout")
 
 from . import views
+
+#############
+# テーブルCRUD
+#############
+from .models import Users,Attendances,Logs
+from rest_framework import viewsets
+from app_roster.seliarizers import UsersSerializer, AttendancesSerializer,LogsSerializer
+
+class UsersViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = Users.objects.all()
+    serializer_class = UsersSerializer
+
+class AttendancesViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = Attendances.objects.all()
+    serializer_class = AttendancesSerializer
+
+class LogsViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = Logs.objects.all()
+    serializer_class = LogsSerializer
