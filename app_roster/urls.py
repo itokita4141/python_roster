@@ -28,7 +28,8 @@
 # →入力漏れがないかチェックするボタンを追加する
 # 〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓
 from django.contrib import admin
-from django.urls import path
+# from django.urls import path
+from django.urls import include, path
 
 # from .views import IndexView, AboutView, RosterLoginInputView, RosterLoginView, RosterInputView, RosterListView, RosterChangeView\
     # , MsgboxView
@@ -40,6 +41,26 @@ sys.path.append("view/")
 from .views import *
 from .view.login_view import *
 
+##########################################
+##################
+# mongoDB管理画面用
+##################
+# from django.urls import include, path
+from rest_framework import routers
+from app_roster import views
+
+router = routers.DefaultRouter()
+router.register(r'users', views.UsersViewSet)
+router.register(r'attendances', views.AttendancesViewSet)
+router.register(r'logs', views.LogsViewSet)
+
+# Wire up our API using automatic URL routing.
+# Additionally, we include login URLs for the browsable API.
+# urlpatterns = [
+#     path('', include(router.urls)),
+#     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+# ]
+##########################################
 app_name = 'rosterApp'
 
 urlpatterns = [
@@ -60,4 +81,9 @@ urlpatterns = [
     path('aboutus/', AboutView.as_view(), name="about"),
     # 廃止
     # path('', IndexView.as_view(), name="index"),
+    #######mongo管理画面用#######↓
+    path('', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    #######mongo管理画面用#######↑
 ]
+

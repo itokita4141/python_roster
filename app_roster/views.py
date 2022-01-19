@@ -321,9 +321,9 @@ def logout():
 
 from . import views
 
-#############
-# テーブルCRUD
-#############
+##################
+# mongoDB要管理画面
+##################
 from .models import Users,Attendances,Logs
 from rest_framework import viewsets
 from app_roster.seliarizers import UsersSerializer, AttendancesSerializer,LogsSerializer
