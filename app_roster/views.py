@@ -260,6 +260,15 @@ def some_view(request):
         if 'logout' in request.POST:
             logout()
 
+class UmaCompToolView(TemplateView):
+    #uma 攻略画面
+    print("UmaToolListView")
+    template_name = "uma_comp_tool.html"
+    def get_context_data(self):
+        ctxt = super().get_context_data()
+        ctxt ["user"] = "testUser"
+        return ctxt
+
 class RosterLoginView(TemplateView):
     # ログイン画面
     print("RosterLoginView")

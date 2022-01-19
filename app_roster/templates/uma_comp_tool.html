@@ -1,0 +1,322 @@
+{% load static %}
+<!doctype HTML>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/roster_main.css' %}">
+        <meta name="viewport" content="width=device-width, user-scale=yes, initial-scale=1.0, maximum-scale=5.0" />
+    </head>
+    <body>
+        <table>
+            <input type="button" class="back-button" value="戻る" onclick="location.href='../login'">
+            <tr>
+                <td>
+                    <H1 class="title-header">出退勤リスト</H1>
+                    <H2 class="title-header">AAAさんようこそ(会員ID:12345)</H2>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    2021年8月1日9時22分32秒(Ajaxにする)
+                </td>
+            </tr>
+        </table>
+        <table>
+            <thead class="thead-list">
+                <tr>
+                    <td>申請</td>
+                    <td>日付</td>
+                    <td>曜日</td>
+                    <td>出勤時間</td>
+                    <td>退出時間</td>
+                    <td>備考</td>
+                    <td>ステータス</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="button" value="申請" onclick="location.href='../change'" class="application-button"></td>
+                       <td>8/1</td>
+                    <td>(日)</td>
+                    <td>10:00:00</td>
+                    <td>19:00:00</td>
+                    <td>備考テスト</td>
+                    <td>通常</td>
+                    </tr>
+                <tr>
+                    <td><input type="button" value="申請" onclick="location.href='../change'" class="application-button"></td>
+                    <td>8/2</td>
+                    <td>(月)</td>
+                    <td>10:00:00</td>
+                    <td>19:00:00</td>
+                    <td>備考テスト</td>
+                    <td>通常</td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="申請" onclick="location.href='../change'" class="application-button"></td>
+                    <td>8/3</td>
+                    <td>(火)</td>
+                    <td>10:00:00</td>
+                    <td>19:00:00</td>
+                    <td>備考テスト</td>
+                    <td>通常</td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="申請" onclick="location.href='../change'" class="application-button"></td>
+                    <td>8/4</td>
+                    <td>(水)</td>
+                    <td>10:00:00</td>
+                    <td>19:00:00</td>
+                    <td>備考テスト</td>
+                    <td>通常</td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="申請" onclick="location.href='../change'" class="application-button"></td>
+                    <td>8/5</td>
+                    <td>(木)</td>
+                    <td>10:00:00</td>
+                    <td>19:00:00</td>
+                    <td>備考テスト</td>
+                    <td>通常</td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="申請" onclick="location.href='../change'" class="application-button"></td>
+                    <td>8/6</td>
+                    <td>(金)</td>
+                    <td>10:00:00</td>
+                    <td>19:00:00</td>
+                    <td>備考テスト</td>
+                    <td>通常</td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="申請" onclick="location.href='../change'" class="application-button"></td>
+                    <td>8/7</td>
+                    <td>(土)</td>
+                    <td>10:00:00</td>
+                    <td>19:00:00</td>
+                    <td>備考テスト</td>
+                    <td>通常</td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="申請" onclick="location.href='../change'" class="application-button"></td>
+                    <td>8/8</td>
+                    <td>(日)</td>
+                    <td>10:00:00</td>
+                    <td>19:00:00</td>
+                    <td>備考テスト</td>
+                    <td>通常</td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="申請" onclick="location.href='../change'" class="application-button"></td>
+                    <td>8/9</td>
+                    <td>(月)</td>
+                    <td>10:00:00</td>
+                    <td>19:00:00</td>
+                    <td>備考テスト</td>
+                    <td>通常</td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="申請" onclick="location.href='../change'" class="application-button"></td>
+                    <td>8/10</td>
+                    <td>(火)</td>
+                    <td>10:00:00</td>
+                    <td>19:00:00</td>
+                    <td>備考テスト</td>
+                    <td>通常</td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="申請" onclick="location.href='../change'" class="application-button"></td>
+                    <td>8/11</td>
+                    <td>(水)</td>
+                    <td>10:00:00</td>
+                    <td>19:00:00</td>
+                    <td>備考テスト</td>
+                    <td>通常</td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="申請" onclick="location.href='../change'" class="application-button"></td>
+                    <td>8/12</td>
+                    <td>(木)</td>
+                    <td>10:00:00</td>
+                    <td>19:00:00</td>
+                    <td>備考テスト</td>
+                    <td>通常</td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="申請" onclick="location.href='../change'" class="application-button"></td>
+                    <td>8/13</td>
+                    <td>(金)</td>
+                    <td>10:00:00</td>
+                    <td>19:00:00</td>
+                    <td>備考テスト</td>
+                    <td>通常</td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="申請" onclick="location.href='../change'" class="application-button"></td>
+                    <td>8/14</td>
+                    <td>(土)</td>
+                    <td>10:00:00</td>
+                    <td>19:00:00</td>
+                    <td>備考テスト</td>
+                    <td>通常</td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="申請" onclick="location.href='../change'" class="application-button"></td>
+                    <td>8/15</td>
+                    <td>(日)</td>
+                    <td>10:00:00</td>
+                    <td>19:00:00</td>
+                    <td>備考テスト</td>
+                    <td>通常</td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="申請" onclick="location.href='../change'" class="application-button"></td>
+                    <td>8/16</td>
+                    <td>(月)</td>
+                    <td>10:00:00</td>
+                    <td>19:00:00</td>
+                    <td>備考テスト</td>
+                    <td>通常</td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="申請" onclick="location.href='../change'" class="application-button"></td>
+                    <td>8/17</td>
+                    <td>(火)</td>
+                    <td>10:00:00</td>
+                    <td>19:00:00</td>
+                    <td>備考テスト</td>
+                    <td>通常</td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="申請" onclick="location.href='../change'" class="application-button"></td>
+                    <td>8/18</td>
+                    <td>(水)</td>
+                    <td>10:00:00</td>
+                    <td>19:00:00</td>
+                    <td>備考テスト</td>
+                    <td>通常</td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="申請" onclick="location.href='../change'" class="application-button"></td>
+                    <td>8/19</td>
+                    <td>(木)</td>
+                    <td>10:00:00</td>
+                    <td>19:00:00</td>
+                    <td>備考テスト</td>
+                    <td>通常</td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="申請" onclick="location.href='../change'" class="application-button"></td>
+                    <td>8/20</td>
+                    <td>(金)</td>
+                    <td>10:00:00</td>
+                    <td>19:00:00</td>
+                    <td>備考テスト</td>
+                    <td>通常</td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="申請" onclick="location.href='../change'" class="application-button"></td>
+                    <td>8/21</td>
+                    <td>(土)</td>
+                    <td>10:00:00</td>
+                    <td>19:00:00</td>
+                    <td>備考テスト</td>
+                    <td>通常</td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="申請" onclick="location.href='../change'" class="application-button"></td>
+                    <td>8/22</td>
+                    <td>(日)</td>
+                    <td>10:00:00</td>
+                    <td>19:00:00</td>
+                    <td>備考テスト</td>
+                    <td>通常</td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="申請" onclick="location.href='../change'" class="application-button"></td>
+                    <td>8/23</td>
+                    <td>(月)</td>
+                    <td>10:00:00</td>
+                    <td>19:00:00</td>
+                    <td>備考テスト</td>
+                    <td>通常</td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="申請" onclick="location.href='../change'" class="application-button"></td>
+                    <td>8/24</td>
+                    <td>(火)</td>
+                    <td>10:00:00</td>
+                    <td>19:00:00</td>
+                    <td>備考テスト</td>
+                    <td>通常</td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="申請" onclick="location.href='../change'" class="application-button"></td>
+                    <td>8/25</td>
+                    <td>(水)</td>
+                    <td>10:00:00</td>
+                    <td>19:00:00</td>
+                    <td>備考テスト</td>
+                    <td>通常</td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="申請" onclick="location.href='../change'" class="application-button"></td>
+                    <td>8/26</td>
+                    <td>(木)</td>
+                    <td>10:00:00</td>
+                    <td>19:00:00</td>
+                    <td>備考テスト</td>
+                    <td>通常</td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="申請" onclick="location.href='../change'" class="application-button"></td>
+                    <td>8/27</td>
+                    <td>(金)</td>
+                    <td>10:00:00</td>
+                    <td>19:00:00</td>
+                    <td>備考テスト</td>
+                    <td>通常</td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="申請" onclick="location.href='../change'" class="application-button"></td>
+                    <td>8/28</td>
+                    <td>(土)</td>
+                    <td>10:00:00</td>
+                    <td>19:00:00</td>
+                    <td>備考テスト</td>
+                    <td>通常</td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="申請" onclick="location.href='../change'" class="application-button"></td>
+                    <td>8/29</td>
+                    <td>(日)</td>
+                    <td>10:00:00</td>
+                    <td>19:00:00</td>
+                    <td>備考テスト</td>
+                    <td>通常</td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="申請" onclick="location.href='../change'" class="application-button"></td>
+                    <td>8/30</td>
+                    <td>(月)</td>
+                    <td>10:00:00</td>
+                    <td>19:00:00</td>
+                    <td>備考テスト</td>
+                    <td>通常</td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="申請" onclick="location.href='../change'" class="application-button"></td>
+                    <td>8/31</td>
+                    <td>(火)</td>
+                    <td>10:00:00</td>
+                    <td>19:00:00</td>
+                    <td>備考テスト</td>
+                    <td>通常</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+<html>
+
+
+
+

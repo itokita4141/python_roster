@@ -1,0 +1,35 @@
+.navbar {
+    background: pink;
+    height: 60px;
+}
+body {
+    background: #eeeeee;
+}
+.uma-title-header{
+    margin:0px;
+    width:500px;
+}
+.uma-thead-list {
+    color: white;
+    background: #41a2e6;
+    text-align:center;
+}
+.uma-back-button {
+    width:70px;
+    background-color:lightyellow;
+}
+.uma-application-button {
+    width:100px;
+    background-color:lightyellow;
+}
+.uma-big-button {
+    font-size:30px;
+    width:200px;
+    height:50px;
+    background-color:lightyellow;
+}
+.uma-error-message {
+    color:red;
+    font-size:20px;
+}
+

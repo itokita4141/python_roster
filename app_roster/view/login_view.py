@@ -61,8 +61,8 @@ def ajax_roster_login(request):
         print("〓〓〓〓〓〓〓")
 
         # mongoengine
-        usersData = Users.find_all()
-        # print(Users.objects.all())
+        # usersData = Users.find_all()
+        # # print(Users.objects.all())
 
 
 

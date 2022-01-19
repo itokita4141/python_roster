@@ -43,6 +43,9 @@ from .view.login_view import *
 app_name = 'rosterApp'
 
 urlpatterns = [
+    # uma tool
+    path('umacomptool/', UmaCompToolView.as_view(), name="umaTool"),
+    # roster
     path('login/', RosterLoginView.as_view(), name="login"),
     # path('login/post/', roster_login, name="loginpost"),
     path('login/ajaxlogincheck/', ajax_roster_login, name="ajaxlogincheck"),
