@@ -4,7 +4,7 @@ from djongo import models
 
 class Users(models.Model):
     id = models.BigAutoField(auto_created=False, primary_key=False, serialize=False, verbose_name='ID'),
-    userId = models.BigIntegerField(primary_key=True),
+    userId = models.CharField(primary_key=True, max_length=10),
     name = models.CharField(max_length=20),
     address = models.CharField(max_length=100),
     tell = models.CharField(max_length=20),
@@ -21,8 +21,8 @@ class Users(models.Model):
 
 class Attendances(models.Model):
     id = models.BigAutoField(auto_created=False, primary_key=False, serialize=False, verbose_name='ID'),
-    attendanceId = models.BigIntegerField(primary_key=True),
-    userId = models.BigIntegerField(),
+    attendanceId = models.CharField(primary_key=True, max_length=10),
+    userId = models.CharField(max_length=10),
     yearMonth = models.CharField(max_length=6),
     day = models.CharField(max_length=2),
     startTime = models.DateTimeField(),
@@ -39,7 +39,7 @@ class Attendances(models.Model):
 class Logs(models.Model):
     id = models.BigAutoField(auto_created=False, primary_key=False, serialize=False, verbose_name='ID'),
     logId = models.BigAutoField(auto_created=False, primary_key=False, serialize=False, verbose_name='ID'),
-    userId = models.BigIntegerField(primary_key=True),
+    userId = models.CharField(primary_key=True,max_length=10),
     content = models.TextField(null=True,blank=True,max_length=1000),
     deleteFlag = models.BooleanField(default=False),
     updateTime = models.DateField(null=False),
