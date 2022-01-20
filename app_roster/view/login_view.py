@@ -26,8 +26,8 @@ from setting_alchemy import ENGINE
 # from setting_alchemy import DATABASE
 from setting_alchemy import session
 # sys.path.append("/app_roster/db/model")
-from users import *
-from attendances import *
+# from users import *
+# from attendances import *
 # mongodb read
 from rest_framework import viewsets
 # sys.path.append("/app_roster")
@@ -63,19 +63,24 @@ def ajax_roster_login(request):
         # mongoengine
         # usersData = Users.find_all()
         # # print(Users.objects.all())
+        print(Users.objects.all())
+        usersAllData = Users.objects.all()
+        # print("Usersのデータ数=" . str(usersAllData))
+        counter = 0
+        for usersData in usersAllData:
+            print(counter)
+            print(usersData.userId)
+            counter = counter + 1
 
-
-
+        usersListCount = counter
         # mongoalchemy
-
-
-
+        # ・flaskのみ？
         # userテーブル読み込み
-        usersListCount = session.query(Users).filter(Users.email == uid, Users.password == pwd).count()
+        # usersListCount = session.query(Users).filter(Users.email == uid, Users.password == pwd).count()
         # usersListCount2 = session.query(Users).all()
-        print("=======================")
+        # print("=======================")
         print("users.count="+str(usersListCount))
-        print("=======================")
+        # print("=======================")
         # ログインチェック
         if (usersListCount == 1):
             returnMessageParams = {
