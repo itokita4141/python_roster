@@ -32,6 +32,10 @@ from setting_alchemy import session
 from rest_framework import viewsets
 # sys.path.append("/app_roster")
 from app_roster.seliarizers import UsersSerializer, AttendancesSerializer,LogsSerializer
+# pymongo
+from pymongo import MongoClient
+sys.path.append("app_roster/db/mongodb/config")
+from setting_pymongo import settingPymongo
 
 # ======画面遷移==================
 # ログイン
@@ -59,6 +63,28 @@ def ajax_roster_login(request):
         print("ユーザーID="+uid)
         print("password="+pwd)
         print("〓〓〓〓〓〓〓")
+
+        # pymongo
+        mongo = settingPymongo('rosterdb', 'app_roster_users')
+        findOne = mongo.find_one()
+        # print('-----------------find_One-----------------')
+        # print(type(findOne))
+        # print(findOne)
+        #
+        # find = mongo.find()
+        # print('-------------------find-------------------')
+        # print(type(find))
+        # for doc in find:
+        #     print(doc)
+        # mongo = settingPymongo('rosterdb')
+        # print(mongo.collection_names())
+        # print(mongo.list_collection_names())
+
+        url = "mongodb://itokita41:itokita41pass@cluster02.tx265.mongodb.net:27017/rosterdb?authSource=admin"
+        with MongoClient(url) as client:
+            rosterdb = client.rosterdb
+            app_roster_users = rosterdb.app_roster_users
+            name = app_roster_users(db=rosterdb, filter={id: 1})
 
         # mongoengine
         # usersData = Users.find_all()
