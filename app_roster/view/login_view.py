@@ -65,26 +65,30 @@ def ajax_roster_login(request):
         print("〓〓〓〓〓〓〓")
 
         # pymongo
-        mongo = settingPymongo('rosterdb', 'app_roster_users')
-        findOne = mongo.find_one()
-        # print('-----------------find_One-----------------')
-        # print(type(findOne))
-        # print(findOne)
-        #
-        # find = mongo.find()
-        # print('-------------------find-------------------')
-        # print(type(find))
-        # for doc in find:
-        #     print(doc)
+        # test = settingPymongo('rosterdb', 'app_roster_attendances')
+        # collectionsnames = test.collection_names()
+        # listcollectionnames = test.list_collection_names()
+        # mongo = settingPymongo('rosterdb', 'app_roster_users')
+        mongo = settingPymongo('rosterdb', 'app_roster_attendances')
+        findone = mongo.find_one()
+        print('-----------------find_One-----------------')
+        print(type(findone))
+        print(findone)
+
+        find = mongo.find()
+        print('-------------------find-------------------')
+        print(type(find))
+        for doc in find:
+            print(doc)
         # mongo = settingPymongo('rosterdb')
         # print(mongo.collection_names())
         # print(mongo.list_collection_names())
 
-        url = "mongodb://itokita41:itokita41pass@cluster02.tx265.mongodb.net:27017/rosterdb?authSource=admin"
-        with MongoClient(url) as client:
-            rosterdb = client.rosterdb
-            app_roster_users = rosterdb.app_roster_users
-            name = app_roster_users(db=rosterdb, filter={id: 1})
+        # url = "mongodb://itokita41:itokita41pass@cluster02.tx265.mongodb.net:27017/rosterdb?authSource=admin"
+        # with MongoClient(url) as client:
+        #     rosterdb = client.rosterdb
+        #     app_roster_users = rosterdb.app_roster_users
+        #     name = app_roster_users(db=rosterdb, filter={id: 1})
 
         # mongoengine
         # usersData = Users.find_all()
