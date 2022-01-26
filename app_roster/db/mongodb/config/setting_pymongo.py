@@ -25,11 +25,11 @@ class settingPymongo(object):
         uri = 'mongodb://itokita41:itokita41pass@cluster0-shard-00-02.tx265.mongodb.net'
         self.client = MongoClient(uri,
                                   port=27017,
-                                  ssl=False,
+                                  ssl=True,
                                   username='itokita41',
                                   password='itokita41pass',
-                                  authSource='admin',
-                                  authMechanism='SCRAM-SHA-256'
+                                  authSource='admin'
+                                  # authMechanism='SCRAM-SHA-256'
                                   )
         # con = MongoClient(uri, port=27017)
         # db = con.rosterdb
@@ -43,10 +43,10 @@ class settingPymongo(object):
         #
         # self.db = self.client[db_name]  # DB名を設定
         # # self.client = MongoClient(url, 27017)
-        # self.ssl = False
-        # self.username = 'itokita41'
-        # self.password = 'itokita41pass'
-        # self.authSource = 'admin'
+        self.ssl = True
+        self.username = 'itokita41'
+        self.password = 'itokita41pass'
+        self.authSource = 'admin'
         # self.authMechanism = 'SCRAM-SHA-256'
         self.db = self.client[db_name]  # DB名を設定
         self.collection = self.db.get_collection(collection_name)
