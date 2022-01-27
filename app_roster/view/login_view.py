@@ -36,6 +36,8 @@ from app_roster.seliarizers import UsersSerializer, AttendancesSerializer,LogsSe
 from pymongo import MongoClient
 sys.path.append("app_roster/db/mongodb/config")
 from setting_pymongo import settingPymongo
+from pymongo import ASCENDING
+from pymongo import DESCENDING
 
 # ======画面遷移==================
 # ログイン
@@ -69,7 +71,7 @@ def ajax_roster_login(request):
         # collectionsnames = test.collection_names()
         # listcollectionnames = test.list_collection_names()
         # mongo = settingPymongo('rosterdb', 'app_roster_users')
-        mongo = settingPymongo('rosterdb', 'app_roster_attendances')
+        mongo = settingPymongo('rosterdb', 'app_roster_users')
         findone = mongo.find_one()
         print('-----------------find_One-----------------')
         print(type(findone))
@@ -80,6 +82,30 @@ def ajax_roster_login(request):
         print(type(find))
         for doc in find:
             print(doc)
+
+        print('-----------------find filter-----------------')
+        find = mongo.find(filter={'id': 3})
+        for doc in find:
+            print(doc)
+            print(doc['name'])
+
+        print('-----------------find filters-----------------')
+        find = mongo.find(filter={'id':3, 'name': 'taka'})
+        print(find.count()) # 件数
+        for doc in find:
+            print(doc)
+
+        print('-----------------sort-------------------------')
+        find = mongo.find(sort=[('id', ASCENDING)])
+        for doc in find:
+            print(doc)
+
+        print('-----------------cursol sort-------------------------')
+        find = mongo.find()
+      # for doc in find.sort([('salary', DESCENDING), ('name', ASCENDING)]):
+        for doc in find.sort([('name', DESCENDING)]):
+            print(doc)
+
         # mongo = settingPymongo('rosterdb')
         # print(mongo.collection_names())
         # print(mongo.list_collection_names())
