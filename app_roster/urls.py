@@ -19,7 +19,7 @@ urlpatterns = [
     # 勤怠管理画面用
     path('login/', RosterLoginView.as_view(), name="login"),
     path('login/ajaxlogincheck/', ajax_roster_login, name="ajaxlogincheck"),
-    path('loginList/<uid>/<pwd>/', roster_list, name="loginList"),
+    path('loginList/<str:uid>/<str:pwd>/', roster_list, name="loginList"),
     path('logininput/', RosterLoginInputView.as_view(), name="loginInput"),
     path('change/', RosterChangeView.as_view(), name="change"),
     # ウマ娘用ツール画面

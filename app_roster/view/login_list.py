@@ -53,9 +53,15 @@ def roster_list(request):
         # user情報を取得
         count = find.count()
         if count == 0:
-            returnMessageParams = {'errorMessage' : 'ユーザー情報が見つかりません。',
-                                   'result' : 'ng',
-                                   }
+            returnParams = {'userId': '',
+                            'name': '',
+                            'sex': '',
+                            'contract': '',
+                            'tell': '',
+                            'email': '',
+                            'errorMessage': 'ユーザー情報が見つかりません。',
+                            'result': 'ng',
+                            }
             render (request, 'roster_list.html', returnMessageParams)
         elif count == 1:
             for doc in find:
@@ -70,9 +76,15 @@ def roster_list(request):
                                 }
             render(request,'roster_list.html', returnParams)
         elif count > 1:
-            returnMessageParams = {'errorMessage' : 'ユーザー情報が複数形見つかりました。',
-                                   'result' : 'ng'
-                                   }
+            returnParams = {'userId': '',
+                            'name': '',
+                            'sex': '',
+                            'contract': '',
+                            'tell': '',
+                            'email': '',
+                            'errorMessage': 'ユーザー情報が複数形見つかりました。',
+                            'result': 'ng',
+                            }
             render(request, 'roster_list.html', returnMessageParams)
         # ログインチェック
     elif request.method == 'GET':

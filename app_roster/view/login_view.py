@@ -62,24 +62,39 @@ def ajax_roster_login(request):
         #     pass
         # ログインチェック
         if usersListCount == 0:
-            returnMessageParams = {
-                'errorMessage': 'ログインIDまたはパスワードが間違っています',
-                'result': 'ng',
+            returnMessageParams = {'userId': '',
+                                    'name': '',
+                                    'sex': '',
+                                    'contract': '',
+                                    'tell': '',
+                                    'email': '',
+                                    'errorMessage': 'ログインIDまたはパスワードが間違っています',
+                                    'result': 'ng',
             }
             render(request, "roster_login.html", returnMessageParams)
             return JsonResponse(returnMessageParams)
         elif(usersListCount > 1):
-            returnMessageParams = {
-                'errorMessage': '複数ユーザーのログインID、パスワードが一致しています。' \
-                                '<br/>データ不正のため運営に連絡してください。<br/>itokita41@gmail.com',
-                'result': 'ng',
+            returnMessageParams = {'userId': '',
+                                    'name': '',
+                                    'sex': '',
+                                    'contract': '',
+                                    'tell': '',
+                                    'email': '',
+                                    'errorMessage': '複数ユーザーのログインID、パスワードが一致しています。' \
+                                    '<br/>データ不正のため運営に連絡してください。<br/>itokita41@gmail.com',
+                                    'result': 'ng',
             }
             render(request, "roster_login.html", returnMessageParams)
             return JsonResponse(returnMessageParams)
         elif (usersListCount == 1):
-            returnMessageParams = {
-                'errorMessage': '',
-                'result': 'ok',
+            returnMessageParams = {'userId': '',
+                                    'name': '',
+                                    'sex': '',
+                                    'contract': '',
+                                    'tell': '',
+                                    'email': '',
+                                    'errorMessage': '',
+                                    'result': 'ok',
             }
             return JsonResponse(returnMessageParams)
     elif request.method == 'GET':
