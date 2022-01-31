@@ -1,47 +1,142 @@
 import json
-
+import sys
 from django.shortcuts import render
 from django.views.generic import TemplateView
-
 from django.shortcuts import render
 from django.views.generic import TemplateView  # テンプレートタグ
-# from .forms import AccountForm, AddAccountForm #ユーザーアカウントフォーム
-# ログイン・ログアウト処理に利用
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
-# from .models import user, attendance
-# from .db.model import users,attendances
-
-# sql alchemy
-# from sqlalchemy import create_engine, Column, Integer, String
-# from sqlalchemy.ext.declarative import declarative_base
-# from sqlalchemy.orm import sessionmaker
-# from sqlalchemy.orm.exc import NoResultFound
-
-# from .models import user, attendance
-
-# from .models import user, attendance
-# from .models import Question,Choice
 from .models import Users, Attendances
-# sql alchemy
-from sqlalchemy import create_engine, Column, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.orm.exc import NoResultFound
-
-import sys
 sys.path.append("app_roster/db/sqlalchemy/migrate/config")
 from setting_alchemy import Base
 from setting_alchemy import ENGINE
-# from setting_alchemy import DATABASE
 from setting_alchemy import session
 sys.path.append("app_roster/db/sqlalchemy/migrate/models")
 from users import *
 from attendances import *
+
+# 出退勤選択画面
+class RosterlistView(TemplateView):
+    template_name = "roster_list.html"
+    def get_context_data(self):
+        ctxt = super().get_context_data()
+        ctxt ["user"] = "testUser"
+        return ctxt
+
+class RosterChangeView(TemplateView):
+    def get(self, request, *args, **kwargs):
+        print("get")
+        template_name = "roster_change_application.html"
+        context = {
+            'message': "Hello World! from View!!",
+        }
+        return render(request, template_name, context)
+
+class AboutView(TemplateView):
+    template_name = "about.html"
+    def get_context_data(self):
+        ctxt = super().get_context_data()
+        ctxt["skills"] = [
+            "Python",
+            "C++",
+            "Javascript",
+            "Rust",
+            "Ruby",
+            "PHP"
+        ]
+        ctxt["num_services"] = 1234567
+        return ctxt
+
+def some_view(request):
+    if request.method == 'POST':
+        if 'logout' in request.POST:
+            logout()
+
+class UmaCompToolView(TemplateView):
+    #uma 攻略画面
+    print("UmaToolListView")
+    template_name = "uma_comp_tool.html"
+    def get_context_data(self):
+        ctxt = super().get_context_data()
+        ctxt ["user"] = "testUser"
+        return ctxt
+
+class RosterLoginView(TemplateView):
+    # ログイン画面
+    print("RosterLoginView")
+    template_name = "roster_login.html"
+    def get_context_data(self):
+        ctxt = super().get_context_data()
+        ctxt ["user"] = "testUser"
+        return ctxt
+
+# ログイン登録画面
+class RosterLoginInputView(TemplateView):
+    template_name = "roster_login_input.html"
+    def get_context_data(self):
+        ctxt = super().get_context_data()
+        ctxt ["user"] = "testUser"
+        return ctxt
+
+class RosterUserInputView(TemplateView):
+    template_name = "roster_change_application.html"
+    def get_context_data(self):
+        ctxt = super().get_context_data()
+        ctxt["user"] = "testUser"
+        return ctxt
+
+class MsgboxView(TemplateView):
+    def get(self, request, *args, **kwargs):
+        context = {
+            'message': "Hello World! from View!!",
+        }
+        return render(request,  "change.html", context)
+
+    def post(self, request, *args, **kwargs):
+        context = {
+            'name': request.POST['name'],
+            'email': request.POST['email'],
+            'message': request.POST['message'],
+        }
+        return render(request, 'change.html', context)
+# hello = MsgboxView.as_view()
+
+def logout():
+    print("logout")
+
+
+##################
+# mongoDB要管理画面
+##################
+from . import views
+from .models import Users,Attendances,Logs
+from rest_framework import viewsets
+from app_roster.seliarizers import UsersSerializer, AttendancesSerializer,LogsSerializer
+
+class UsersViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = Users.objects.all()
+    serializer_class = UsersSerializer
+
+class AttendancesViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = Attendances.objects.all()
+    serializer_class = AttendancesSerializer
+
+class LogsViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = Logs.objects.all()
+    serializer_class = LogsSerializer
 
 # # ======画面遷移==================
 # # ログイン
@@ -216,135 +311,3 @@ from attendances import *
 #         ctxt = super().get_context_data()
 #         ctxt["username"] = "太郎"
 #         return ctxt
-
-# 出退勤選択画面
-class RosterlistView(TemplateView):
-    template_name = "roster_list.html"
-    def get_context_data(self):
-        ctxt = super().get_context_data()
-        ctxt ["user"] = "testUser"
-        return ctxt
-
-class RosterChangeView(TemplateView):
-    def get(self, request, *args, **kwargs):
-        print("get")
-        template_name = "roster_change_application.html"
-        context = {
-            'message': "Hello World! from View!!",
-        }
-        return render(request, template_name, context)
-
-class AboutView(TemplateView):
-    template_name = "about.html"
-    def get_context_data(self):
-        ctxt = super().get_context_data()
-        ctxt["skills"] = [
-            "Python",
-            "C++",
-            "Javascript",
-            "Rust",
-            "Ruby",
-            "PHP"
-        ]
-        ctxt["num_services"] = 1234567
-        return ctxt
-
-def some_view(request):
-    if request.method == 'POST':
-        # if 'attendance' in request.POST:
-        #     # ボタン1がクリックされた場合の処理
-        #     # hoge1()
-        # elif 'departure' in request.POST:
-        #     # ボタン2がクリックされた場合の処理
-        #     # hoge2()
-        if 'logout' in request.POST:
-            logout()
-
-class UmaCompToolView(TemplateView):
-    #uma 攻略画面
-    print("UmaToolListView")
-    template_name = "uma_comp_tool.html"
-    def get_context_data(self):
-        ctxt = super().get_context_data()
-        ctxt ["user"] = "testUser"
-        return ctxt
-
-class RosterLoginView(TemplateView):
-    # ログイン画面
-    print("RosterLoginView")
-    template_name = "roster_login.html"
-    def get_context_data(self):
-        ctxt = super().get_context_data()
-        ctxt ["user"] = "testUser"
-        return ctxt
-
-# ログイン登録画面
-class RosterLoginInputView(TemplateView):
-    template_name = "roster_login_input.html"
-    def get_context_data(self):
-        ctxt = super().get_context_data()
-        ctxt ["user"] = "testUser"
-        return ctxt
-
-# class RosterListView(TemplateView):
-#     template_name = "roster_list.html"
-#     def get_context_data(self):
-#         ctxt = super().get_context_data()
-#         ctxt["user"] = "testUser"
-#         return ctxt
-
-class RosterUserInputView(TemplateView):
-    template_name = "roster_change_application.html"
-    def get_context_data(self):
-        ctxt = super().get_context_data()
-        ctxt["user"] = "testUser"
-        return ctxt
-
-class MsgboxView(TemplateView):
-    def get(self, request, *args, **kwargs):
-        context = {
-            'message': "Hello World! from View!!",
-        }
-        return render(request,  "change.html", context)
-
-    def post(self, request, *args, **kwargs):
-        context = {
-            'name': request.POST['name'],
-            'email': request.POST['email'],
-            'message': request.POST['message'],
-        }
-        return render(request, 'change.html', context)
-# hello = MsgboxView.as_view()
-
-def logout():
-    print("logout")
-
-from . import views
-
-##################
-# mongoDB要管理画面
-##################
-from .models import Users,Attendances,Logs
-from rest_framework import viewsets
-from app_roster.seliarizers import UsersSerializer, AttendancesSerializer,LogsSerializer
-
-class UsersViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
-    queryset = Users.objects.all()
-    serializer_class = UsersSerializer
-
-class AttendancesViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows groups to be viewed or edited.
-    """
-    queryset = Attendances.objects.all()
-    serializer_class = AttendancesSerializer
-
-class LogsViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows groups to be viewed or edited.
-    """
-    queryset = Logs.objects.all()
-    serializer_class = LogsSerializer

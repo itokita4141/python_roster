@@ -1,3 +1,39 @@
+from django.contrib import admin
+from django.urls import include, path
+import sys
+sys.path.append("view/")
+from .views import *
+from .view.login_view import *
+from .view.login_list import *
+from rest_framework import routers
+from app_roster import views
+
+router = routers.DefaultRouter()
+router.register(r'users', views.UsersViewSet)
+router.register(r'attendances', views.AttendancesViewSet)
+router.register(r'logs', views.LogsViewSet)
+
+app_name = 'rosterApp'
+
+urlpatterns = [
+    # 勤怠管理画面用
+    path('login/', RosterLoginView.as_view(), name="login"),
+    path('login/ajaxlogincheck/', ajax_roster_login, name="ajaxlogincheck"),
+    path('loginList/<uid>/<pwd>/', roster_list, name="loginList"),
+    path('logininput/', RosterLoginInputView.as_view(), name="loginInput"),
+    path('change/', RosterChangeView.as_view(), name="change"),
+    # ウマ娘用ツール画面
+    path('umacomptool/', UmaCompToolView.as_view(), name="umaTool"),
+    # 管理画面
+    path('admin/', admin.site.urls),
+    # mongo管理画面用
+    path('', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    # テスト確認用
+    path('aboutus/', AboutView.as_view(), name="about")
+]
+
+# 〓 memo 〓
 # 〓〓〓〓〓各ユーザー画面〓〓〓〓〓
 # ■■■出勤登録画面（出勤、退勤）■■■■
 # →デフォルトで表示
@@ -27,63 +63,3 @@
 # →各項目を自由に変更可能
 # →入力漏れがないかチェックするボタンを追加する
 # 〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓
-from django.contrib import admin
-# from django.urls import path
-from django.urls import include, path
-
-# from .views import IndexView, AboutView, RosterLoginInputView, RosterLoginView, RosterInputView, RosterListView, RosterChangeView\
-    # , MsgboxView
-# from .views import AboutView, RosterLoginInputView\
-#     , RosterLoginView, RosterInputView, RosterListView, RosterChangeView\
-#     , roster_login, ajax_roster_login
-import sys
-sys.path.append("view/")
-from .views import *
-from .view.login_view import *
-
-##########################################
-##################
-# mongoDB管理画面用
-##################
-# from django.urls import include, path
-from rest_framework import routers
-from app_roster import views
-
-router = routers.DefaultRouter()
-router.register(r'users', views.UsersViewSet)
-router.register(r'attendances', views.AttendancesViewSet)
-router.register(r'logs', views.LogsViewSet)
-
-# Wire up our API using automatic URL routing.
-# Additionally, we include login URLs for the browsable API.
-# urlpatterns = [
-#     path('', include(router.urls)),
-#     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
-# ]
-##########################################
-app_name = 'rosterApp'
-
-urlpatterns = [
-    # uma tool
-    path('umacomptool/', UmaCompToolView.as_view(), name="umaTool"),
-    # roster
-    path('login/', RosterLoginView.as_view(), name="login"),
-    # path('login/post/', roster_login, name="loginpost"),
-    path('login/ajaxlogincheck/', ajax_roster_login, name="ajaxlogincheck"),
-    path('list/', roster_list, name="list"),
-    path('logininput/', RosterLoginInputView.as_view(), name="loginInput"),
-    path('loginList/', RosterInputView.as_view(), name="loginList"),
-    path('change/', RosterChangeView.as_view(), name="change"),
-    # path('msgbox/', MsgboxView.as_view(), name="msgbox"),
-    # 管理画面
-    path('admin/', admin.site.urls),
-    # テスト確認用
-    path('aboutus/', AboutView.as_view(), name="about"),
-    # 廃止
-    # path('', IndexView.as_view(), name="index"),
-    #######mongo管理画面用#######↓
-    path('', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
-    #######mongo管理画面用#######↑
-]
-

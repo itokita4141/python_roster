@@ -60,7 +60,7 @@ jQuery(function($){
                 console.log("ajax_roster_login:success");
                 if(data.result == 'ok'){
                     // 次ページへ遷移
-                    window.location.href = '../loginList/?uid=' . uid '&pwd=' . pwd;
+                    window.location.href = '../loginList/' + uid + '/' + pwd + '/';
                 } else if (data.result == 'ng'){
                     // エラーメッセージをセット
                     $("#div_errorMessage").html(data.errorMessage);

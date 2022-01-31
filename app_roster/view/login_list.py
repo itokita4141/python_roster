@@ -34,9 +34,11 @@ from pymongo import DESCENDING
 # ======画面遷移==================
 # ログイン
 # ===============================
+# from django.views import View
 def roster_list(request):
+    # def get(self, request):
     print("roster_list start")
-    returnMessageParams = {'errorMessage': 'dummy'    }
+    returnMessageParams = {'errorMessage': 'dummy'}
     # フォーム入力のユーザーID・パスワード取得
     uid = request.POST.get("uid", False)
     pwd = request.POST.get("pwd", False)
@@ -57,12 +59,11 @@ def roster_list(request):
             render (request, 'roster_list.html', returnMessageParams)
         elif count == 1:
             for doc in find:
-                returnParams = {'id': doc['userId'],
+                returnParams = {'userId': doc['userId'],
                                 'name': doc['name'],
-                                'address': doc['address'],
-                                'tell': doc['tell'],
                                 'sex': doc['sex'],
                                 'contract': doc['contract'],
+                                'tell': doc['tell'],
                                 'email': doc['email'],
                                 'errorMessage': '',
                                 'result': '',
@@ -76,3 +77,8 @@ def roster_list(request):
         # ログインチェック
     elif request.method == 'GET':
         print("通信に失敗しました。GET送信になっています。")
+    print('loginList post end')
+
+    # def post(self, request):
+    #     print('loginList post start')
+    #     print('loginList post end')
