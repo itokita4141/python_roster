@@ -217,9 +217,9 @@ from attendances import *
 #         ctxt["username"] = "太郎"
 #         return ctxt
 
-# 出退勤登録画面
-class RosterInputView(TemplateView):
-    template_name = "roster_input.html"
+# 出退勤選択画面
+class RosterlistView(TemplateView):
+    template_name = "roster_list.html"
     def get_context_data(self):
         ctxt = super().get_context_data()
         ctxt ["user"] = "testUser"
@@ -286,12 +286,12 @@ class RosterLoginInputView(TemplateView):
         ctxt ["user"] = "testUser"
         return ctxt
 
-class RosterListView(TemplateView):
-    template_name = "roster_list.html"
-    def get_context_data(self):
-        ctxt = super().get_context_data()
-        ctxt["user"] = "testUser"
-        return ctxt
+# class RosterListView(TemplateView):
+#     template_name = "roster_list.html"
+#     def get_context_data(self):
+#         ctxt = super().get_context_data()
+#         ctxt["user"] = "testUser"
+#         return ctxt
 
 class RosterUserInputView(TemplateView):
     template_name = "roster_change_application.html"

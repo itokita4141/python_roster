@@ -70,9 +70,9 @@ urlpatterns = [
     path('login/', RosterLoginView.as_view(), name="login"),
     # path('login/post/', roster_login, name="loginpost"),
     path('login/ajaxlogincheck/', ajax_roster_login, name="ajaxlogincheck"),
+    path('list/', roster_list, name="list"),
     path('logininput/', RosterLoginInputView.as_view(), name="loginInput"),
-    path('list/', RosterListView.as_view(), name="list"),
-    path('input/', RosterInputView.as_view(), name="input"),
+    path('loginList/', RosterInputView.as_view(), name="loginList"),
     path('change/', RosterChangeView.as_view(), name="change"),
     # path('msgbox/', MsgboxView.as_view(), name="msgbox"),
     # 管理画面

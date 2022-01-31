@@ -51,22 +51,16 @@ def ajax_roster_login(request):
         mongo = settingPymongo('rosterdb', 'app_roster_users')
         find = mongo.find(filter={'name': uid, 'password': pwd})
         usersListCount = find.count()
-        print('count=='+str(usersListCount))
-        try:
-            doc = find.next
-            for doc in find:
-                print(doc['id'])
-                print(doc['name'])
-                print(doc['password'])
-        except StopIteration:
-            pass
+        # print('count=='+str(usersListCount))
+        # try:
+        #     doc = find.next
+        #     for doc in find:
+        #         print(doc['id'])
+        #         print(doc['name'])
+        #         print(doc['password'])
+        # except StopIteration:
+        #     pass
         # ログインチェック
-        if (usersListCount == 1):
-            returnMessageParams = {
-                'errorMessage': '',
-                'result': 'ok',
-            }
-            return JsonResponse(returnMessageParams)
         if usersListCount == 0:
             returnMessageParams = {
                 'errorMessage': 'ログインIDまたはパスワードが間違っています',
@@ -81,6 +75,12 @@ def ajax_roster_login(request):
                 'result': 'ng',
             }
             render(request, "roster_login.html", returnMessageParams)
+            return JsonResponse(returnMessageParams)
+        elif (usersListCount == 1):
+            returnMessageParams = {
+                'errorMessage': '',
+                'result': 'ok',
+            }
             return JsonResponse(returnMessageParams)
     elif request.method == 'GET':
         print("通信に失敗しました。GET送信になっています。")
