@@ -52,8 +52,33 @@ class Logs(models.Model):
 # ウマ娘用
 ###########
 # スキルマスタ
+class umaCardUniqueBonus(models.Model):
+    id = models.BigAutoField(auto_created=False, primary_key=False, serialize=False, verbose_name='ID'),
+    cardUniqueBonusId = models.BigIntegerField(null=False,primary_key=True),              # ID
+    typeNo = models.SmallIntegerField(null=False),                         # タイプ番号
+    typeName = models.CharField(max_length=100,null=False),                # タイプ名称
+    cardId = models.SmallIntegerField(null=False),                         # カードID
+    cardName = models.CharField(max_length=100,null=False),                # カード名称
+    aoharuEvaluationLimit0 = models.CharField(max_length=100,null=False),  # "アオハル評価 無凸"
+    aoharuEvaluationLimit4 = models.CharField(max_length=100,null=False),  # "アオハル評価 完凸"
+    uraFinalsLimit0 = models.CharField(max_length=100,null=False),         # "URAファイナルズ 無凸"
+    uraFinalsLimit4 = models.CharField(max_length=100,null=False),         # "URAファイナルズ 完凸"
+    lisetMarathonRank = models.CharField(max_length=100,null=False),       # リセマラ
+    rank = models.CharField(max_length=100,null=False),                    # ランク
+    referenceInformation = models.CharField(max_length=100,null=False),    # 参考情報
+    uniqueFactorName = models.CharField(max_length=100,null=False),        # 固有スキル名称
+    getLevel = models.CharField(max_length=100,null=False),                # レベル
+    effect = models.CharField(max_length=100,null=False),                  # 効果
+    updateTime = models.DateField(null=False),                             # 更新時間
+    addTime = models.BooleanField(null=True),                              # 追加時間
+
+    def __str__(self):
+        return str(self.__dict__)
+
+# 固有スキルマスタ
 class umaSkillMaster(models.Model):
-    id = models.BigIntegerField(null=False,primary_key=True),      # id
+    id = models.BigAutoField(auto_created=False, primary_key=False, serialize=False, verbose_name='ID'),
+    skillMasterId = models.BigIntegerField(null=False,primary_key=True),      # id
     type = models.SmallIntegerField(null=False),                   # タイプ
     typeName = models.CharField(max_length=10,null=False),         # タイプ
     type2 = models.CharField(max_length=10,null=False),            # 総合評価ランク
@@ -64,14 +89,17 @@ class umaSkillMaster(models.Model):
     champEvaluation = models.CharField(max_length=5),              # 評価チャンミ
     possetionSupportCards = models.CharField(max_length=1000),     # 所持サポートカード
     possetionCharactors = models.CharField(max_length=1000),       # 所持キャラ
+    updateTime = models.DateField(null=False),                     # 更新時間
+    addTime = models.BooleanField(null=True),                      # 追加時間
 
     def __str__(self):
         return str(self.__dict__)
 
 # カードマスタ
 class umaCardMaster(models.Model):
-    id = models.BigIntegerField(null=faulthandler,primary_key=True),    # ID
-    limitedOverNum = models.SmallIntegerField(null=false),              # 凸数
+    id = models.BigAutoField(auto_created=False, primary_key=False, serialize=False, verbose_name='ID'),
+    cardMasterId = models.BigIntegerField(null=False,primary_key=True),           # ID
+    limitedOverNum = models.SmallIntegerField(null=False),              # 凸数
     cardId = models.IntegerField(null=False),                           # カードID
     cardTypeNo = models.SmallIntegerField(null=False),                  # カードタイプ
     cardTypeName = models.CharField(null=False,max_length=10),          # カードタイプ名称
@@ -112,35 +140,76 @@ class umaCardMaster(models.Model):
     aoharu_paramater2 = models.CharField(max_length=10),                # アオハル上昇値(単/Lv5/友情/絶好)2
     aoharu_paramater3 = models.CharField(max_length=10),                # アオハル上昇値(単/Lv5/友情/絶好)3
     aoharu_paramater4 = models.CharField(max_length=10),                # アオハル上昇値(単/Lv5/友情/絶好)4
+    updateTime = models.DateField(null=False),                          # 更新時間
+    addTime = models.BooleanField(null=True),                           # 追加時間
 
     def __str__(self):
         return str(self.__dict__)
 
-# 固有スキルマスタ
-class umaCardUniqueBonus(models.Model):
-    id = models.BigIntegerField(null=False,primary_key=True),              # ID
-    type = models.CharField(max_length=100,null=False),                    # タイプ
-    cardId = models.CharField(max_length=100,null=False),                  # カードID
-    cardName = models.CharField(max_length=100,null=False),                # カード名称
-    typeNo = models.CharField(max_length=100,null=False),                  # タイプNO
-    aoharuEvaluationLimit0 = models.CharField(max_length=100,null=False),  # "アオハル評価 無凸"
-    aoharuEvaluationLimit4 = models.CharField(max_length=100,null=False),  # "アオハル評価 完凸"
-    uraFinalsLimit0 = models.CharField(max_length=100,null=False),         # "URAファイナルズ 無凸"
-    uraFinalsLimit4 = models.CharField(max_length=100,null=False),         # "URAファイナルズ 完凸"
-    lisetMarathonRank = models.CharField(max_length=100,null=False),       # リセマラ
-    rank = models.CharField(max_length=100,null=False),                    # ランク
-    referenceInformation = models.CharField(max_length=100,null=False),    # 参考情報
-    uniqueFactorName = models.CharField(max_length=100,null=False),        # 固有スキル名称
-    getLevel = models.CharField(max_length=100,null=False),                # レベル
-    effect = models.CharField(max_length=100,null=False),                  # 効果
+# カードスキルマスタ
+class umaCardSkillMaster(models.Model):
+    id = models.BigAutoField(auto_created=False, primary_key=False, serialize=False, verbose_name='ID'),
+    cardSkillMasterId = models.BigIntegerField(primary_key=True,null=False),         # ID
+    typeNo = models.SmallIntegerField(null=False),                 # タイプ番号
+    typeName = models.CharField(max_length=100, null=False),       # タイプ名称
+    cardId = models.SmallIntegerField(null=False),                 # カードID
+    cardName = models.CharField(max_length=100, null=False),       # カード名称
+    sortNum = models.CharField(max_length=100, null=False),        # ソート順
+    eventType = models.SmallIntegerField( null=False),             # イベントタイプ
+    eventTypeName = models.CharField(max_length=100, null=False),  # イベントタイプ名称
+    skillName = models.CharField(max_length=100, null=False),      # スキル名称
+    skillContents = models.CharField(max_length=100, null=False),  # スキル内容
+    updateTime = models.DateField(null=False),                     # 更新時間
+    addTime = models.BooleanField(null=True),                      # 追加時間
 
     def __str__(self):
         return str(self.__dict__)
 
+class umaCardMessageMaster(models.Model):
+    id = models.BigAutoField(auto_created=False, primary_key=False, serialize=False, verbose_name='ID'),
+    cardMessageMasterId = models.BigIntegerField(null=False,primary_key=True),           # ID
+    cardTypeNo = models.SmallIntegerField( null=False),                 # カード種別番号
+    cardTypeName = models.CharField(max_length=100, null=False),        # カード種別名称
+    cardMessageMasterId = models.SmallIntegerField(null=False),         # カードID
+    cardName = models.CharField(max_length=100, null=False),            # カード名称
+    type = models.SmallIntegerField(null=False),                        # タイプNO
+    messageId = models.SmallIntegerField(null=False),                   # メッセージID
+    messageEventId = models.SmallIntegerField(null=False),              # メッセージイベントID
+    eventTypeId = models.SmallIntegerField(null=False),         # イベントタイプID
+    eventType = models.CharField(max_length=100, null=False),           # イベントタイプ
+    title = models.CharField(max_length=100, null=False),               # タイトル
+    selectType = models.CharField(max_length=100, null=False),          # 選択肢タイプ
+    result = models.CharField(max_length=100, null=False),              # 結果
+    result1 = models.CharField(max_length=100, null=False),             # 結果1
+    result2 = models.CharField(max_length=100, null=False),             # 結果2
+    result3 = models.CharField(max_length=100, null=False),             # 結果3
+    result4 = models.CharField(max_length=100, null=False),             # 結果4
+    result5 = models.CharField(max_length=100, null=False),             # 結果5
+    result6 = models.CharField(max_length=100, null=False),             # 結果6
+    result7 = models.CharField(max_length=100, null=False),             # 結果7
+    result8 = models.CharField(max_length=100, null=False),             # 結果8
+    result9 = models.CharField(max_length=100, null=False),             # 結果9
+    result10 = models.CharField(max_length=100, null=False),            # 結果10
+    updateTime = models.DateField(null=False),                          # 更新時間
+    addTime = models.BooleanField(null=True),                           # 追加時間
 
+    def __str__(self):
+        return str(self.__dict__)
 
+# 白マスタ因子マスタ
+class umaWhiteFactor(models.Model):
+    id = models.BigAutoField(auto_created=False, primary_key=False, serialize=False, verbose_name='ID'),
+    whiteFactorId = models.CharField(max_length=100, null=False),  # ID
+    factorName = models.CharField(max_length=100, null=False),  # レース＝因子名
+    raceTiming = models.CharField(max_length=100, null=False),  # レース情報
+    raceInfo = models.CharField(max_length=100, null=False),  # レース情報
+    factor1 = models.CharField(max_length=100, null=False),  # 継承効果1
+    factor2 = models.CharField(max_length=100, null=False),  # 継承効果2
+    factor3 = models.CharField(max_length=100, null=False),  # 継承効果3
+    updateTime = models.DateField(null=False),                          # 更新時間
+    addTime = models.BooleanField(null=True),                           # 追加時間
 
-
-
+    def __str__(self):
+        return str(self.__dict__)
 
 
