@@ -167,30 +167,30 @@ class umaCardSkillMaster(models.Model):
 
 class umaCardMessageMaster(models.Model):
     id = models.BigAutoField(auto_created=False, primary_key=False, serialize=False, verbose_name='ID'),
-    cardMessageMasterId = models.BigIntegerField(null=False,primary_key=False),  # ID
-    cardTypeNo = models.SmallIntegerField( null=False),                          # カード種別番号
-    cardTypeName = models.CharField(max_length=100, null=False),                 # カード種別名称
-    cardMessageMasterId = models.SmallIntegerField(null=False),                  # カードID
-    cardName = models.CharField(max_length=100, null=False),                     # カード名称
-    type = models.SmallIntegerField(null=False),                                 # タイプNO
-    messageId = models.SmallIntegerField(null=False),                            # メッセージID
-    messageEventId = models.SmallIntegerField(null=False),                       # メッセージイベントID
-    eventTypeId = models.SmallIntegerField(null=False),                          # イベントタイプID
-    eventType = models.CharField(max_length=100, null=False),                    # イベントタイプ
-    title = models.CharField(max_length=100, null=False),                        # タイトル
-    selectType = models.CharField(max_length=100, null=False),                   # 選択肢タイプ
-    result = models.CharField(max_length=100, null=False),                       # 結果
-    result1 = models.CharField(max_length=100, null=False),                      # 結果1
-    result2 = models.CharField(max_length=100, null=False),                      # 結果2
-    result3 = models.CharField(max_length=100, null=False),                      # 結果3
-    result4 = models.CharField(max_length=100, null=False),                      # 結果4
-    result5 = models.CharField(max_length=100, null=False),                      # 結果5
-    result6 = models.CharField(max_length=100, null=False),                      # 結果6
-    result7 = models.CharField(max_length=100, null=False),                      # 結果7
-    result8 = models.CharField(max_length=100, null=False),                      # 結果8
-    result9 = models.CharField(max_length=100, null=False),                      # 結果9
-    result10 = models.CharField(max_length=100, null=False),                     # 結果10
-    updateTime = models.DateField(null=False),                                   # 更新時間
+    cardMessageMasterId = models.BigIntegerField(null=True,primary_key=False),  # ID
+    cardTypeNo = models.SmallIntegerField( null=True),                          # カード種別番号
+    cardTypeName = models.CharField(max_length=100, null=True),                 # カード種別名称
+    cardMessageMasterId = models.SmallIntegerField(null=True),                  # カードID
+    cardName = models.CharField(max_length=100, null=True),                     # カード名称
+    type = models.SmallIntegerField(null=True),                                 # タイプNO
+    messageId = models.SmallIntegerField(null=True),                            # メッセージID
+    messageEventId = models.SmallIntegerField(null=True),                       # メッセージイベントID
+    eventTypeId = models.SmallIntegerField(null=True),                          # イベントタイプID
+    eventType = models.CharField(max_length=100, null=True),                    # イベントタイプ
+    title = models.CharField(max_length=100, null=True),                        # タイトル
+    selectType = models.CharField(max_length=100, null=True),                   # 選択肢タイプ
+    result = models.CharField(max_length=100, null=True),                       # 結果
+    result1 = models.CharField(max_length=100, null=True),                      # 結果1
+    result2 = models.CharField(max_length=100, null=True),                      # 結果2
+    result3 = models.CharField(max_length=100, null=True),                      # 結果3
+    result4 = models.CharField(max_length=100, null=True),                      # 結果4
+    result5 = models.CharField(max_length=100, null=True),                      # 結果5
+    result6 = models.CharField(max_length=100, null=True),                      # 結果6
+    result7 = models.CharField(max_length=100, null=True),                      # 結果7
+    result8 = models.CharField(max_length=100, null=True),                      # 結果8
+    result9 = models.CharField(max_length=100, null=True),                      # 結果9
+    result10 = models.CharField(max_length=100, null=True),                     # 結果10
+    updateTime = models.DateField(null=True),                                   # 更新時間
     addTime = models.BooleanField(null=True),                                    # 追加時間
 
     def __str__(self):

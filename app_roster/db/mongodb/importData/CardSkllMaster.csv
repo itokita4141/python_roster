@@ -1,3 +1,4 @@
+id,carSkillMasterId,typeNo,typeName,cardId,cardName,sortNum,eventType,eventTypeName,skillName,skillContents
 1,1,スピード,1,サイレンススズカSSR,1,1,育成イベント,逃亡者,最終コーナーで先頭をキープしやすくなる＜作戦・逃げ＞
 2,1,スピード,1,サイレンススズカSSR,2,1,育成イベント,左回り◯,左回りコースが少し得意になる
 3,1,スピード,1,サイレンススズカSSR,3,1,育成イベント,左回り◯のアイコンノーマル,
