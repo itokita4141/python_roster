@@ -19,7 +19,83 @@ sys.path.append("app_roster/db/sqlalchemy/migrate/models")
 from users import *
 from attendances import *
 
-# 出退勤選択画面
+# 〓========================
+# うまツール関連
+# 〓========================
+# メニュー画面
+class UmaCompToolView(TemplateView):
+    print("UmaToolListView")
+    template_name = "uma_comp_tool.html"
+    def get_context_data(self):
+        ctxt = super().get_context_data()
+        ctxt ["user"] = "testUser"
+        return ctxt
+
+    # カードマスタ
+class SearchCardMasterView(TemplateView):
+    print("UmaToolListView")
+    template_name = "SearchCardMasterView.html"
+    def get_context_data(self):
+        ctxt = super().get_context_data()
+        ctxt ["user"] = "testUser"
+        return ctxt
+
+    # スキルマスタ
+class SearchSkillMasterView(TemplateView):
+    print("SearchSkillMasterView")
+    template_name = "SearchSkillMasterView.html"
+    def get_context_data(self):
+        ctxt = super().get_context_data()
+        ctxt ["user"] = "testUser"
+        return ctxt
+
+    # 固有ボーナスマスタ
+class SearchUniqueBonusMasterView(TemplateView):
+    print("SearchUniqueBonusMasterView")
+    template_name = "SearchUniqueBonusMasterView.html"
+    def get_context_data(self):
+        ctxt = super().get_context_data()
+        ctxt ["user"] = "testUser"
+        return ctxt
+
+    # カードスキルマスタ
+class SearchCardSkillMasterView(TemplateView):
+    print("SearchCardSkillMasterView")
+    template_name = "SearchCardSkillMasterView.html"
+    def get_context_data(self):
+        ctxt = super().get_context_data()
+        ctxt ["user"] = "testUser"
+        return ctxt
+
+    # カードメッセージマスタ
+class SearchCardMessageMasterView(TemplateView):
+    print("SearchCardMessageMasterView")
+    template_name = "SearchCardMessageMasterView.html"
+    def get_context_data(self):
+        ctxt = super().get_context_data()
+        ctxt ["user"] = "testUser"
+        return ctxt
+
+    # 白因子マスタ
+class SearchWhiteFactorView(TemplateView):
+    print("SearchWhiteFactorView")
+    template_name = "SearchWhiteFactorView.html.html"
+    def get_context_data(self):
+        ctxt = super().get_context_data()
+        ctxt ["user"] = "testUser"
+        return ctxt
+
+
+
+
+
+
+
+
+
+# 〓========================
+# 出退勤選択画面関連
+# 〓========================
 class RosterlistView(TemplateView):
     template_name = "roster_list.html"
     def get_context_data(self):
@@ -55,15 +131,6 @@ def some_view(request):
     if request.method == 'POST':
         if 'logout' in request.POST:
             logout()
-
-class UmaCompToolView(TemplateView):
-    #uma 攻略画面
-    print("UmaToolListView")
-    template_name = "uma_comp_tool.html"
-    def get_context_data(self):
-        ctxt = super().get_context_data()
-        ctxt ["user"] = "testUser"
-        return ctxt
 
 class RosterLoginView(TemplateView):
     # ログイン画面

@@ -16,20 +16,33 @@ router.register(r'logs', views.LogsViewSet)
 app_name = 'rosterApp'
 
 urlpatterns = [
-    # 勤怠管理画面用
+    # =========勤怠管理画面用=========
     path('login/', RosterLoginView.as_view(), name="login"),
     path('login/ajaxlogincheck/', ajax_roster_login, name="ajaxlogincheck"),
     path('loginList/<str:uid>/<str:pwd>/', roster_list, name="loginList"),
     path('logininput/', RosterLoginInputView.as_view(), name="loginInput"),
     path('change/', RosterChangeView.as_view(), name="change"),
-    # ウマ娘用ツール画面
-    path('umacomptool/', UmaCompToolView.as_view(), name="umaTool"),
-    # 管理画面
+    # =========ウマ娘用ツール画面=========
+    # メニュー画面
+    path('umacomptool/', UmaCompToolView.as_view(), name="umacomptool"),
+    # カードマスタ
+    path('searchcardmaster/',SearchCardMasterView.as_view(),name="searchcardmaster"),
+    # スキルマスタ
+    path('searchskillmaster/',SearchSkillMasterView.as_view(),name="searchskillmaster"),
+    # 固有ボーナスマスタ
+    path('searchuniquebonusmaster/',SearchUniqueBonusMasterView.as_view(),name="searchuniquebonusmaster"),
+    # カードスキルマスタ
+    path('searchcardskillmaster/',SearchCardSkillMasterView.as_view(),name="searchcardskillmaster"),
+    # カードメッセージマスタ
+    path('searchcardmessegemaster/',SearchCardMessageMasterView.as_view(),name="searchcardmessegemaster"),
+    # 白因子マスタ
+    path('searchwhitefactormaster/',SearchWhiteFactorView.as_view(),name="searchwhitefactormaster"),
+    # =========管理画面=========
     path('admin/', admin.site.urls),
-    # mongo管理画面用
+    # =========mongo管理画面用=========
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    # テスト確認用
+    # =========テスト確認用=========
     path('aboutus/', AboutView.as_view(), name="about")
 ]
 
