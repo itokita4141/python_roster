@@ -68,7 +68,7 @@ jQuery(function($){
                     alert('ログイン結果の戻り値が不正です。result');
                 }
             }).fail(() => {
-//                alert("done:fail");
+                alert("done:fail");
                 console.log("ajax end");
                 // 失敗した時の処理
                 alert("メッセージの送信に失敗しました。");

@@ -35,18 +35,18 @@ from pymongo import DESCENDING
 # ログイン
 # ===============================
 # from django.views import View
-def roster_list(request):
+def roster_list(request,uid,pwd):
     # def get(self, request):
     print("roster_list start")
     returnMessageParams = {'errorMessage': 'dummy'}
     # フォーム入力のユーザーID・パスワード取得
-    uid = request.POST.get("uid", False)
-    pwd = request.POST.get("pwd", False)
-    if request.method == 'POST':
-        print("〓〓〓〓〓〓〓")
-        print("ユーザーID="+uid)
-        print("password="+pwd)
-        print("〓〓〓〓〓〓〓")
+    # uid = request.POST.get("uid", False)
+    # pwd = request.POST.get("pwd", False)
+    if request.method == 'GET':
+        # print("〓〓〓〓〓〓〓")
+        # print("ユーザーID="+uid)
+        # print("password="+pwd)
+        # print("〓〓〓〓〓〓〓")
         # pymongo
         mongo = settingPymongo('rosterdb', 'app_roster_users')
         find = mongo.find(filter={'name': uid, 'password': pwd})
@@ -62,7 +62,7 @@ def roster_list(request):
                             'errorMessage': 'ユーザー情報が見つかりません。',
                             'result': 'ng',
                             }
-            render (request, 'roster_list.html', returnMessageParams)
+            return render (request, 'roster_list.html', returnMessageParams)
         elif count == 1:
             for doc in find:
                 returnParams = {'userId': doc['userId'],
@@ -74,7 +74,7 @@ def roster_list(request):
                                 'errorMessage': '',
                                 'result': '',
                                 }
-            render(request,'roster_list.html', returnParams)
+            return render(request,'roster_list.html', returnParams)
         elif count > 1:
             returnParams = {'userId': '',
                             'name': '',
@@ -85,7 +85,7 @@ def roster_list(request):
                             'errorMessage': 'ユーザー情報が複数形見つかりました。',
                             'result': 'ng',
                             }
-            render(request, 'roster_list.html', returnMessageParams)
+            return render(request, 'roster_list.html', returnMessageParams)
         # ログインチェック
     elif request.method == 'GET':
         print("通信に失敗しました。GET送信になっています。")

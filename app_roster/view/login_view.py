@@ -97,7 +97,7 @@ def ajax_roster_login(request):
                                     'result': 'ok',
             }
             return JsonResponse(returnMessageParams)
-    elif request.method == 'GET':
+    elif request.method == 'POST':
         print("通信に失敗しました。GET送信になっています。")
 
 #   # 〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓
