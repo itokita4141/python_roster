@@ -22,6 +22,17 @@ from attendances import *
 # 〓========================
 # うまツール関連
 # 〓========================
+from rest_framework import viewsets
+from .models import umaCardMaster, umaCardSkillMaster, umaCardMessageMaster, umaWhiteFactor
+from app_roster.seliarizers import umaCardMasterSerializer
+
+class umaCardMasterViewSet(viewsets.ModelViewSet):
+    queryset = umaCardMaster.objects.all()
+    serializer_class = umaCardMasterSerializer
+
+
+
+
 # メニュー画面
 class UmaCompToolView(TemplateView):
     print("UmaToolListView")
@@ -31,8 +42,22 @@ class UmaCompToolView(TemplateView):
         ctxt ["user"] = "testUser"
         return ctxt
 
-    # カードマスタ
+# pymongo
+from pymongo import MongoClient
+sys.path.append("app_roster/db/mongodb/config")
+from setting_pymongo import settingPymongo
+from pymongo import ASCENDING
+from pymongo import DESCENDING
+# カードマスタ
 class SearchCardMasterView(TemplateView):
+    mongo = settingPymongo('rosterdb', 'app_roster_umacardmaster')
+    find = mongo.find(filter={'cardMasterId': 1})
+    count = find.count()
+
+    for doc in find:
+        print(doc['cardMasterId'])
+        print(doc['cardName'])
+
     print("UmaToolListView")
     template_name = "SearchCardMasterView.html"
     def get_context_data(self):
@@ -181,7 +206,7 @@ def logout():
 ##################
 from . import views
 from .models import Users,Attendances,Logs
-from rest_framework import viewsets
+# from rest_framework import viewsets
 from app_roster.seliarizers import UsersSerializer, AttendancesSerializer,LogsSerializer
 
 class UsersViewSet(viewsets.ModelViewSet):

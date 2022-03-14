@@ -12,6 +12,7 @@ router = routers.DefaultRouter()
 router.register(r'users', views.UsersViewSet)
 router.register(r'attendances', views.AttendancesViewSet)
 router.register(r'logs', views.LogsViewSet)
+router.register('umaCardMaster', views.umaCardMasterViewSet)
 
 app_name = 'rosterApp'
 
