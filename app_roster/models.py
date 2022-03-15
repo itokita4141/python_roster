@@ -126,7 +126,7 @@ class umaCardMaster(models.Model):
     defaultGuts = models.CharField(max_length=10),                        # イベント効果
     raceBonus = models.CharField(max_length=10),                          # 賢さ友情回復量
     fanNumber_Bonus = models.CharField(max_length=10),                    # イベント回復量
-    trainingEffect = models.CharField(max_length=10),                     # 体力消費ダウン
+    # trainingEffect = models.CharField(max_length=10),                     # 体力消費ダウン
     eventEffect = models.CharField(max_length=10),                        # 失敗率ダウン
     wiseFriendlyRecoverlyAmount = models.CharField(max_length=10),        # スタミナボーナス
     eventRecoveryAmont = models.CharField(max_length=10),                 # 根性ボーナス
