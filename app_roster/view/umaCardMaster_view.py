@@ -38,6 +38,51 @@ def umaCardMasterLoad(request):
     count = find.count()
 
     for doc in find:
+        # 空白対策
+        doc.setdefault('id', '')
+        doc.setdefault('cardMasterId', '')
+        doc.setdefault('limitedOverNum', '')
+        doc.setdefault('cardId', '')
+        doc.setdefault('cardTypeNo', '')
+        doc.setdefault('cardTypeName', '')
+        doc.setdefault('cardName', '')
+        doc.setdefault('rared', '')
+        doc.setdefault('specialityRare', '')
+        doc.setdefault('yarukiEffect', '')
+        doc.setdefault('friendlyBonus', '')
+        doc.setdefault('trainingEffect', '')
+        doc.setdefault('speedBonus', '')
+        doc.setdefault('staminaBonus', '')
+        doc.setdefault('powerBonus', '')
+        doc.setdefault('skillBonus', '')
+        doc.setdefault('gutsBonus', '')
+        doc.setdefault('wiseBonus', '')
+        doc.setdefault('wiseBonus100', '')
+        doc.setdefault('hintLevel', '')
+        doc.setdefault('hintIncidence', '')
+        doc.setdefault('defaultKizunaGage', '')
+        doc.setdefault('defaultSpeed', '')
+        doc.setdefault('defaultStamina', '')
+        doc.setdefault('defaultPower', '')
+        doc.setdefault('defaultWise', '')
+        doc.setdefault('defaultGuts', '')
+        doc.setdefault('raceBonus', '')
+        doc.setdefault('fanNumber_Bonus', '')
+        doc.setdefault('eventEffect', '')
+        doc.setdefault('wiseFriendlyRecoverlyAmount', '')
+        doc.setdefault('eventRecoveryAmont', '')
+        doc.setdefault('lifeComsumptionDown', '')
+        doc.setdefault('failureRateDown', '')
+        doc.setdefault('ura_paramater1', '')
+        doc.setdefault('ura_paramater2', '')
+        doc.setdefault('ura_paramater3', '')
+        doc.setdefault('ura_paramater4', '')
+        doc.setdefault('aoharu_paramater1', '')
+        doc.setdefault('aoharu_paramater2', '')
+        doc.setdefault('aoharu_paramater3', '')
+        doc.setdefault('aoharu_paramater4', '')
+        doc.setdefault('updateTime', '')
+        doc.setdefault('addTime', '')
         returnMessageParams.append(
             {'id': doc['id'],
              'cardMasterId': doc['cardMasterId'],
@@ -67,8 +112,7 @@ def umaCardMasterLoad(request):
              'defaultWise': doc['defaultWise'],
              'defaultGuts': doc['defaultGuts'],
              'raceBonus': doc['raceBonus'],
-             'fanNumber_Bonus': doc['fanNumber_Bonus'],
-             # 'trainingEffect': doc['trainingEffect'],
+             'fanNumber': doc['fanNumber Bonus'],
              'eventEffect': doc['eventEffect'],
              'wiseFriendlyRecoverlyAmount': doc['wiseFriendlyRecoverlyAmount'],
              'eventRecoveryAmont': doc['eventRecoveryAmont'],
@@ -86,54 +130,6 @@ def umaCardMasterLoad(request):
              'addTime': doc['addTime']
              }
         )
-        # id
-        # cardMasterId
-        # limitedOverNum
-        # cardId
-        # cardTypeNo
-        # cardTypeName
-        # cardName
-        # rared
-        # specialityRare
-        # yarukiEffect
-        # friendlyBonus
-        # trainingEffect
-        # speedBonus
-        # staminaBonus
-        # powerBonus
-        # skillBonus
-        # gutsBonus
-        # wiseBonus
-        # wiseBonus100
-        # hintLevel
-        # hintIncidence
-        # defaultKizunaGage
-        # defaultSpeed
-        # defaultStamina
-        # defaultPower
-        # defaultWise
-        # defaultGuts
-        # raceBonus
-        # fanNumber_Bonus
-        # trainingEffect
-        # eventEffect
-        # wiseFriendlyRecoverlyAmount
-        # eventRecoveryAmont
-        # lifeComsumptionDown
-        # failureRateDown
-        # ura_paramater1
-        # ura_paramater2
-        # ura_paramater3
-        # ura_paramater4
-        # aoharu_paramater1
-        # aoharu_paramater2
-        # aoharu_paramater3
-        # aoharu_paramater4
-        # updateTime
-        # addTime
-        print(doc['cardMasterId'])
-        print(doc['cardName'])
-
         returnArray = {'cardMaster': returnMessageParams, 'count': count}
     return render(request, 'SearchCardMasterView.html', returnArray)
 

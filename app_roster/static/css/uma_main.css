@@ -32,4 +32,14 @@ body {
     color:red;
     font-size:20px;
 }
-
+.table{
+    width: 100px;
+}
+.table th{
+    white-space: nowrap;
+    width: 100px;
+}
+.table td{
+    white-space: nowrap;
+    width: 100px;
+}

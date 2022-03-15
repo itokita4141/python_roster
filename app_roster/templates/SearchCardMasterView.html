@@ -3,19 +3,108 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="{% static 'css/uma_main.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'css/roster_main.css' %}">
         <meta name="viewport" content="width=device-width, user-scale=yes, initial-scale=1.0, maximum-scale=5.0" />
     </head>
     <body>
         <input type="button" class="back-button" value="戻る" onclick="location.href='../umacomptool'">
         <h1>カードマスタ検索画面({{ count }}件)</h1>
-        <table>
+        <table border="1px">
+            <th>id</th>
+            <th>カードマスタid</th>
+            <th>凸数</th>
+            <th>カードID</th>
+            <th>カードタイプ</th>
+            <th>カードタイプ名称</th>
+            <th>カード名称</th>
+            <th>レア度</th>
+            <th>得意率</th>
+            <th>やる気効果</th>
+            <th>友情ボーナス</th>
+            <th>トレーニング効果</th>
+            <th>スピードボーナス</th>
+            <th>スタミナボーナス</th>
+            <th>パワーボーナス</th>
+            <th>スキルPtボーナス</th>
+            <th>根性ボーナス</th>
+            <th>賢さボーナス</th>
+            <th>賢さボーナス絆100</th>
+            <th>ヒントLv</th>
+            <th>ヒント発生率</th>
+            <th>初期絆ゲージ</th>
+            <th>初期スピード</th>
+            <th>初期スタミナ</th>
+            <th>初期パワー</th>
+            <th>初期賢さ</th>
+            <th>初期根性</th>
+            <th>レースボーナス</th>
+            <th>ファン数ボーナス</th>
+            <th>イベント効果</th>
+            <th>賢さ友情回復量</th>
+            <th>イベント回復量</th>
+            <th>体力消費ダウン</th>
+            <th>失敗率ダウン</th>
+            <th>URA上昇値(単/Lv5/友情/好)パラ1</th>
+            <th>URA上昇値(単/Lv5/友情/好)パラ2</th>
+            <th>URA上昇値(単/Lv5/友情/好)パラ3</th>
+            <th>URA上昇値(単/Lv5/友情/好)パラ4</th>
+            <th>アオハル上昇値(単/Lv5/友情/好)パラ1</th>
+            <th>アオハル上昇値(単/Lv5/友情/好)パラ2</th>
+            <th>アオハル上昇値(単/Lv5/友情/好)パラ3</th>
+            <th>アオハル上昇値(単/Lv5/友情/好)パラ4</th>
+            <th>更新時間</th>
+            <th>追加時間</th>
+            
             {% for cdm in cardMaster %}
             <tr>
-                <td>
-                    {{ cdm.cardMasterId }}
-                    {{ cdm.cardName }}
-                </td>
+                
+                
+                
+                
+                
+                <td>{{ cdm.id }}</td>
+                <td>{{ cdm.cardMasterId }}</td>
+                <td>{{ cdm.limitedOverNum }}</td>
+                <td>{{ cdm.cardId }}</td>
+                <td>{{ cdm.cardTypeNo }}</td>
+                <td>{{ cdm.cardTypeName }}</td>
+                <td>{{ cdm.cardName }}</td>
+                <td>{{ cdm.rared }}</td>
+                <td>{{ cdm.specialityRare }}</td>
+                <td>{{ cdm.yarukiEffect }}</td>
+                <td>{{ cdm.friendlyBonus }}</td>
+                <td>{{ cdm.trainingEffect }}</td>
+                <td>{{ cdm.speedBonus }}</td>
+                <td>{{ cdm.staminaBonus }}</td>
+                <td>{{ cdm.powerBonus }}</td>
+                <td>{{ cdm.skillBonus }}</td>
+                <td>{{ cdm.gutsBonus }}</td>
+                <td>{{ cdm.wiseBonus }}</td>
+                <td>{{ cdm.wiseBonus100 }}</td>
+                <td>{{ cdm.hintLevel }}</td>
+                <td>{{ cdm.hintIncidence }}</td>
+                <td>{{ cdm.defaultKizunaGage }}</td>
+                <td>{{ cdm.defaultSpeed }}</td>
+                <td>{{ cdm.defaultStamina }}</td>
+                <td>{{ cdm.defaultPower }}</td>
+                <td>{{ cdm.defaultWise }}</td>
+                <td>{{ cdm.defaultGuts }}</td>
+                <td>{{ cdm.raceBonus }}</td>
+                <td>{{ cdm.fanNumber }}</td>
+                <td>{{ cdm.eventEffect }}</td>
+                <td>{{ cdm.wiseFriendlyRecoverlyAmount }}</td>
+                <td>{{ cdm.eventRecoveryAmont }}</td>
+                <td>{{ cdm.lifeComsumptionDown }}</td>
+                <td>{{ cdm.failureRateDown }}</td>
+                <td>{{ cdm.ura_paramater1 }}</td>
+                <td>{{ cdm.ura_paramater2 }}</td>
+                <td>{{ cdm.ura_paramater3 }}</td>
+                <td>{{ cdm.ura_paramater4 }}</td>
+                <td>{{ cdm.aoharu_paramater1 }}</td>
+                <td>{{ cdm.aoharu_paramater2 }}</td>
+                <td>{{ cdm.aoharu_paramater3 }}</td>
+                <td>{{ cdm.aoharu_paramater4 }}</td>
+                <td>{{ cdm.updateTime }}</td>
+                <td>{{ cdm.addTime }}</td>
             </tr>
             {% endfor %}
         </table>
