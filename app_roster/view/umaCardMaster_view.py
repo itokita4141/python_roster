@@ -10,7 +10,6 @@ from django.shortcuts import redirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
-# from .models import Users, Attendances
 sys.path.append("app_roster/db/sqlalchemy/migrate/config")
 from setting_alchemy import Base
 from setting_alchemy import ENGINE
@@ -21,7 +20,7 @@ sys.path.append("app_roster/db/sqlalchemy/migrate/models")
 # うまツール関連
 # 〓========================
 from rest_framework import viewsets
-from app_roster.models import umaCardMaster, umaCardSkillMaster, umaCardMessageMaster, umaWhiteFactor
+from app_roster.models import umaCardUniqueBonus, umaCardMaster, umaCardSkillMaster, umaCardMessageMaster, umaWhiteFactor
 # from app_roster.seliarizers import umaCardMasterSerializer
 from pymongo import MongoClient
 sys.path.append("app_roster/db/mongodb/config")
@@ -29,6 +28,9 @@ from setting_pymongo import settingPymongo
 from pymongo import ASCENDING
 from pymongo import DESCENDING
 
+#////////////////
+# カードマスタ
+#////////////////
 def umaCardMasterLoad(request):
     returnArray = []
     returnMessageParams = []
@@ -132,6 +134,37 @@ def umaCardMasterLoad(request):
         )
         returnArray = {'cardMaster': returnMessageParams, 'count': count}
     return render(request, 'SearchCardMasterView.html', returnArray)
+
+#////////////////
+# スキルマスタ
+#////////////////
+def umaSkillMasterLoad(request):
+    return
+
+# ////////////////
+# 固有ボーナスマスタ
+# ////////////////
+def umaCardUniqueBonusLoad(request):
+    return
+
+# ////////////////
+# カードスキルマスタ
+# ////////////////
+def umaCardUniqueBonusLoad(request):
+    return
+
+# ////////////////
+# カードメッセージ
+# ////////////////
+def umaCardMessageMasterLoad(request):
+    return
+
+# ////////////////
+# 白因子
+# ////////////////
+def umaWhiteFactorLoad(request):
+    return
+
 
 
 

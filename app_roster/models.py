@@ -51,7 +51,7 @@ class Logs(models.Model):
 ###########
 # ウマ娘用
 ###########
-# スキルマスタ
+# 固有ボーナスマスタ
 class umaCardUniqueBonus(models.Model):
     id = models.BigAutoField(auto_created=False, primary_key=False, serialize=False, verbose_name='ID'),  # ID
     cardUniqueBonusId = models.CharField(auto_created=False, primary_key=False, serialize=False, verbose_name='CARDUNIQUEBONUSID'),  # cardUniqueBonusId
@@ -126,11 +126,10 @@ class umaCardMaster(models.Model):
     defaultGuts = models.CharField(max_length=10),                        # イベント効果
     raceBonus = models.CharField(max_length=10),                          # 賢さ友情回復量
     fanNumber_Bonus = models.CharField(max_length=10),                    # イベント回復量
-    # trainingEffect = models.CharField(max_length=10),                     # 体力消費ダウン
     eventEffect = models.CharField(max_length=10),                        # 失敗率ダウン
     wiseFriendlyRecoverlyAmount = models.CharField(max_length=10),        # スタミナボーナス
     eventRecoveryAmont = models.CharField(max_length=10),                 # 根性ボーナス
-    lifeComsumptionDown = models.CharField(max_length=10),                  # 賢さボーナス
+    lifeComsumptionDown = models.CharField(max_length=10),                # 賢さボーナス
     failureRateDown = models.CharField(max_length=10),                    # 賢さボーナス絆100
     ura_paramater1 = models.CharField(max_length=10),                     # URA上昇値(単/Lv5/友情/好)1
     ura_paramater2 = models.CharField(max_length=10),                     # URA上昇値(単/Lv5/友情/好)2
