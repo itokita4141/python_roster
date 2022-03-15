@@ -24,14 +24,37 @@ from attendances import *
 # 〓========================
 from rest_framework import viewsets
 from .models import umaCardMaster, umaCardSkillMaster, umaCardMessageMaster, umaWhiteFactor
-from app_roster.seliarizers import umaCardMasterSerializer
+# from app_roster.seliarizers import umaCardMasterSerializer
+from pymongo import MongoClient
+sys.path.append("app_roster/db/mongodb/config")
+from setting_pymongo import settingPymongo
+from pymongo import ASCENDING
+from pymongo import DESCENDING
 
-class umaCardMasterViewSet(viewsets.ModelViewSet):
-    queryset = umaCardMaster.objects.all()
-    serializer_class = umaCardMasterSerializer
-
-
-
+# # Serializer定義
+# class umaCardUniqueBonusViewSet(viewsets.ModelViewSet):
+#     queryset = umaCardUniqueBonusViewSet.objects.all()
+#     serializer_class = umaCardUniqueBonusSerializer
+#
+# class umaCardMasterViewSet(viewsets.ModelViewSet):
+#     queryset = umaCardMaster.objects.all()
+#     serializer_class = umaCardMasterSerializer
+#
+# class umaSkillMasterViewSet(viewsets.ModelViewSet):
+#     queryset = umaSkillMaster.objects.all()
+#     serializer_class = umaSkillMasterSerializer
+#
+# class umaCardSkillMasterViewSet(viewsets.ModelViewSet):
+#      queryset = umaCardSkillMaster.objects.all()
+#      serializer_class = umaCardSkillMasterSerializer
+#
+# class umaCardMessageMasterViewSet(viewsets.ModelViewSet):
+#     queryset = umaCardMessageMaster.objects.all()
+#     serializer_class = umaCardMessageMasterSerializer
+#
+# class umaWhiteFactorViewSet(viewsets.ModelViewSet):
+#     queryset = umaWhiteFactor.objects.all()
+#     serializer_class = umaWhiteFactorSerializer
 
 # メニュー画面
 class UmaCompToolView(TemplateView):
@@ -42,12 +65,6 @@ class UmaCompToolView(TemplateView):
         ctxt ["user"] = "testUser"
         return ctxt
 
-# pymongo
-from pymongo import MongoClient
-sys.path.append("app_roster/db/mongodb/config")
-from setting_pymongo import settingPymongo
-from pymongo import ASCENDING
-from pymongo import DESCENDING
 # カードマスタ
 class SearchCardMasterView(TemplateView):
     mongo = settingPymongo('rosterdb', 'app_roster_umacardmaster')

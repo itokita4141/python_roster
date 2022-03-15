@@ -7,12 +7,19 @@ from .view.login_view import *
 from .view.login_list import *
 from rest_framework import routers
 from app_roster import views
+from .view.umaCardMaster_view import *
 
 router = routers.DefaultRouter()
 router.register(r'users', views.UsersViewSet)
 router.register(r'attendances', views.AttendancesViewSet)
 router.register(r'logs', views.LogsViewSet)
-router.register('umaCardMaster', views.umaCardMasterViewSet)
+# router.register('umaCardUniqueBonus', views.umaCardUniqueBonusViewSet)
+# router.register('umaSkillMaster', views.umaSkillMasterViewSet)
+# router.register('umaCardMaster', views.umaCardMasterViewSet)
+# router.register('umaCardSkillMaster', views.umaCardSkillMasterViewSet)
+# router.register('umaCardMessageMaster', views.umaCardMessageMasterViewSet)
+# router.register('umaWhiteFactor', views.umaWhiteFactorViewSet)
+
 
 app_name = 'rosterApp'
 
@@ -27,7 +34,8 @@ urlpatterns = [
     # メニュー画面
     path('umacomptool/', UmaCompToolView.as_view(), name="umacomptool"),
     # カードマスタ
-    path('searchcardmaster/',SearchCardMasterView.as_view(),name="searchcardmaster"),
+    # path('searchcardmaster/',SearchCardMasterView.as_view(),name="searchcardmaster"),
+    path('searchcardmaster/',umaCardMasterLoad,name="searchcardmaster"),
     # スキルマスタ
     path('searchskillmaster/',SearchSkillMasterView.as_view(),name="searchskillmaster"),
     # 固有ボーナスマスタ
