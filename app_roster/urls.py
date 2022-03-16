@@ -43,7 +43,7 @@ urlpatterns = [
     # カードスキルマスタ
     path('searchcardskillmaster/',umaCardSkillMasterLoad,name="searchcardskillmaster"),
     # カードメッセージマスタ
-    path('searchcardmessegemaster/',SearchCardMessageMasterView.as_view(),name="searchcardmessegemaster"),
+    path('searchcardmessegemaster/',umaCardMessageMasterLoad,name="searchcardmessegemaster"),
     # 白因子マスタ
     path('searchwhitefactormaster/',SearchWhiteFactorView.as_view(),name="searchwhitefactormaster"),
     # =========管理画面=========
