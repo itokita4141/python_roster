@@ -185,14 +185,57 @@ def umaSkillMasterLoad(request):
 # ////////////////
 # 固有ボーナスマスタ
 # ////////////////
+# ////////////////
+# 固有ボーナスマスタ
+# ////////////////
 def umaCardUniqueBonusLoad(request):
-    return
+    returnArray = []
+    returnMessageParams = []
+    mongo = settingPymongo('rosterdb', 'app_roster_umacarduniquebonus')
+    # find = mongo.find(filter={'cardMasterId': 1})
+    find = mongo.find(sort=[('cardUniqueBonusId', ASCENDING), ('cardName', ASCENDING)])
+    count = find.count()
 
-# ////////////////
-# カードスキルマスタ
-# ////////////////
-def umaCardUniqueBonusLoad(request):
-    return
+    for doc in find:
+        # 空白対策
+        doc.setdefault('id', '')
+        doc.setdefault('cardUniqueBonusId', '')
+        doc.setdefault('typeNo', '')
+        doc.setdefault('typeName', '')
+        doc.setdefault('cardId', '')
+        doc.setdefault('cardName', '')
+        doc.setdefault('aoharuEvaluationLimit0', '')
+        doc.setdefault('aoharuEvaluationLimit4', '')
+        doc.setdefault('uraFinalsLimit0', '')
+        doc.setdefault('uraFinalsLimit4', '')
+        doc.setdefault('lisetMarathonRank', '')
+        doc.setdefault('rank', '')
+        doc.setdefault('referenceInformation', '')
+        doc.setdefault('uniqueFactorName', '')
+        doc.setdefault('getLevel', '')
+        doc.setdefault('effect', '')
+        # スキルマスタ配列格納
+        returnMessageParams.append(
+            {'id': doc['id'],
+             'cardUniqueBonusId': doc['cardUniqueBonusId'],
+             'typeNo': doc['typeNo'],
+             'typeName': doc['typeName'],
+             'cardId': doc['cardId'],
+             'cardName': doc['cardName'],
+             'aoharuEvaluationLimit0': doc['aoharuEvaluationLimit0'],
+             'aoharuEvaluationLimit4': doc['aoharuEvaluationLimit4'],
+             'uraFinalsLimit0': doc['uraFinalsLimit0'],
+             'uraFinalsLimit4': doc['uraFinalsLimit4'],
+             'lisetMarathonRank': doc['lisetMarathonRank'],
+             'rank': doc['rank'],
+             'referenceInformation': doc['referenceInformation'],
+             'uniqueFactorName': doc['uniqueFactorName'],
+             'getLevel': doc['getLevel'],
+             'effect': doc['effect']
+             }
+        )
+        returnArray = {'cardUniqueBonusMaster': returnMessageParams, 'count': count}
+    return render(request, 'SearchUniqueBonusMasterView.html', returnArray)
 
 # ////////////////
 # カードメッセージ
