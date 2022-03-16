@@ -41,7 +41,7 @@ urlpatterns = [
     # 固有ボーナスマスタ
     path('searchuniquebonusmaster/',umaCardUniqueBonusLoad,name="searchuniquebonusmaster"),
     # カードスキルマスタ
-    path('searchcardskillmaster/',SearchCardSkillMasterView.as_view(),name="searchcardskillmaster"),
+    path('searchcardskillmaster/',umaCardSkillMasterLoad,name="searchcardskillmaster"),
     # カードメッセージマスタ
     path('searchcardmessegemaster/',SearchCardMessageMasterView.as_view(),name="searchcardmessegemaster"),
     # 白因子マスタ
