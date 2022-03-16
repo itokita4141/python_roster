@@ -138,8 +138,49 @@ def umaCardMasterLoad(request):
 #////////////////
 # スキルマスタ
 #////////////////
+#////////////////
+# スキルマスタ
+#////////////////
 def umaSkillMasterLoad(request):
-    return
+    returnArray = []
+    returnMessageParams = []
+    mongo = settingPymongo('rosterdb', 'app_roster_umaskillmaster')
+    # find = mongo.find(filter={'cardMasterId': 1})
+    find = mongo.find(sort=[('skillMasterId', ASCENDING), ('typeName', ASCENDING)])
+    count = find.count()
+
+    for doc in find:
+        # 空白対策
+        doc.setdefault('id', '')
+        doc.setdefault('skillMasterId', '')
+        doc.setdefault('type', '')
+        doc.setdefault('typeName', '')
+        doc.setdefault('type2', '')
+        doc.setdefault('skillName', '')
+        doc.setdefault('skillContents', '')
+        doc.setdefault('skillType', '')
+        doc.setdefault('raceEvaluation', '')
+        doc.setdefault('champEvaluation', '')
+        doc.setdefault('possetionSupportCards', '')
+        doc.setdefault('possetionsCharactors', '')
+        # スキルマスタ配列格納
+        returnMessageParams.append(
+            {'id': doc['id'],
+             'skillMasterId': doc['skillMasterId'],
+             'type': doc['type'],
+             'typeName': doc['typeName'],
+             'type2': doc['type2'],
+             'skillName': doc['skillName'],
+             'skillContents': doc['skillContents'],
+             'skillType': doc['skillType'],
+             'raceEvaluation': doc['raceEvaluation'],
+             'champEvaluation': doc['champEvaluation'],
+             'possetionSupportCards': doc['possetionSupportCards'],
+             'possetionsCharactors': doc['possetionsCharactors']
+             }
+        )
+        returnArray = {'skillMaster': returnMessageParams, 'count': count}
+    return render(request, 'SearchSkillMasterView.html', returnArray)
 
 # ////////////////
 # 固有ボーナスマスタ
