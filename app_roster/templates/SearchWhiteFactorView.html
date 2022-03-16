@@ -1,0 +1,35 @@
+{% load static %}
+<!doctype HTML>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/uma_main.css' %}">
+        <meta name="viewport" content="width=device-width, user-scale=yes, initial-scale=1.0, maximum-scale=5.0" />
+    </head>
+    <body>
+        <input type="button" class="back-button" value="戻る" onclick="location.href='../umacomptool'">
+        <h1>白因子マスタ検索画面({{ count }}件)</h1>
+        <table border="1px">
+            <th>ID</th>
+            <th>白因子マスタid</th>
+            <th>レース＝因子名</th>
+            <th>レース情報</th>
+            <th>レース情報</th>
+            <th>継承効果1</th>
+            <th>継承効果2</th>
+            <th>継承効果3</th>
+
+            {% for cdm in whiteFactorMaster %}
+            <tr>
+                <td>{{ cdm.id }}</td>
+                <td>{{ cdm.whiteFactorId }}</td>
+                <td>{{ cdm.factorName }}</td>
+                <td>{{ cdm.raceTiming }}</td>
+                <td>{{ cdm.raceInfo }}</td>
+                <td>{{ cdm.factor1 }}</td>
+                <td>{{ cdm.factor2 }}</td>
+                <td>{{ cdm.factor3 }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+<html>

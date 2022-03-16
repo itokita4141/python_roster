@@ -320,7 +320,6 @@ def umaCardMessageMasterLoad(request):
         # スキルマスタ配列格納
         returnMessageParams.append(
             {'id': doc['id'],
-             'id': doc['id'],
              'cardMessageMasterId': doc['cardMessageMasterId'],
              'cardTypeNo': doc['cardTypeNo'],
              'cardTypeName': doc['cardTypeName'],
@@ -353,7 +352,39 @@ def umaCardMessageMasterLoad(request):
 # 白因子マスタ
 # ////////////////
 def umaWhiteFactorLoad(request):
-    return
+    returnArray = []
+    returnMessageParams = []
+    mongo = settingPymongo('rosterdb', 'app_roster_umawhitefactor')
+    # find = mongo.find(filter={'cardMasterId': 1})
+    find = mongo.find(sort=[('whiteFactorId', ASCENDING), ('factorName', ASCENDING)])
+    count = find.count()
+
+    for doc in find:
+        # 空白対策
+        doc.setdefault('id', '')
+        doc.setdefault('whiteFactorId', '')
+        doc.setdefault('factorName', '')
+        doc.setdefault('raceTiming', '')
+        doc.setdefault('raceInfo', '')
+        doc.setdefault('factor1', '')
+        doc.setdefault('factor2', '')
+        doc.setdefault('factor3', '')
+
+        # スキルマスタ配列格納
+        returnMessageParams.append(
+            {'id': doc['id'],
+             'whiteFactorId': doc['whiteFactorId'],
+             'factorName': doc['factorName'],
+             'raceTiming': doc['raceTiming'],
+             'raceInfo': doc['raceInfo'],
+             'factor1': doc['factor1'],
+             'factor2': doc['factor2'],
+             'factor3': doc['factor3']
+             }
+        )
+        returnArray = {'whiteFactorMaster': returnMessageParams, 'count': count}
+    return render(request, 'SearchWhiteFactorView.html', returnArray)
+
 
 
 

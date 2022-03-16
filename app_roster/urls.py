@@ -45,7 +45,7 @@ urlpatterns = [
     # カードメッセージマスタ
     path('searchcardmessegemaster/',umaCardMessageMasterLoad,name="searchcardmessegemaster"),
     # 白因子マスタ
-    path('searchwhitefactormaster/',SearchWhiteFactorView.as_view(),name="searchwhitefactormaster"),
+    path('searchwhitefactormaster/',umaWhiteFactorLoad,name="searchwhitefactormaster"),
     # =========管理画面=========
     path('admin/', admin.site.urls),
     # =========mongo管理画面用=========
