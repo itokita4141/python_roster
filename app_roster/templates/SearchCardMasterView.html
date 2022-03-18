@@ -9,13 +9,10 @@
         <input type="button" class="back-button" value="戻る" onclick="location.href='../umacomptool'">
         <h1>カードマスタ検索画面({{ count }}件)</h1>
         <table border="1px">
-            <th>id</th>
-            <th>カードマスタid</th>
-            <th>凸数</th>
-            <th>カードID</th>
-            <th>カードタイプ</th>
-            <th>カードタイプ名称</th>
             <th>カード名称</th>
+            <th>画像</th>
+            <th>凸数</th>
+            <th>カードタイプ名称</th>
             <th>レア度</th>
             <th>得意率</th>
             <th>やる気効果</th>
@@ -51,19 +48,16 @@
             <th>アオハル上昇値(単/Lv5/友情/好)パラ2</th>
             <th>アオハル上昇値(単/Lv5/友情/好)パラ3</th>
             <th>アオハル上昇値(単/Lv5/友情/好)パラ4</th>
-            <th>更新時間</th>
-            <th>追加時間</th>
             {% now "Y年m月d日" %}
             {% for cdm in cardMaster %}
             <tr>
-                <td><img src="{% static cdm.url %}" width="50" height="70" ></td>
-                <td>{{ cdm.id }}</td>
-                <td>{{ cdm.cardMasterId }}</td>
+                {% ifchanged cdm.cardId %}
+                <td rowspan="5">{{ cdm.cardName }}</td>
+                <td rowspan="5"><img src="{% static cdm.url %}" width="150" height="200" ></td>
+                {% else %}
+                {% endifchanged %}
                 <td>{{ cdm.limitedOverNum }}</td>
-                <td>{{ cdm.cardId }}</td>
-                <td>{{ cdm.cardTypeNo }}</td>
                 <td>{{ cdm.cardTypeName }}</td>
-                <td>{{ cdm.cardName }}</td>
                 <td>{{ cdm.rared }}</td>
                 <td>{{ cdm.specialityRare }}</td>
                 <td>{{ cdm.yarukiEffect }}</td>
@@ -99,8 +93,6 @@
                 <td>{{ cdm.aoharu_paramater2 }}</td>
                 <td>{{ cdm.aoharu_paramater3 }}</td>
                 <td>{{ cdm.aoharu_paramater4 }}</td>
-                <td>{{ cdm.updateTime }}</td>
-                <td>{{ cdm.addTime }}</td>
             </tr>
             {% endfor %}
         </table>

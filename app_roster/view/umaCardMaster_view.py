@@ -128,7 +128,7 @@ def umaCardMasterLoad(request):
              'aoharu_paramater2': doc['aoharu_paramater2'],
              'aoharu_paramater3': doc['aoharu_paramater3'],
              'aoharu_paramater4': doc['aoharu_paramater4'],
-             'url': 'images/' + str(doc['cardMasterId']) + '.png',
+             'url': 'images/' + str(doc['cardId']) + '.png',
              'updateTime': doc['updateTime'],
              'addTime': doc['addTime']
              }
