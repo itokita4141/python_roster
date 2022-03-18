@@ -9,45 +9,47 @@
         <input type="button" class="back-button" value="戻る" onclick="location.href='../umacomptool'">
         <h1>カードマスタ検索画面({{ count }}件)</h1>
         <table border="1px">
-            <th>カード名称</th>
-            <th>画像</th>
-            <th>凸数</th>
-            <th>カードタイプ名称</th>
-            <th>レア度</th>
-            <th>得意率</th>
-            <th>やる気効果</th>
-            <th>友情ボーナス</th>
-            <th>トレーニング効果</th>
-            <th>スピードボーナス</th>
-            <th>スタミナボーナス</th>
-            <th>パワーボーナス</th>
-            <th>スキルPtボーナス</th>
-            <th>根性ボーナス</th>
-            <th>賢さボーナス</th>
-            <th>賢さボーナス絆100</th>
-            <th>ヒントLv</th>
-            <th>ヒント発生率</th>
-            <th>初期絆ゲージ</th>
-            <th>初期スピード</th>
-            <th>初期スタミナ</th>
-            <th>初期パワー</th>
-            <th>初期賢さ</th>
-            <th>初期根性</th>
-            <th>レースボーナス</th>
-            <th>ファン数ボーナス</th>
-            <th>イベント効果</th>
-            <th>賢さ友情回復量</th>
-            <th>イベント回復量</th>
-            <th>体力消費ダウン</th>
-            <th>失敗率ダウン</th>
-            <th>URA上昇値(単/Lv5/友情/好)パラ1</th>
-            <th>URA上昇値(単/Lv5/友情/好)パラ2</th>
-            <th>URA上昇値(単/Lv5/友情/好)パラ3</th>
-            <th>URA上昇値(単/Lv5/友情/好)パラ4</th>
-            <th>アオハル上昇値(単/Lv5/友情/好)パラ1</th>
-            <th>アオハル上昇値(単/Lv5/友情/好)パラ2</th>
-            <th>アオハル上昇値(単/Lv5/友情/好)パラ3</th>
-            <th>アオハル上昇値(単/Lv5/友情/好)パラ4</th>
+            <tr>
+                <th class="_sticky">カード名称</th>
+                <th class="_sticky">画像</th>
+                <th class="_sticky">凸数</th>
+                <th class="_sticky">カードタイプ名称</th>
+                <th class="_sticky">レア度</th>
+                <th class="_sticky">得意率</th>
+                <th class="_sticky">やる気効果</th>
+                <th class="_sticky">友情ボーナス</th>
+                <th class="_sticky">トレーニング効果</th>
+                <th class="_sticky">スピードボーナス</th>
+                <th class="_sticky">スタミナボーナス</th>
+                <th class="_sticky">パワーボーナス</th>
+                <th class="_sticky">スキルPtボーナス</th>
+                <th class="_sticky">根性ボーナス</th>
+                <th class="_sticky">賢さボーナス</th>
+                <th class="_sticky">賢さボーナス絆100</th>
+                <th class="_sticky">ヒントLv</th>
+                <th class="_sticky">ヒント発生率</th>
+                <th class="_sticky">初期絆ゲージ</th>
+                <th class="_sticky">初期スピード</th>
+                <th class="_sticky">初期スタミナ</th>
+                <th class="_sticky">初期パワー</th>
+                <th class="_sticky">初期賢さ</th>
+                <th class="_sticky">初期根性</th>
+                <th class="_sticky">レースボーナス</th>
+                <th class="_sticky">ファン数ボーナス</th>
+                <th class="_sticky">イベント効果</th>
+                <th class="_sticky">賢さ友情回復量</th>
+                <th class="_sticky">イベント回復量</th>
+                <th class="_sticky">体力消費ダウン</th>
+                <th class="_sticky">失敗率ダウン</th>
+                <th class="_sticky">URA上昇値(単/Lv5/友情/好)パラ1</th>
+                <th class="_sticky">URA上昇値(単/Lv5/友情/好)パラ2</th>
+                <th class="_sticky">URA上昇値(単/Lv5/友情/好)パラ3</th>
+                <th class="_sticky">URA上昇値(単/Lv5/友情/好)パラ4</th>
+                <th class="_sticky">アオハル上昇値(単/Lv5/友情/好)パラ1</th>
+                <th class="_sticky">アオハル上昇値(単/Lv5/友情/好)パラ2</th>
+                <th class="_sticky">アオハル上昇値(単/Lv5/友情/好)パラ3</th>
+                <th class="_sticky">アオハル上昇値(単/Lv5/友情/好)パラ4</th>
+            </tr>
             {% now "Y年m月d日" %}
             {% for cdm in cardMaster %}
             <tr>
