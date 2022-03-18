@@ -3,7 +3,7 @@
     height: 60px;
 }
 body {
-    background: lightskyblue;
+    background: turquoise;
 }
 .uma-title-header{
     margin:0px;
@@ -46,12 +46,14 @@ th, td {
 }
 th {
   color: #fff;
+  font-color: yellow;
   background: #795548;
 }
 ._sticky {
   position: sticky;
   top: 0;
   font-size: 10px;
+  color: yellow;
 }
 ._sticky:before {
   content: "";
@@ -61,6 +63,13 @@ th {
   width: 100%;
   height: 100%;
   border: 1px solid #ccc;
+}
+tr:nth-child(even) {
+background: #add8e6;
+}
+
+tr:nth-child(odd) {
+background: #e0ffff;
 }
 
 @media only screen and (max-device-width: 480px) {
@@ -85,6 +94,8 @@ height:2em;
 position:sticky;
 left:0;
 }
+/*
 table th:first-child {
 background-color:white;
 }
+*/
