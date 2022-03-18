@@ -8,94 +8,96 @@
     <body>
         <input type="button" class="back-button" value="戻る" onclick="location.href='../umacomptool'">
         <h1>サポートカードマスタ検索画面(全{{ count }}件)</h1>
-        <table>
-            <tr>
-                <th nowrap class="_sticky">カード名称</th>
-                <th nowrap class="_sticky">画像</th>
-                <th nowrap class="_sticky">凸数</th>
-                <th nowrap class="_sticky">カード名称</th>
-                <th nowrap class="_sticky">レア度</th>
-                <th nowrap class="_sticky">得意率</th>
-                <th nowrap class="_sticky">やる気効果</th>
-                <th nowrap class="_sticky">友情ボーナス</th>
-                <th nowrap class="_sticky">トレ効果</th>
-                <th nowrap class="_sticky">スピボーナス</th>
-                <th nowrap class="_sticky">スタボーナス</th>
-                <th nowrap class="_sticky">パワーボーナス</th>
-                <th nowrap class="_sticky">スキルPtボーナス</th>
-                <th nowrap class="_sticky">根性ボーナス</th>
-                <th nowrap class="_sticky">賢さボーナス</th>
-                <th nowrap class="_sticky">賢さボーナス絆100</th>
-                <th nowrap class="_sticky">ヒントLv</th>
-                <th nowrap class="_sticky">ヒント発生率</th>
-                <th nowrap class="_sticky">初期絆ゲージ</th>
-                <th nowrap class="_sticky">初期スピード</th>
-                <th nowrap class="_sticky">初期スタミナ</th>
-                <th nowrap class="_sticky">初期パワー</th>
-                <th nowrap class="_sticky">初期賢さ</th>
-                <th nowrap class="_sticky">初期根性</th>
-                <th nowrap class="_sticky">レースボーナス</th>
-                <th nowrap class="_sticky">ファン数ボーナス</th>
-                <th nowrap class="_sticky">イベント効果</th>
-                <th nowrap class="_sticky">賢さ友情回復量</th>
-                <th nowrap class="_sticky">イベント回復量</th>
-                <th nowrap class="_sticky">体力消費ダウン</th>
-                <th nowrap class="_sticky">失敗率ダウン</th>
-                <th nowrap class="_sticky">URA上昇値パラ1<br/>(単/Lv5/友情/好)</th>
-                <th nowrap class="_sticky">URA上昇値パラ2<br/>(単/Lv5/友情/好)</th>
-                <th nowrap class="_sticky">URA上昇値パラ3<br/>(単/Lv5/友情/好)</th>
-                <th nowrap class="_sticky">URA上昇値パラ4<br/>(単/Lv5/友情/好)</th>
-                <th nowrap class="_sticky">アオハル上昇値パラ1<br/>(単/Lv5/友情/好)</th>
-                <th nowrap class="_sticky">アオハル上昇値パラ2<br/>(単/Lv5/友情/好)</th>
-                <th nowrap class="_sticky">アオハル上昇値パラ3<br/>(単/Lv5/友情/好)</th>
-                <th nowrap class="_sticky">アオハル上昇値パラ4<br/>(単/Lv5/友情/好)</th>
-            </tr>
-            {% for cdm in cardMaster %}
-            <tr>
-                {% ifchanged cdm.cardId %}
-                <td rowspan="5">{{ cdm.cardName }}</td>
-                <td rowspan="5"><img src="{% static cdm.url %}" width="150" height="200" ></td>
-                {% else %}
-                {% endifchanged %}
-                <td>{{ cdm.limitedOverNum }}</td>
-                <td>{{ cdm.cardTypeName }}</td>
-                <td>{{ cdm.rared }}</td>
-                <td>{{ cdm.specialityRare }}</td>
-                <td>{{ cdm.yarukiEffect }}</td>
-                <td>{{ cdm.friendlyBonus }}</td>
-                <td>{{ cdm.trainingEffect }}</td>
-                <td>{{ cdm.speedBonus }}</td>
-                <td>{{ cdm.staminaBonus }}</td>
-                <td>{{ cdm.powerBonus }}</td>
-                <td>{{ cdm.skillBonus }}</td>
-                <td>{{ cdm.gutsBonus }}</td>
-                <td>{{ cdm.wiseBonus }}</td>
-                <td>{{ cdm.wiseBonus100 }}</td>
-                <td>{{ cdm.hintLevel }}</td>
-                <td>{{ cdm.hintIncidence }}</td>
-                <td>{{ cdm.defaultKizunaGage }}</td>
-                <td>{{ cdm.defaultSpeed }}</td>
-                <td>{{ cdm.defaultStamina }}</td>
-                <td>{{ cdm.defaultPower }}</td>
-                <td>{{ cdm.defaultWise }}</td>
-                <td>{{ cdm.defaultGuts }}</td>
-                <td>{{ cdm.raceBonus }}</td>
-                <td>{{ cdm.fanNumber }}</td>
-                <td>{{ cdm.eventEffect }}</td>
-                <td>{{ cdm.wiseFriendlyRecoverlyAmount }}</td>
-                <td>{{ cdm.eventRecoveryAmont }}</td>
-                <td>{{ cdm.lifeComsumptionDown }}</td>
-                <td>{{ cdm.failureRateDown }}</td>
-                <td>{{ cdm.ura_paramater1 }}</td>
-                <td>{{ cdm.ura_paramater2 }}</td>
-                <td>{{ cdm.ura_paramater3 }}</td>
-                <td>{{ cdm.ura_paramater4 }}</td>
-                <td>{{ cdm.aoharu_paramater1 }}</td>
-                <td>{{ cdm.aoharu_paramater2 }}</td>
-                <td>{{ cdm.aoharu_paramater3 }}</td>
-                <td>{{ cdm.aoharu_paramater4 }}</td>
-            </tr>
-            {% endfor %}
-        </table>
+        <div class="soto">
+            <table>
+                <tr>
+                    <th nowrap class="_sticky">カード名称</th>
+                    <th nowrap class="_sticky">画像</th>
+                    <th nowrap class="_sticky">凸数</th>
+                    <th nowrap class="_sticky">カード名称</th>
+                    <th nowrap class="_sticky">レア度</th>
+                    <th nowrap class="_sticky">得意率</th>
+                    <th nowrap class="_sticky">やる気効果</th>
+                    <th nowrap class="_sticky">友情ボーナス</th>
+                    <th nowrap class="_sticky">トレ効果</th>
+                    <th nowrap class="_sticky">スピボーナス</th>
+                    <th nowrap class="_sticky">スタボーナス</th>
+                    <th nowrap class="_sticky">パワーボーナス</th>
+                    <th nowrap class="_sticky">スキルPtボーナス</th>
+                    <th nowrap class="_sticky">根性ボーナス</th>
+                    <th nowrap class="_sticky">賢さボーナス</th>
+                    <th nowrap class="_sticky">賢さボーナス絆100</th>
+                    <th nowrap class="_sticky">ヒントLv</th>
+                    <th nowrap class="_sticky">ヒント発生率</th>
+                    <th nowrap class="_sticky">初期絆ゲージ</th>
+                    <th nowrap class="_sticky">初期スピード</th>
+                    <th nowrap class="_sticky">初期スタミナ</th>
+                    <th nowrap class="_sticky">初期パワー</th>
+                    <th nowrap class="_sticky">初期賢さ</th>
+                    <th nowrap class="_sticky">初期根性</th>
+                    <th nowrap class="_sticky">レースボーナス</th>
+                    <th nowrap class="_sticky">ファン数ボーナス</th>
+                    <th nowrap class="_sticky">イベント効果</th>
+                    <th nowrap class="_sticky">賢さ友情回復量</th>
+                    <th nowrap class="_sticky">イベント回復量</th>
+                    <th nowrap class="_sticky">体力消費ダウン</th>
+                    <th nowrap class="_sticky">失敗率ダウン</th>
+                    <th nowrap class="_sticky">URA上昇値パラ1<br/>(単/Lv5/友情/好)</th>
+                    <th nowrap class="_sticky">URA上昇値パラ2<br/>(単/Lv5/友情/好)</th>
+                    <th nowrap class="_sticky">URA上昇値パラ3<br/>(単/Lv5/友情/好)</th>
+                    <th nowrap class="_sticky">URA上昇値パラ4<br/>(単/Lv5/友情/好)</th>
+                    <th nowrap class="_sticky">アオハル上昇値パラ1<br/>(単/Lv5/友情/好)</th>
+                    <th nowrap class="_sticky">アオハル上昇値パラ2<br/>(単/Lv5/友情/好)</th>
+                    <th nowrap class="_sticky">アオハル上昇値パラ3<br/>(単/Lv5/友情/好)</th>
+                    <th nowrap class="_sticky">アオハル上昇値パラ4<br/>(単/Lv5/友情/好)</th>
+                </tr>
+                {% for cdm in cardMaster %}
+                <tr>
+                    {% ifchanged cdm.cardId %}
+                    <td rowspan="5">{{ cdm.cardName }}</td>
+                    <td rowspan="5"><img src="{% static cdm.url %}" width="150" height="200" ></td>
+                    {% else %}
+                    {% endifchanged %}
+                    <td>{{ cdm.limitedOverNum }}</td>
+                    <td>{{ cdm.cardTypeName }}</td>
+                    <td>{{ cdm.rared }}</td>
+                    <td>{{ cdm.specialityRare }}</td>
+                    <td>{{ cdm.yarukiEffect }}</td>
+                    <td>{{ cdm.friendlyBonus }}</td>
+                    <td>{{ cdm.trainingEffect }}</td>
+                    <td>{{ cdm.speedBonus }}</td>
+                    <td>{{ cdm.staminaBonus }}</td>
+                    <td>{{ cdm.powerBonus }}</td>
+                    <td>{{ cdm.skillBonus }}</td>
+                    <td>{{ cdm.gutsBonus }}</td>
+                    <td>{{ cdm.wiseBonus }}</td>
+                    <td>{{ cdm.wiseBonus100 }}</td>
+                    <td>{{ cdm.hintLevel }}</td>
+                    <td>{{ cdm.hintIncidence }}</td>
+                    <td>{{ cdm.defaultKizunaGage }}</td>
+                    <td>{{ cdm.defaultSpeed }}</td>
+                    <td>{{ cdm.defaultStamina }}</td>
+                    <td>{{ cdm.defaultPower }}</td>
+                    <td>{{ cdm.defaultWise }}</td>
+                    <td>{{ cdm.defaultGuts }}</td>
+                    <td>{{ cdm.raceBonus }}</td>
+                    <td>{{ cdm.fanNumber }}</td>
+                    <td>{{ cdm.eventEffect }}</td>
+                    <td>{{ cdm.wiseFriendlyRecoverlyAmount }}</td>
+                    <td>{{ cdm.eventRecoveryAmont }}</td>
+                    <td>{{ cdm.lifeComsumptionDown }}</td>
+                    <td>{{ cdm.failureRateDown }}</td>
+                    <td>{{ cdm.ura_paramater1 }}</td>
+                    <td>{{ cdm.ura_paramater2 }}</td>
+                    <td>{{ cdm.ura_paramater3 }}</td>
+                    <td>{{ cdm.ura_paramater4 }}</td>
+                    <td>{{ cdm.aoharu_paramater1 }}</td>
+                    <td>{{ cdm.aoharu_paramater2 }}</td>
+                    <td>{{ cdm.aoharu_paramater3 }}</td>
+                    <td>{{ cdm.aoharu_paramater4 }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
     </body>
 <html>

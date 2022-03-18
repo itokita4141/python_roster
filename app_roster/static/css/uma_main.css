@@ -62,3 +62,29 @@ th {
   height: 100%;
   border: 1px solid #ccc;
 }
+
+@media only screen and (max-device-width: 480px) {
+/*文字サイズを調整*/
+body {
+font-size:4vw;
+}
+/*はみ出した部分をスクロールさせる　*/
+.soto {
+overflow:scroll;　
+}
+/*table自体を程よい幅に　*/
+table {
+width:130%;
+}
+}
+table th:first-child {
+/*少しサイズを調整*/
+width:20%;
+height:2em;
+/*先頭列を左に固定*/
+position:sticky;
+left:0;
+}
+table th:first-child {
+background-color:white;
+}
