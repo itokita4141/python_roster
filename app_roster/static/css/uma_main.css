@@ -32,16 +32,15 @@ body {
     color:red;
     font-size:20px;
 }
-
+/* 行列固定対応 */
 .tablefix{
     overflow: auto;
-    width: 1500px;
+    width: 100%;
     height: 600px;
 }
 .tablefix table{
     margin: 0;
     border-spacing: 0;
-
 }
 .tablefix td{
     white-space: nowrap;
@@ -68,6 +67,10 @@ body {
 }
 .tablefix tr:first-child th:first-child{
     z-index: 1;
+}
+/* 行交互に色変更対応 */
+.tablefix table tr:nth-child(odd) td {
+	background: #fff;
 }
 /* スマホ対応 */
 	/*　画面サイズが480px以下の場合ここの記述が適用される　*/

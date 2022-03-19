@@ -54,7 +54,7 @@
                 {% for cdm in cardMaster %}
                 <tr>
                     {% ifchanged cdm.cardId %}
-                    <th nowrap rowspan="5">{{ cdm.cardName }}</th>
+                    <td nowrap rowspan="5">{{ cdm.cardName }}</td>
                     <td nowrap rowspan="5"><img src="{% static cdm.url %}" width="150" height="200" ></td>
                     {% else %}
                     {% endifchanged %}
