@@ -1,3 +1,5 @@
+/* ---------------------------------------------------- */
+/* メイン */
 .navbar {
     background: pink;
     height: 60px;
@@ -40,19 +42,26 @@ body {
 }
 .tablefix table{
     margin: 0;
+/*
     border-spacing: 0;
+*/
 }
 .tablefix td{
     white-space: nowrap;
+/*
     border-right: 1px solid #999;
     border-bottom: 1px solid #999;
+*/
 /*    background: #FFF;*/
     padding: 5px;
 }
 .tablefix th{
     white-space: nowrap;
+    border-bottom:2px solid black;
+ /*
     border-right: 1px solid #999;
     border-bottom: 1px solid #999;
+*/
 /*    background: #f2f2f2; */
     background-color:lightskyblue;
     position: sticky;
@@ -60,18 +69,32 @@ body {
     left: 0;
 }
 .tablefix tr:first-child th{
+/*
     border-top: 1px solid #999;
+*/
 }
 .tablefix th:first-child{
+/*
     border-left: 1px solid #999;
+*/
 }
 .tablefix tr:first-child th:first-child{
     z-index: 1;
 }
+/* ---------------------------------------------------- */
 /* 行交互に色変更対応 */
 .tablefix table tr:nth-child(odd) td {
-	background: #fff;
+	background: lightyellow;
 }
+.tablefix table tr:nth-child(even) td {
+	background: antiquewhite;
+}
+/* ---------------------------------------------------- */
+/* 5行ごとにborderの太さ変更対応 */
+.tablefix table tr:nth-child(5n+3),tr:nth-child(5n+4),tr:nth-child(5n+5),tr:nth-child(5n+6),tr:nth-child(5n+7) td {
+	border-top: 2px solid black;
+}
+/* ---------------------------------------------------- */
 /* スマホ対応 */
 	/*　画面サイズが480px以下の場合ここの記述が適用される　*/
 @media screen and (max-width:480px) {
