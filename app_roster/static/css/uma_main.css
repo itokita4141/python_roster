@@ -5,8 +5,21 @@
     height: 60px;
 }
 body {
-/*    background: turquoise; */
+    background: turquoise;
 }
+/* ---------------------------------------------------- */
+/* 共通 */
+.div10 {
+    height:10px;
+}
+.div30 {
+    height:30px;
+}
+.div50 {
+    height:50px;
+}
+/* ---------------------------------------------------- */
+/* ウマ用対応 */
 .uma-title-header{
     margin:0px;
     width:500px;
@@ -22,6 +35,8 @@ body {
 }
 .uma-application-button {
     width:300px;
+    height:70px;
+    font-size:20px;
     background-color:lightskyblue;
 }
 .uma-big-button {
@@ -34,6 +49,7 @@ body {
     color:red;
     font-size:20px;
 }
+/* ---------------------------------------------------- */
 /* 行列固定対応 */
 .tablefix{
     overflow: auto;

@@ -29,7 +29,7 @@ from pymongo import ASCENDING
 from pymongo import DESCENDING
 
 #////////////////
-# カードマスタ
+# サポートカードマスタ
 #////////////////
 def umaCardMasterLoad(request):
     returnArray = []
@@ -136,9 +136,54 @@ def umaCardMasterLoad(request):
         returnArray = {'cardMaster': returnMessageParams, 'count': count}
     return render(request, 'SearchCardMasterView.html', returnArray)
 
-#////////////////
-# スキルマスタ
-#////////////////
+# ////////////////
+# サポートカードスキルマスタ
+# ////////////////
+def umaCardSkillMasterLoad(request):
+    returnArray = []
+    returnMessageParams = []
+    mongo = settingPymongo('rosterdb', 'app_roster_umacardskillmaster')
+    # find = mongo.find(filter={'cardMasterId': 1})
+    find = mongo.find(sort=[('carSkillMasterId', ASCENDING), ('typeName', ASCENDING)])
+    count = find.count()
+
+    for doc in find:
+        findCardId = mongo.find(filter={'cardId': doc['cardId']})
+        cardIdCount = findCardId.count()
+        # 空白対策
+        doc.setdefault('id', '')
+        doc.setdefault('carSkillMasterId', '')
+        doc.setdefault('typeNo', '')
+        doc.setdefault('typeName', '')
+        doc.setdefault('cardId', '')
+        doc.setdefault('cardName', '')
+        doc.setdefault('sortNum', '')
+        doc.setdefault('eventType', '')
+        doc.setdefault('eventTypeName', '')
+        doc.setdefault('skillName', '')
+        doc.setdefault('skillContents', '')
+        doc.setdefault('cardIdCount', '')
+
+        # スキルマスタ配列格納
+        returnMessageParams.append(
+            {'id': doc['id'],
+             'carSkillMasterId': doc['carSkillMasterId'],
+             'typeNo': doc['typeNo'],
+             'typeName': doc['typeName'],
+             'cardId': doc['cardId'],
+             'cardName': doc['cardName'],
+             'sortNum': doc['sortNum'],
+             'eventType': doc['eventType'],
+             'eventTypeName': doc['eventTypeName'],
+             'skillName': doc['skillName'],
+             'skillContents': doc['skillContents'],
+             'url': 'images/' + str(doc['cardId']) + '.png',
+             'cardIdCount': cardIdCount
+             }
+        )
+        returnArray = {'cardSkillMaster': returnMessageParams, 'count': count}
+    return render(request, 'SearchCardSkillMasterView.html', returnArray)
+
 #////////////////
 # スキルマスタ
 #////////////////
@@ -234,52 +279,6 @@ def umaCardUniqueBonusLoad(request):
         )
         returnArray = {'cardUniqueBonusMaster': returnMessageParams, 'count': count}
     return render(request, 'SearchUniqueBonusMasterView.html', returnArray)
-
-# ////////////////
-# カードスキルマスタ
-# ////////////////
-def umaCardSkillMasterLoad(request):
-    returnArray = []
-    returnMessageParams = []
-    mongo = settingPymongo('rosterdb', 'app_roster_umacardskillmaster')
-    # find = mongo.find(filter={'cardMasterId': 1})
-    find = mongo.find(sort=[('carSkillMasterId', ASCENDING), ('typeName', ASCENDING)])
-    count = find.count()
-
-    for doc in find:
-        # 空白対策
-        doc.setdefault('id', '')
-        doc.setdefault('carSkillMasterId', '')
-        doc.setdefault('typeNo', '')
-        doc.setdefault('typeName', '')
-        doc.setdefault('cardId', '')
-        doc.setdefault('cardName', '')
-        doc.setdefault('sortNum', '')
-        doc.setdefault('eventType', '')
-        doc.setdefault('eventTypeName', '')
-        doc.setdefault('skillName', '')
-        doc.setdefault('skillContents', '')
-        doc.setdefault('', '')
-        doc.setdefault('', '')
-        doc.setdefault('', '')
-        doc.setdefault('', '')
-        # スキルマスタ配列格納
-        returnMessageParams.append(
-            {'id': doc['id'],
-             'carSkillMasterId': doc['carSkillMasterId'],
-             'typeNo': doc['typeNo'],
-             'typeName': doc['typeName'],
-             'cardId': doc['cardId'],
-             'cardName': doc['cardName'],
-             'sortNum': doc['sortNum'],
-             'eventType': doc['eventType'],
-             'eventTypeName': doc['eventTypeName'],
-             'skillName': doc['skillName'],
-             'skillContents': doc['skillContents']
-             }
-        )
-        returnArray = {'cardSkillMaster': returnMessageParams, 'count': count}
-    return render(request, 'SearchCardSkillMasterView.html', returnArray)
 
 # ////////////////
 # カードメッセージマスタ

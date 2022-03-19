@@ -8,34 +8,35 @@
     <body>
         <input type="button" class="back-button" value="戻る" onclick="location.href='../umacomptool'">
         <h1>カードスキルマスタ検索画面({{ count }}件)</h1>
-        <table border="1px">
-            <th>ID</th>
-            <th>カードスキルマスタid</th>
-            <th>タイプ</th>
-            <th>タイプ名称</th>
-            <th>カードID</th>
-            <th>カード名称</th>
-            <th>ソート順</th>
-            <th>イベントタイプ</th>
-            <th>イベントタイプ名称</th>
-            <th>スキル名称</th>
-            <th>スキル内容</th>
+        <div class="tablefix">
+            <table border="1px">
+                <th nowrap>タイプ名称</th>
+                <th nowrap >カード名称</th>
+                <th nowrap >画像</th>
+                <th nowrap>イベントタイプ名称</th>
+                <th nowrap>スキル名称</th>
+                <th nowrap>スキル内容</th>
+                <th nowrap>ソート順</th>
+                <th nowrap>イベントタイプ</th>
+                <th nowrap>同一カード数</th>
 
-            {% for cdm in cardSkillMaster %}
-            <tr>
-                <td>{{ cdm.id }}</td>
-                <td>{{ cdm.carSkillMasterId }}</td>
-                <td>{{ cdm.typeNo }}</td>
-                <td>{{ cdm.typeName }}</td>
-                <td>{{ cdm.cardId }}</td>
-                <td>{{ cdm.cardName }}</td>
-                <td>{{ cdm.sortNum }}</td>
-                <td>{{ cdm.eventType }}</td>
-                <td>{{ cdm.eventTypeName }}</td>
-                <td>{{ cdm.skillName }}</td>
-                <td>{{ cdm.skillContents }}</td>
-            </tr>
-            {% endfor %}
-        </table>
+                {% for cdm in cardSkillMaster %}
+                <tr>
+                    {% ifchanged cdm.cardId %}
+                    <td nowrap rowspan={{ cdm.cardIdCount }}>{{ cdm.typeName }}</td>
+                    <td nowrap rowspan={{ cdm.cardIdCount }}>{{ cdm.cardName }}</td>
+                    <td nowrap rowspan={{ cdm.cardIdCount }}><img src="{% static cdm.url %}" width="150" height="200" ></td>
+                    {% else %}
+                    {% endifchanged %}
+                    <td nowrap>{{ cdm.eventTypeName }}</td>
+                    <td nowrap>{{ cdm.skillName }}</td>
+                    <td nowrap>{{ cdm.skillContents }}</td>
+                    <td nowrap>{{ cdm.sortNum }}</td>
+                    <td nowrap>{{ cdm.eventType }}</td>
+                    <td nowrap>{{ cdm.cardIdCount }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
     </body>
 <html>
