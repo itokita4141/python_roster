@@ -8,41 +8,8 @@
     <body>
         <input type="button" class="back-button" value="戻る" onclick="location.href='../umacomptool'">
         <h3>サポートカードマスタ検索画面(全{{ count }}件)</h3>
-<div class="soto">
-<table>
-
-<tbody>
-<tr>
-<th>素材</th>
-<th>メリット</th>
-<th>デメリット</th>
-</tr>
-
-<tr>
-<th>藁</th>
-<td>低コスト、短期間で施工完了。</td>
-<td>風に弱い。</td>
-
-</tr>
-
-<tr>
-<th>木</th>
-<td>多少の工期をとることになるが、低コスト。</td>
-<td>体当たりに弱い。</td>
-</tr>
-
-<tr>
-<th>レンガ</th>
-<td>頑丈。体当たりでも壊れない。</td>
-<td>長い工期が必要でコストもかさむ。</td>
-</tr>
-</tbody>
-
-</table><br/><br/>
-</div>
         <div class="soto">
             <table>
-                <tbody>
                 <tr>
                     <th nowrap class="_sticky">カード名称</th>
                     <th nowrap class="_sticky">画像</th>
@@ -130,7 +97,6 @@
                     <td>{{ cdm.aoharu_paramater4 }}</td>
                 </tr>
                 {% endfor %}
-                </tbody>
             </table>
         </div>
     </body>
