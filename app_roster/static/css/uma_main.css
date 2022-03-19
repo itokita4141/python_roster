@@ -30,7 +30,9 @@ body {
     text-align:center;
 }
 .uma-back-button {
-    width:70px;
+    width:100px;
+    height:70px;
+    font-size:20px;
     background-color:lightyellow;
 }
 .uma-application-button {
