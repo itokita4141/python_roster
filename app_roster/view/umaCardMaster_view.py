@@ -148,8 +148,8 @@ def umaCardSkillMasterLoad(request):
     count = find.count()
 
     for doc in find:
-        findCardId = mongo.find(filter={'cardId': doc['cardId']})
-        cardIdCount = findCardId.count()
+        # findCardId = mongo.find(filter={'cardId': doc['cardId']})
+        # cardIdCount = findCardId.count()
         # 空白対策
         doc.setdefault('id', '')
         doc.setdefault('carSkillMasterId', '')
@@ -178,7 +178,8 @@ def umaCardSkillMasterLoad(request):
              'skillName': doc['skillName'],
              'skillContents': doc['skillContents'],
              'url': 'images/' + str(doc['cardId']) + '.png',
-             'cardIdCount': cardIdCount
+             # 'cardIdCount': cardIdCount
+             'cardIdCount': 1
              }
         )
         returnArray = {'cardSkillMaster': returnMessageParams, 'count': count}
