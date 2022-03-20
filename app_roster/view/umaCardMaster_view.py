@@ -15,7 +15,7 @@ from setting_alchemy import Base
 from setting_alchemy import ENGINE
 from setting_alchemy import session
 sys.path.append("app_roster/db/sqlalchemy/migrate/models")
-
+import copy
 # 〓========================
 # うまツール関連
 # 〓========================
@@ -136,6 +136,14 @@ def umaCardMasterLoad(request):
         returnArray = {'cardMaster': returnMessageParams, 'count': count}
     return render(request, 'SearchCardMasterView.html', returnArray)
 
+# 指定のkeyの総数を取得する
+def getValueCount(dimension, key, value):
+    count = 0
+    for d in dimension:
+        if d[key] == value:
+            count += 1
+    return count
+
 # ////////////////
 # サポートカードスキルマスタ
 # ////////////////
@@ -143,17 +151,14 @@ def umaCardSkillMasterLoad(request):
     returnArray = []
     returnMessageParams = []
     mongo = settingPymongo('rosterdb', 'app_roster_umacardskillmaster')
-    find = mongo.find(filter={'cardMasterId': 1})
+    # find = mongo.find(filter={'cardMasterId': 1})
     find = mongo.find(sort=[('carSkillMasterId', ASCENDING), ('typeName', ASCENDING)])
+    findAnother = copy.deepcopy(find)
     count = find.count()
-    # beforeCardId = 0  # 仮に0をセット
-    # cardIdCount = 0   # 仮に0をセット
+    cardIdCount = 0
+    beforeCardId = 0
 
     for doc in find:
-        # query回数で落ちる
-        # if beforeCardId != doc['cardId']:
-        #     cardIdCount = mongo.find(filter={'cardId': doc['cardId']}).count()
-        #     beforeIdCount = cardIdCount
         # 空白対策
         doc.setdefault('id', '')
         doc.setdefault('carSkillMasterId', '')
@@ -167,7 +172,11 @@ def umaCardSkillMasterLoad(request):
         doc.setdefault('skillName', '')
         doc.setdefault('skillContents', '')
         doc.setdefault('cardIdCount', '')
-
+        # query回数で落ちる
+        if beforeCardId != doc['cardId']:
+            findCopy = copy.deepcopy(findAnother)
+            cardIdCount = getValueCount(findCopy, 'cardId', doc['cardId'])
+            beforeCardId = doc['cardId']
         # スキルマスタ配列格納
         returnMessageParams.append(
             {'id': doc['id'],
@@ -182,8 +191,8 @@ def umaCardSkillMasterLoad(request):
              'skillName': doc['skillName'],
              'skillContents': doc['skillContents'],
              'url': 'images/' + str(doc['cardId']) + '.png',
-             # 'cardIdCount': cardIdCount
-             'cardIdCount': 1
+             'cardIdCount': cardIdCount
+             # 'cardIdCount': 1
              }
         )
         returnArray = {'cardSkillMaster': returnMessageParams, 'count': count}
