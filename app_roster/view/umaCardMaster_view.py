@@ -143,13 +143,17 @@ def umaCardSkillMasterLoad(request):
     returnArray = []
     returnMessageParams = []
     mongo = settingPymongo('rosterdb', 'app_roster_umacardskillmaster')
-    # find = mongo.find(filter={'cardMasterId': 1})
+    find = mongo.find(filter={'cardMasterId': 1})
     find = mongo.find(sort=[('carSkillMasterId', ASCENDING), ('typeName', ASCENDING)])
     count = find.count()
+    beforeCardId = 0  # 仮に0をセット
+    cardIdCount = 0   # 仮に0をセット
 
     for doc in find:
-        # findCardId = mongo.find(filter={'cardId': doc['cardId']})
-        # cardIdCount = findCardId.count()
+        # query回数で落ちる
+        if beforeCardId != doc['cardId']:
+            cardIdCount = mongo.find(filter={'cardId': doc['cardId']}).count()
+            beforeIdCount = cardIdCount
         # 空白対策
         doc.setdefault('id', '')
         doc.setdefault('carSkillMasterId', '')
@@ -178,8 +182,8 @@ def umaCardSkillMasterLoad(request):
              'skillName': doc['skillName'],
              'skillContents': doc['skillContents'],
              'url': 'images/' + str(doc['cardId']) + '.png',
-             # 'cardIdCount': cardIdCount
-             'cardIdCount': 1
+             'cardIdCount': cardIdCount
+             # 'cardIdCount': 1
              }
         )
         returnArray = {'cardSkillMaster': returnMessageParams, 'count': count}

@@ -25,7 +25,7 @@
                     {% ifchanged cdm.cardId %}
                     <td nowrap rowspan={{ cdm.cardIdCount }}>{{ cdm.typeName }}</td>
                     <td nowrap rowspan={{ cdm.cardIdCount }}>{{ cdm.cardName }}</td>
-<!--                    <td nowrap rowspan={{ cdm.cardIdCount }}><img src="{% static cdm.url %}" width="150" height="200" ></td>-->
+                    <td nowrap rowspan={{ cdm.cardIdCount }}><img src="{% static cdm.url %}" width="150" height="200" ></td>
                     {% else %}
                     {% endifchanged %}
                     <td nowrap>{{ cdm.eventTypeName }}</td>
