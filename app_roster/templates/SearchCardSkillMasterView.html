@@ -22,10 +22,13 @@
 
                 {% for cdm in cardSkillMaster %}
                 <tr>
-                    {% ifchanged cdm.cardId %}
                     <td nowrap rowspan={{ cdm.cardIdCount }}>{{ cdm.typeName }}</td>
                     <td nowrap rowspan={{ cdm.cardIdCount }}>{{ cdm.cardName }}</td>
-                    <td nowrap rowspan={{ cdm.cardIdCount }}><img src="{% static cdm.url %}" width="150" height="200" ></td>
+                    {% ifchanged cdm.cardId %}
+<!--                    <td nowrap rowspan={{ cdm.cardIdCount }}>{{ cdm.typeName }}</td>-->
+<!--                    <td nowrap rowspan={{ cdm.cardIdCount }}>{{ cdm.cardName }}</td>-->
+<!--                    <td nowrap rowspan={{ cdm.cardIdCount }}><img src="{% static cdm.url %}" width="75" height="100" ></td>-->
+<!--                        <td nowrap rowspan={{ cdm.cardIdCount }}></td>-->
                     {% else %}
                     {% endifchanged %}
                     <td nowrap>{{ cdm.eventTypeName }}</td>
