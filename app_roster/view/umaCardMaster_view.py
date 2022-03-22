@@ -325,15 +325,15 @@ def umaCardMessageMasterLoad(request, typeno):
 #////////////////
 # スキルマスタ
 #////////////////
-def umaSkillMasterLoad(request):
+def umaSkillMasterLoad(request, typeno):
     returnArray = []
     returnMessageParams = []
     mongo = settingPymongo('rosterdb', 'app_roster_umaskillmaster')
-    # find = mongo.find(filter={'cardMasterId': 1})
-    find = mongo.find(sort=[('skillMasterId', ASCENDING), ('typeName', ASCENDING)])
-    count = find.count()
+    f = mongo.find(filter={'type': typeno})
+    # find = mongo.find(sort=[('skillMasterId', ASCENDING), ('typeName', ASCENDING)])
+    count = f.count()
 
-    for doc in find:
+    for doc  in f.sort([('id', ASCENDING), ('type', ASCENDING)]):
         # 空白対策
         doc.setdefault('id', '')
         doc.setdefault('skillMasterId', '')

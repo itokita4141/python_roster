@@ -6,37 +6,44 @@
         <meta name="viewport" content="width=device-width, user-scale=yes, initial-scale=1.0, maximum-scale=5.0" />
     </head>
     <body>
-        <input type="button" class="back-button" value="戻る" onclick="location.href='../../umacomptool'">
+        <input type="button" class="uma-back-button" value="戻る" onclick="location.href='../../umacomptool'">
+        <input type="button" class="uma-typeselect-button" value="一覧"          onclick="location.href='../../searchskillmaster/1'">
+        <input type="button" class="uma-typeselect-button" value="脚質別	"       onclick="location.href='../../searchskillmaster/2'">
+        <input type="button" class="uma-typeselect-button" value="距離別"        onclick="location.href='../../searchskillmaster/3'">
+        <input type="button" class="uma-typeselect-button" value="デバフ"        onclick="location.href='../../searchskillmaster/4'">
+        <input type="button" class="uma-typeselect-button" value="継承"         onclick="location.href='../../searchskillmaster/5'">
         <h1>スキルマスタ検索画面({{ count }}件)</h1>
-        <table border="1px">
-            <th>id</th>
-            <th>skillMasterId</th>
-            <th>type</th>
-            <th>typeName</th>
-            <th>type2</th>
-            <th>skillName</th>
-            <th>skillContents</th>
-            <th>skillType</th>
-            <th>raceEvaluation</th>
-            <th>champEvaluation</th>
-            <th>possetionSupportCards</th>
-            <th>possetionsCharactors</th>
-            {% for cdm in skillMaster %}
-            <tr>
-                <td>{{ cdm.id }}</td>
-                <td>{{ cdm.skillMasterId }}</td>
-                <td>{{ cdm.type }}</td>
-                <td>{{ cdm.typeName }}</td>
-                <td>{{ cdm.type2 }}</td>
-                <td>{{ cdm.skillName }}</td>
-                <td>{{ cdm.skillContents }}</td>
-                <td>{{ cdm.skillType }}</td>
-                <td>{{ cdm.raceEvaluation }}</td>
-                <td>{{ cdm.champEvaluation }}</td>
-                <td>{{ cdm.possetionSupportCards }}</td>
-                <td>{{ cdm.possetionsCharactors }}</td>
-            </tr>
-            {% endfor %}
-        </table>
+        <div class="tablefix">
+            <table border="1px">
+                <th>タイプ</td>
+                <th>スキル名</td>
+                <th>評価チャンミ</td>
+                <th>作戦</td>
+                <th>スキル内容</td>
+                <th>所持サポートカード</td>
+                <th>所持キャラ</td>
+                <th>id</td>
+                <th>スキルマスタid</td>
+                <th>タイプ</td>
+                <th>評価競技場</td>
+                <th>総合評価ランク</td>
+                {% for cdm in skillMaster %}
+                <tr>
+                    <td>{{ cdm.typeName }}</td>
+                    <td>{{ cdm.skillName }}</td>
+                    <td>{{ cdm.champEvaluation }}</td>
+                    <td>{{ cdm.skillType }}</td>
+                    <td>{{ cdm.skillContents }}</td>
+                    <td>{{ cdm.possetionSupportCards }}</td>
+                    <td>{{ cdm.possetionsCharactors }}</td>
+                    <td>{{ cdm.id }}</td>
+                    <td>{{ cdm.skillMasterId }}</td>
+                    <td>{{ cdm.type }}</td>
+                    <td>{{ cdm.raceEvaluation }}</td>
+                    <td>{{ cdm.type2 }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
     </body>
 <html>
