@@ -138,11 +138,12 @@ def umaCardMasterLoad(request):
 
 # 指定のkeyの総数を取得する
 def getValueCount(dimension, key, value):
-    count = 0
-    for d in dimension:
-        if d[key] == value:
-            count += 1
-    return count
+    l = [d.get(key) for d in dimension]
+    # count = 0
+    # for d in dimension:
+    #     if d[key] == value:
+    #         count += 1
+    return l.count(value)
 
 # ////////////////
 # サポートカードスキルマスタ
