@@ -17,7 +17,7 @@ from setting_alchemy import session
 sys.path.append("app_roster/db/sqlalchemy/migrate/models")
 import copy
 
-# 〓=================rwar=======
+# 〓========================
 # pager
 # https://blog.narito.ninja/detail/89
 # 〓========================

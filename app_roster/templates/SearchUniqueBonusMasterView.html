@@ -6,46 +6,56 @@
         <meta name="viewport" content="width=device-width, user-scale=yes, initial-scale=1.0, maximum-scale=5.0" />
     </head>
     <body>
-        <input type="button" class="back-button" value="戻る" onclick="location.href='../umacomptool'">
+        <input type="button" class="uma-back-button" value="戻る" onclick="location.href='../../umacomptool'">
+        <input type="button" class="uma-typeselect-button" value="スピード" onclick="location.href='../../searchuniquebonusmaster/1'">
+        <input type="button" class="uma-typeselect-button" value="スタミナ" onclick="location.href='../../searchuniquebonusmaster/2'">
+        <input type="button" class="uma-typeselect-button" value="パワー"   onclick="location.href='../../searchuniquebonusmaster/3'">
+        <input type="button" class="uma-typeselect-button" value="勝負根性" onclick="location.href='../../searchuniquebonusmaster/4'">
+        <input type="button" class="uma-typeselect-button" value="賢さ"    onclick="location.href='../../searchuniquebonusmaster/5'">
+        <input type="button" class="uma-typeselect-button" value="友人"    onclick="location.href='../../searchuniquebonusmaster/6'">
         <h1>固有ボーナスマスタ検索画面({{ count }}件)</h1>
-        <table border="1px">
-            <th>ID</th>
-            <th>カード固有ボーナスid</th>
-            <th>タイプ番号</th>
-            <th>タイプ</th>
-            <th>カードID</th>
-            <th>カード名称</th>
-            <th>"アオハル評価 無凸</th>
-            <th>"アオハル評価 完凸</th>
-            <th>"URAファイナルズ 無凸</th>
-            <th>"URAファイナルズ 完凸</th>
-            <th>リセマラ</th>
-            <th>ランク</th>
-            <th>参考情報</th>
-            <th>固有スキル名称</th>
-            <th>レベル</th>
-            <th>効果</th>
-
-            {% for cdm in cardUniqueBonusMaster %}
-            <tr>
-                <td>{{ cdm.id }}</td>
-                <td>{{ cdm.cardUniqueBonusId }}</td>
-                <td>{{ cdm.typeNo }}</td>
-                <td>{{ cdm.typeName }}</td>
-                <td>{{ cdm.cardId }}</td>
-                <td>{{ cdm.cardName }}</td>
-                <td>{{ cdm.aoharuEvaluationLimit0 }}</td>
-                <td>{{ cdm.aoharuEvaluationLimit4 }}</td>
-                <td>{{ cdm.uraFinalsLimit0 }}</td>
-                <td>{{ cdm.uraFinalsLimit4 }}</td>
-                <td>{{ cdm.lisetMarathonRank }}</td>
-                <td>{{ cdm.rank }}</td>
-                <td>{{ cdm.referenceInformation }}</td>
-                <td>{{ cdm.uniqueFactorName }}</td>
-                <td>{{ cdm.getLevel }}</td>
-                <td>{{ cdm.effect }}</td>
-            </tr>
-            {% endfor %}
-        </table>
+        <div class="tablefix">
+            <table border="1px">
+                <th>タイプ</th>
+                <th >画像</th>
+                <th>カード名称</th>
+                <th>"アオハル評価 無凸</th>
+                <th>"アオハル評価 完凸</th>
+                <th>"URAファイナルズ 無凸</th>
+                <th>"URAファイナルズ 完凸</th>
+                <th>リセマラ</th>
+                <th>ランク</th>
+                <th>参考情報</th>
+                <th>固有スキル名称</th>
+                <th>レベル</th>
+                <th>効果</th>
+                <th>ID</th>
+                <th>カード固有ボーナスid</th>
+                <th>タイプ番号</th>
+                <th>カードID</th>
+    
+                {% for cdm in cardUniqueBonusMaster %}
+                <tr>
+                    <td>{{ cdm.typeName }}</td>
+                    <td>{{ cdm.cardName }}</td>
+                    <td><img src="{% static cdm.url %}" width="80" height="100" ></td>
+                    <td>{{ cdm.aoharuEvaluationLimit0 }}</td>
+                    <td>{{ cdm.aoharuEvaluationLimit4 }}</td>
+                    <td>{{ cdm.uraFinalsLimit0 }}</td>
+                    <td>{{ cdm.uraFinalsLimit4 }}</td>
+                    <td>{{ cdm.lisetMarathonRank }}</td>
+                    <td>{{ cdm.rank }}</td>
+                    <td>{{ cdm.referenceInformation }}</td>
+                    <td>{{ cdm.uniqueFactorName }}</td>
+                    <td>{{ cdm.getLevel }}</td>
+                    <td>{{ cdm.effect }}</td>
+                    <td>{{ cdm.id }}</td>
+                    <td>{{ cdm.cardUniqueBonusId }}</td>
+                    <td>{{ cdm.typeNo }}</td>
+                    <td>{{ cdm.cardId }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>>
     </body>
 <html>
