@@ -152,14 +152,15 @@ def umaCardSkillMasterLoad(request):
     returnArray = []
     returnMessageParams = []
     mongo = settingPymongo('rosterdb', 'app_roster_umacardskillmaster')
-    # find = mongo.find(filter={'cardMasterId': 1})
-    find = mongo.find(sort=[('carSkillMasterId', ASCENDING), ('typeName', ASCENDING)])
-    findAnother = copy.deepcopy(find)
-    count = find.count()
+    # find = mongo.find()
+    f = mongo.find(filter={'typeNo': 1})
+    # find = mongo.find(sort=[('carSkillMasterId', ASCENDING), ('typeName', ASCENDING)])
+    findAnother = copy.deepcopy(f)
+    count = f.count()
     cardIdCount = 0
     beforeCardId = 0
 
-    for doc in find:
+    for doc in f.sort([('carSkillMasterId', ASCENDING), ('typeName', ASCENDING)]):
         # 空白対策
         doc.setdefault('id', '')
         doc.setdefault('carSkillMasterId', '')
