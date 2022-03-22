@@ -16,6 +16,32 @@ from setting_alchemy import ENGINE
 from setting_alchemy import session
 sys.path.append("app_roster/db/sqlalchemy/migrate/models")
 import copy
+
+# 〓========================
+# pager
+# https://blog.narito.ninja/detail/89
+# 〓========================
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+def paginate_queryset(request, queryset, count):
+    """Pageオブジェクトを返す。
+    ページングしたい場合に利用してください。
+    countは、1ページに表示する件数です。
+    返却するPgaeオブジェクトは、以下のような感じで使えます。
+        {% if page_obj.has_previous %}
+          <a href="?page={{ page_obj.previous_page_number }}">Prev</a>
+        {% endif %}
+    また、page_obj.object_list で、count件数分の絞り込まれたquerysetが取得できます。
+    """
+    paginator = Paginator(queryset, count)
+    page = request.GET.get('page')
+    try:
+        page_obj = paginator.page(page)
+    except PageNotAnInteger:
+        page_obj = paginator.page(1)
+    except EmptyPage:
+        page_obj = paginator.page(paginator.num_pages)
+    return page_obj
+
 # 〓========================
 # うまツール関連
 # 〓========================
@@ -149,10 +175,12 @@ def getValueCount(dimension, key, value):
 # サポートカードスキルマスタ
 # ////////////////
 def umaCardSkillMasterLoad(request):
+    # paginate_by = 10
     returnArray = []
     returnMessageParams = []
     mongo = settingPymongo('rosterdb', 'app_roster_umacardskillmaster')
     # find = mongo.find()
+    # page = request.GET.get('page') # ページ数取得
     f = mongo.find(filter={'typeNo': 1})
     # find = mongo.find(sort=[('carSkillMasterId', ASCENDING), ('typeName', ASCENDING)])
     findAnother = copy.deepcopy(f)
@@ -197,8 +225,24 @@ def umaCardSkillMasterLoad(request):
              # 'cardIdCount': 1
              }
         )
-        returnArray = {'cardSkillMaster': returnMessageParams, 'count': count}
+
+    page_obj = paginate_queryset(request, returnMessageParams, 10)
+    returnArray = {'cardSkillMaster': returnMessageParams, 'count': count, 'post_list': page_obj.object_list, 'page_obj': page_obj}
+    # returnArray = {
+    #     'post_list': page_obj.object_list,
+    #     'page_obj': page_obj,
+    # }
+    # return render(request, 'app/post_list.html', context)
     return render(request, 'SearchCardSkillMasterView.html', returnArray)
+
+    # post_list = Post.objects.all()
+    # page_obj = paginate_queryset(request, post_list, 1)
+    # context = {
+    #     'post_list': page_obj.object_list,
+    #     'page_obj': page_obj,
+    # }
+    # return render(request, 'app/post_list.html', context)
+
 
 #////////////////
 # スキルマスタ

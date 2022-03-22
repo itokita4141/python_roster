@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, user-scale=yes, initial-scale=1.0, maximum-scale=5.0" />
     </head>
     <body>
+   
         <input type="button" class="uma-back-button" value="戻る" onclick="location.href='../umacomptool'">
         <h1>カードスキルマスタ検索画面({{ count }}件)</h1>
         <div class="tablefix">
@@ -41,5 +42,36 @@
                 {% endfor %}
             </table>
         </div>
+
+        <!--paging処理-->
+        {% for post in post_list %}
+            <p>{{ post.title }}</p>
+        {% endfor %}
+        <ul class="pagination">
+            <!-- 前へ の部分 -->
+            {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+            {% endif %}
+            <!-- 数字の部分 -->
+            {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                    <li class="page-item active"><a class="page-link" href="#!">{{ num }}</a></li>
+                {% else %}
+                    <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                {% endif %}
+            {% endfor %}
+            <!-- 次へ の部分 -->
+            {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
     </body>
 <html>
