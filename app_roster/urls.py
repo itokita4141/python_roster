@@ -37,12 +37,12 @@ urlpatterns = [
     path('searchcardmaster/<int:typeno>/',umaCardMasterLoad,name="searchcardmaster"),
     # カードスキルマスタ
     path('cardskillmaster/<int:typeno>/',umaCardSkillMasterLoad,name="cardskillmaster"),
+    # カードメッセージマスタ
+    path('searchcardmessegemaster/<int:typeno>/',umaCardMessageMasterLoad,name="searchcardmessegemaster"),
     # スキルマスタ
     path('searchskillmaster/',umaSkillMasterLoad,name="searchskillmaster"),
     # 固有ボーナスマスタ
     path('searchuniquebonusmaster/',umaCardUniqueBonusLoad,name="searchuniquebonusmaster"),
-    # カードメッセージマスタ
-    path('searchcardmessegemaster/',umaCardMessageMasterLoad,name="searchcardmessegemaster"),
     # 白因子マスタ
     path('searchwhitefactormaster/',umaWhiteFactorLoad,name="searchwhitefactormaster"),
     # =========管理画面=========

@@ -243,6 +243,84 @@ def umaCardSkillMasterLoad(request, typeno):
     # }
     # return render(request, 'app/post_list.html', context)
 
+# ////////////////
+# カードメッセージマスタ
+# ////////////////
+def umaCardMessageMasterLoad(request, typeno):
+    returnArray = []
+    returnMessageParams = []
+    mongo = settingPymongo('rosterdb', 'app_roster_umacardmessagemaster')
+    # find = mongo.find(filter={'cardMasterId': 1})
+    f = mongo.find(filter={'cardTypeNo': typeno})
+    # find = mongo.find(sort=[('cardId', ASCENDING),('messageId', ASCENDING)])
+    findAnother = copy.deepcopy(f)
+    count = f.count()
+    cardIdCount = 0
+    beforeCardId = 0
+
+    for doc in f.sort([('cardid', ASCENDING), ('messageId', ASCENDING)]):
+        # 空白対策
+        doc.setdefault('id', '')
+        doc.setdefault('cardMessageMasterId', '')
+        doc.setdefault('cardTypeNo', '')
+        doc.setdefault('cardTypeName', '')
+        doc.setdefault('cardid', '')
+        doc.setdefault('cardName', '')
+        doc.setdefault('type', '')
+        doc.setdefault('messageId', '')
+        doc.setdefault('messageEventId', '')
+        doc.setdefault('eventTypeId', '')
+        doc.setdefault('eventType', '')
+        doc.setdefault('title', '')
+        doc.setdefault('selectType', '')
+        doc.setdefault('result', '')
+        doc.setdefault('result1', '')
+        doc.setdefault('result2', '')
+        doc.setdefault('result3', '')
+        doc.setdefault('result4', '')
+        doc.setdefault('result5', '')
+        doc.setdefault('result6', '')
+        doc.setdefault('result7', '')
+        doc.setdefault('result8', '')
+        doc.setdefault('result9', '')
+        doc.setdefault('result10', '')
+        doc.setdefault('cardIdCount', '')
+        if beforeCardId != doc['cardid']:
+            findCopy = copy.deepcopy(findAnother)
+            cardIdCount = getValueCount(findCopy, 'cardid', doc['cardid'])
+            beforeCardId = doc['cardid']
+        # スキルマスタ配列格納
+        returnMessageParams.append(
+            {'id': doc['id'],
+             'cardMessageMasterId': doc['cardMessageMasterId'],
+             'cardTypeNo': doc['cardTypeNo'],
+             'cardTypeName': doc['cardTypeName'],
+             'cardid': doc['cardid'],
+             'cardName': doc['cardName'],
+             'type': doc['type'],
+             'messageId': doc['messageId'],
+             'messageEventId': doc['messageEventId'],
+             'eventTypeId': doc['eventTypeId'],
+             'eventType': doc['eventType'],
+             'title': doc['title'],
+             'selectType': doc['selectType'],
+             'result': doc['result'],
+             'result1': doc['result1'],
+             'result2': doc['result2'],
+             'result3': doc['result3'],
+             'result4': doc['result4'],
+             'result5': doc['result5'],
+             'result6': doc['result6'],
+             'result7': doc['result7'],
+             'result8': doc['result8'],
+             'result9': doc['result9'],
+             'result10': doc['result10'],
+             'url': 'images/' + str(doc['cardid']) + '.png',
+             'cardIdCount': cardIdCount
+             }
+        )
+        returnArray = {'cardMessageMaster': returnMessageParams, 'count': count}
+    return render(request, 'SearchCardMessageMasterView.html', returnArray)
 
 #////////////////
 # スキルマスタ
@@ -339,74 +417,6 @@ def umaCardUniqueBonusLoad(request):
         )
         returnArray = {'cardUniqueBonusMaster': returnMessageParams, 'count': count}
     return render(request, 'SearchUniqueBonusMasterView.html', returnArray)
-
-# ////////////////
-# カードメッセージマスタ
-# ////////////////
-def umaCardMessageMasterLoad(request):
-    returnArray = []
-    returnMessageParams = []
-    mongo = settingPymongo('rosterdb', 'app_roster_umacardmessagemaster')
-    # find = mongo.find(filter={'cardMasterId': 1})
-    find = mongo.find(sort=[('carSkillMasterId', ASCENDING), ('typeName', ASCENDING)])
-    count = find.count()
-
-    for doc in find:
-        # 空白対策
-        doc.setdefault('id', '')
-        doc.setdefault('cardMessageMasterId', '')
-        doc.setdefault('cardTypeNo', '')
-        doc.setdefault('cardTypeName', '')
-        doc.setdefault('cardid', '')
-        doc.setdefault('cardName', '')
-        doc.setdefault('type', '')
-        doc.setdefault('messageId', '')
-        doc.setdefault('messageEventId', '')
-        doc.setdefault('eventTypeId', '')
-        doc.setdefault('eventType', '')
-        doc.setdefault('title', '')
-        doc.setdefault('selectType', '')
-        doc.setdefault('result', '')
-        doc.setdefault('result1', '')
-        doc.setdefault('result2', '')
-        doc.setdefault('result3', '')
-        doc.setdefault('result4', '')
-        doc.setdefault('result5', '')
-        doc.setdefault('result6', '')
-        doc.setdefault('result7', '')
-        doc.setdefault('result8', '')
-        doc.setdefault('result9', '')
-        doc.setdefault('result10', '')
-        # スキルマスタ配列格納
-        returnMessageParams.append(
-            {'id': doc['id'],
-             'cardMessageMasterId': doc['cardMessageMasterId'],
-             'cardTypeNo': doc['cardTypeNo'],
-             'cardTypeName': doc['cardTypeName'],
-             'cardid': doc['cardid'],
-             'cardName': doc['cardName'],
-             'type': doc['type'],
-             'messageId': doc['messageId'],
-             'messageEventId': doc['messageEventId'],
-             'eventTypeId': doc['eventTypeId'],
-             'eventType': doc['eventType'],
-             'title': doc['title'],
-             'selectType': doc['selectType'],
-             'result': doc['result'],
-             'result1': doc['result1'],
-             'result2': doc['result2'],
-             'result3': doc['result3'],
-             'result4': doc['result4'],
-             'result5': doc['result5'],
-             'result6': doc['result6'],
-             'result7': doc['result7'],
-             'result8': doc['result8'],
-             'result9': doc['result9'],
-             'result10': doc['result10'],
-             }
-        )
-        returnArray = {'cardMessageMaster': returnMessageParams, 'count': count}
-    return render(request, 'SearchCardMessageMasterView.html', returnArray)
 
 # ////////////////
 # 白因子マスタ
