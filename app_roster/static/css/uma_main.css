@@ -35,6 +35,12 @@ body {
     font-size:20px;
     background-color:lightyellow;
 }
+.uma-typeselect-button {
+    width:100px;
+    height:70px;
+    font-size:20px;
+    background-color:lightskyblue;
+}
 .uma-application-button {
     width:300px;
     height:70px;

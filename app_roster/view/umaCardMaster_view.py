@@ -57,15 +57,15 @@ from pymongo import DESCENDING
 #////////////////
 # サポートカードマスタ
 #////////////////
-def umaCardMasterLoad(request):
+def umaCardMasterLoad(request, typeno):
     returnArray = []
     returnMessageParams = []
     mongo = settingPymongo('rosterdb', 'app_roster_umacardmaster')
-    # find = mongo.find(filter={'cardMasterId': 1})
-    find = mongo.find(sort=[('cardMasterId', ASCENDING), ('cardName', ASCENDING)])
-    count = find.count()
+    f = mongo.find(filter={'cardTypeNo': typeno})
+    # find = mongo.find(sort=[('cardMasterId', ASCENDING), ('cardName', ASCENDING)])
+    count = f.count()
 
-    for doc in find:
+    for doc in f.sort([('cardMasterId', ASCENDING), ('cardName', ASCENDING)]):
         # 空白対策
         doc.setdefault('id', '')
         doc.setdefault('cardMasterId', '')
@@ -174,14 +174,14 @@ def getValueCount(dimension, key, value):
 # ////////////////
 # サポートカードスキルマスタ
 # ////////////////
-def umaCardSkillMasterLoad(request):
+def umaCardSkillMasterLoad(request, typeno):
     # paginate_by = 10
     returnArray = []
     returnMessageParams = []
     mongo = settingPymongo('rosterdb', 'app_roster_umacardskillmaster')
     # find = mongo.find()
     # page = request.GET.get('page') # ページ数取得
-    f = mongo.find(filter={'typeNo': 1})
+    f = mongo.find(filter={'typeNo': typeno})
     # find = mongo.find(sort=[('carSkillMasterId', ASCENDING), ('typeName', ASCENDING)])
     findAnother = copy.deepcopy(f)
     count = f.count()

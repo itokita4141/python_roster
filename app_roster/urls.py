@@ -34,14 +34,13 @@ urlpatterns = [
     # メニュー画面
     path('umacomptool/', UmaCompToolView.as_view(), name="umacomptool"),
     # カードマスタ
-    # path('searchcardmaster/',SearchCardMasterView.as_view(),name="searchcardmaster"),
-    path('searchcardmaster/',umaCardMasterLoad,name="searchcardmaster"),
+    path('searchcardmaster/<int:typeno>/',umaCardMasterLoad,name="searchcardmaster"),
+    # カードスキルマスタ
+    path('cardskillmaster/<int:typeno>/',umaCardSkillMasterLoad,name="cardskillmaster"),
     # スキルマスタ
     path('searchskillmaster/',umaSkillMasterLoad,name="searchskillmaster"),
     # 固有ボーナスマスタ
     path('searchuniquebonusmaster/',umaCardUniqueBonusLoad,name="searchuniquebonusmaster"),
-    # カードスキルマスタ
-    path('cardskillmaster/',umaCardSkillMasterLoad,name="cardskillmaster"),
     # カードメッセージマスタ
     path('searchcardmessegemaster/',umaCardMessageMasterLoad,name="searchcardmessegemaster"),
     # 白因子マスタ
