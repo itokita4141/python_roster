@@ -1,3 +1,4 @@
+id,genreName,gereId,genre2Name,genre2Id,branchNo,kindNo,skillName,explanation,category,rarity,activeCondition1,activeCondition2,activeCondition3,activeCondition4,activeCondition5,activeCondition6,activeCondition7,activeCondition8,activeCondition9,activeCondition10,effect1,effect2,effect3,effect4,effect5,effect6,effect7,effect8,effect9,effect10,wisepoint,getpoint,evaluationPoint
 1,パッシブスキル,1,スピード,1,1,0,右回り◎,右回りコースが得意になる,パッシブ,R,右回り,スピード,,,,,,,,,-,-,-,-,-,-,-,-,-,-,なし,110Pt,174Pt
 2,パッシブスキル,1,スピード,1,1,0,右回り○,右回りコースが少し得意になる,パッシブ,R,右回り,スピード,,,,,,,,,40,-,-,-,-,-,-,-,-,-,なし,90Pt,129Pt
 3,パッシブスキル,1,スピード,1,1,3,右回り×,右回りコースが少し苦手になる,パッシブ,R,右回り,スピード,,,,,,,,,-40,-,-,-,-,-,-,-,-,-,なし,50Pt,-129Pt

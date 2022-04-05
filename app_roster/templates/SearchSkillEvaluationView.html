@@ -17,16 +17,6 @@
         <!--9	固有スキル-->
         <!--10	固有回復スキル-->
         <input type="button" class="uma-back-button" value="戻る" onclick="location.href='../../umacomptool'">
-        <input type="button" class="uma-typeselect-button" value="通常スキル" onclick="location.href='../../searchskillevaluationmaster/1'">
-        <input type="button" class="uma-typeselect-button" value="回復スキル" onclick="location.href='../../searchskillevaluationmaster/2'">
-        <input type="button" class="uma-typeselect-button" value="妨害スキル" onclick="location.href='../../searchskillevaluationmaster/3'">
-        <input type="button" class="uma-typeselect-button" value="緑スキル" onclick="location.href='../../searchskillevaluationmaster/4'">
-        <input type="button" class="uma-typeselect-button" value="金スキル" onclick="location.href='../../searchskillevaluationmaster/5'">
-        <input type="button" class="uma-typeselect-button" value="金水スキル" onclick="location.href='../../searchskillevaluationmaster/6'">
-        <input type="button" class="uma-typeselect-button" value="金赤スキル" onclick="location.href='../../searchskillevaluationmaster/7'">
-        <input type="button" class="uma-typeselect-button" value="金緑スキル" onclick="location.href='../../searchskillevaluationmaster/8'">
-        <input type="button" class="uma-typeselect-button" value="固有スキル" onclick="location.href='../../searchskillevaluationmaster/9'">
-        <input type="button" class="uma-typeselect-button" value="固有回復スキル" onclick="location.href='../../searchskillevaluationmaster/10'">
 
         <h3>カード評価マスタ検索画面(全{{ count }}件)</h3>
         <div class="tablefix">
@@ -46,7 +36,7 @@
                     <th nowrap >評価点</th>
                     <th nowrap >評価効率</th>
                 </tr>
-                {% for cdm in cardMaster %}
+                {% for cdm in umaSkillEvaluationMaster %}
                 <tr>
                     <td nowrap>{{ cdm.id }}</td>
                     <td nowrap>{{ cdm.genreNo }}</td>
@@ -65,5 +55,18 @@
                 {% endfor %}
             </table>
         </div>
+    
+        <br/>
+        <input type="button" class="uma-genre-button" value="全て" onclick="location.href='../../seearchcardevaluationmaster/0'">
+        <input type="button" class="uma-genre-button" value="通常スキル" onclick="location.href='../../seearchcardevaluationmaster/1'">
+        <input type="button" class="uma-genre-button" value="回復スキル" onclick="location.href='../../seearchcardevaluationmaster/2'">
+        <input type="button" class="uma-genre-button" value="妨害スキル" onclick="location.href='../../seearchcardevaluationmaster/3'">
+        <input type="button" class="uma-genre-button" value="緑スキル" onclick="location.href='../../seearchcardevaluationmaster/4'">
+        <input type="button" class="uma-genre-button" value="金スキル" onclick="location.href='../../seearchcardevaluationmaster/5'">
+        <input type="button" class="uma-genre-button" value="金水スキル" onclick="location.href='../../seearchcardevaluationmaster/6'">
+        <input type="button" class="uma-genre-button" value="金赤スキル" onclick="location.href='../../seearchcardevaluationmaster/7'">
+        <input type="button" class="uma-genre-button" value="金緑スキル" onclick="location.href='../../seearchcardevaluationmaster/8'">
+        <input type="button" class="uma-genre-button" value="固有スキル" onclick="location.href='../../seearchcardevaluationmaster/9'">
+        <input type="button" class="uma-genre-button" value="固有回復スキル" onclick="location.href='../../seearchcardevaluationmaster/10'">
     </body>
 <html>

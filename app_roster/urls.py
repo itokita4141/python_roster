@@ -46,11 +46,11 @@ urlpatterns = [
     # 白因子マスタ
     path('searchwhitefactormaster/', umaWhiteFactorLoad, name="searchwhitefactormaster"),
     # 育成ウママスタ
-    path('searchumamaster/<int:typeno>/',umaMasterLoad, name="searchumamaster"),
+    path('searchumamaster/',umaMasterLoad, name="searchumamaster"),
     # スキル詳細マスタ
     path('searchskilldetailmaster/<int:gereId>/<int:gere2Id>/',umaSkillDetailMasterLoad, name="searchskilldetailmaster"),
     # スキル評価マスタ
-    path('seearchcardevaluationmaster/<int:genreNo>//',umaSkillEvaluationMasterLoad, name="seearchcardevaluationmaster"),
+    path('seearchcardevaluationmaster/<int:genreNo>/',umaSkillEvaluationMasterLoad, name="seearchcardevaluationmaster"),
     # =========管理画面=========
     path('admin/', admin.site.urls),
     # =========mongo管理画面用=========

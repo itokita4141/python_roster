@@ -38,39 +38,7 @@
         <!--フェーズ	8	中盤	2-->
         <!--フェーズ	8	終盤	3-->
         <!--フェーズ	8	ダート	4-->
-        <input type="button" class="uma-back-button" value="戻る" onclick="location.href='../../umacomptool'">
-        <input type="button" class="uma-typeselect-button" value="パッシブスキル(スピード)" onclick="location.href='../../searchcarddetailmaster/1/1'">
-        <input type="button" class="uma-typeselect-button" value="パッシブスキル(スタミナ)" onclick="location.href='../../searchcarddetailmaster/1/2'">
-        <input type="button" class="uma-typeselect-button" value="パッシブスキル(パワー)" onclick="location.href='../../searchcarddetailmaster/1/3'">
-        <input type="button" class="uma-typeselect-button" value="パッシブスキル(勝負根性)" onclick="location.href='../../searchcarddetailmaster/1/4'">
-        <input type="button" class="uma-typeselect-button" value="パッシブスキル(賢さ)" onclick="location.href='../../searchcarddetailmaster/1/5'">
-        <input type="button" class="uma-typeselect-button" value="パッシブスキル(複合)" onclick="location.href='../../searchcarddetailmaster/1/6'">
-        <input type="button" class="uma-typeselect-button" value="位置設定(標速度)" onclick="location.href='../../searchcarddetailmaster/2/1'">
-        <input type="button" class="uma-typeselect-button" value="位置設定(速度設定)" onclick="location.href='../../searchcarddetailmaster/2/2'">
-        <input type="button" class="uma-typeselect-button" value="位置設定(移動速度)" onclick="location.href='../../searchcarddetailmaster/2/3'">
-        <input type="button" class="uma-typeselect-button" value="位置設定(タート)" onclick="location.href='../../searchcarddetailmaster/2/4'">
-        <input type="button" class="uma-typeselect-button" value="位置設定(視野)" onclick="location.href='../../searchcarddetailmaster/2/5'">
-        <input type="button" class="uma-typeselect-button" value="回復(持久力)" onclick="location.href='../../searchcarddetailmaster/3/1'">
-        <input type="button" class="uma-typeselect-button" value="デバフ(現在速度)" onclick="location.href='../../searchcarddetailmaster/4/1'">
-        <input type="button" class="uma-typeselect-button" value="デバフ(加速度)" onclick="location.href='../../searchcarddetailmaster/4/2'">
-        <input type="button" class="uma-typeselect-button" value="デバフ(かかり時間)" onclick="location.href='../../searchcarddetailmaster/4/3'">
-        <input type="button" class="uma-typeselect-button" value="デバフ(持久力)" onclick="location.href='../../searchcarddetailmaster/4/4'">
-        <input type="button" class="uma-typeselect-button" value="デバフ(視野)" onclick="location.href='../../searchcarddetailmaster/4/5'">
-        <input type="button" class="uma-typeselect-button" value="スキル種別(継承固有)" onclick="location.href='../../searchcarddetailmaster/5/1'">
-        <input type="button" class="uma-typeselect-button" value="スキル種別(アオハル呼吸)" onclick="location.href='../../searchcarddetailmaster/5/2'">
-        <input type="button" class="uma-typeselect-button" value="スキル種別(継承固有)" onclick="location.href='../../searchcarddetailmaster/5/3'">
-        <input type="button" class="uma-typeselect-button" value="作戦(逃げ)" onclick="location.href='../../searchcarddetailmaster/6/1'">
-        <input type="button" class="uma-typeselect-button" value="作戦(先行)" onclick="location.href='../../searchcarddetailmaster/6/2'">
-        <input type="button" class="uma-typeselect-button" value="作戦(差し)" onclick="location.href='../../searchcarddetailmaster/6/3'">
-        <input type="button" class="uma-typeselect-button" value="作戦(追込)" onclick="location.href='../../searchcarddetailmaster/6/4'">
-        <input type="button" class="uma-typeselect-button" value="距離(短距離)" onclick="location.href='../../searchcarddetailmaster/7/1'">
-        <input type="button" class="uma-typeselect-button" value="距離(マイル)" onclick="location.href='../../searchcarddetailmaster/7/2'">
-        <input type="button" class="uma-typeselect-button" value="距離(中距離)" onclick="location.href='../../searchcarddetailmaster/7/3'">
-        <input type="button" class="uma-typeselect-button" value="距離(長距離)" onclick="location.href='../../searchcarddetailmaster/7/4'">
-        <input type="button" class="uma-typeselect-button" value="フェーズ(序盤)" onclick="location.href='../../searchcarddetailmaster/8/1'">
-        <input type="button" class="uma-typeselect-button" value="フェーズ(中盤)" onclick="location.href='../../searchcarddetailmaster/8/2'">
-        <input type="button" class="uma-typeselect-button" value="フェーズ(終盤)" onclick="location.href='../../searchcarddetailmaster/8/3'">
-        <input type="button" class="uma-typeselect-button" value="フェーズ(ダート)" onclick="location.href='../../searchcarddetailmaster/8/4'">
+        <input type="button" class="uma-back-button" value="戻る" onclick="location.href='../../../umacomptool'">
         
         <h3>スキル詳細画面(全{{ count }}件)</h3>
         <div class="tablefix">
@@ -111,7 +79,7 @@
                     <th nowrap >ジャンル1id</th>
                     <th nowrap >ジャンル2id</th>
                 </tr>
-                {% for cdm in cardMaster %}
+                {% for cdm in umaCardSkillDetailMaster %}
                 <tr>
                     <td nowrap>{{ cdm.genreName }}</td>
                     <td nowrap>{{ cdm.genre2Name }}</td>
@@ -151,5 +119,48 @@
                 {% endfor %}
             </table>
         </div>
+    
+        <br/>
+        <input type="button" class="uma-genre-button" value="全て" onclick="location.href='../../../searchskilldetailmaster/0/0'">
+        <div>パッシブスキル</div>
+        <input type="button" class="uma-genre-button" value="スピード" onclick="location.href='../../../searchskilldetailmaster/1/1'">
+        <input type="button" class="uma-genre-button" value="スタミナ" onclick="location.href='../../../searchskilldetailmaster/1/2'">
+        <input type="button" class="uma-genre-button" value="パワー" onclick="location.href='../../../searchskilldetailmaster/1/3'">
+        <input type="button" class="uma-genre-button" value="勝負根性" onclick="location.href='../../../searchskilldetailmaster/1/4'">
+        <input type="button" class="uma-genre-button" value="賢さ" onclick="location.href='../../../searchskilldetailmaster/1/5'">
+        <input type="button" class="uma-genre-button" value="複合" onclick="location.href='../../../searchskilldetailmaster/1/6'">
+        <div>位置設定</div>
+        <input type="button" class="uma-genre-button" value="位置設定(標速度)" onclick="location.href='../../../searchskilldetailmaster/2/1'">
+        <input type="button" class="uma-genre-button" value="位置設定(速度設定)" onclick="location.href='../../../searchskilldetailmaster/2/2'">
+        <input type="button" class="uma-genre-button" value="位置設定(移動速度)" onclick="location.href='../../../searchskilldetailmaster/2/3'">
+        <input type="button" class="uma-genre-button" value="位置設定(タート)" onclick="location.href='../../../searchskilldetailmaster/2/4'">
+        <input type="button" class="uma-genre-button" value="位置設定(視野)" onclick="location.href='../../../searchskilldetailmaster/2/5'">
+        <div>回復</div>
+        <input type="button" class="uma-genre-button" value="回復(持久力)" onclick="location.href='../../../searchskilldetailmaster/3/1'">
+        <div>デバフ</div>
+        <input type="button" class="uma-genre-button" value="現在速度" onclick="location.href='../../../searchskilldetailmaster/4/1'">
+        <input type="button" class="uma-genre-button" value="加速度" onclick="location.href='../../../searchskilldetailmaster/4/2'">
+        <input type="button" class="uma-genre-button" value="かかり時間" onclick="location.href='../../../searchskilldetailmaster/4/3'">
+        <input type="button" class="uma-genre-button" value="持久力" onclick="location.href='../../../searchskilldetailmaster/4/4'">
+        <input type="button" class="uma-genre-button" value="視野" onclick="location.href='../../../searchskilldetailmaster/4/5'">
+        <div>スキル種別</div>
+        <input type="button" class="uma-genre-button" value="継承固有" onclick="location.href='../../../searchskilldetailmaster/5/1'">
+        <input type="button" class="uma-genre-button" value="アオハル呼吸" onclick="location.href='../../../searchskilldetailmaster/5/2'">
+        <input type="button" class="uma-genre-button" value="継承固有" onclick="location.href='../../../searchskilldetailmaster/5/3'">
+        <div>作戦</div>
+        <input type="button" class="uma-genre-button" value="逃げ" onclick="location.href='../../../searchskilldetailmaster/6/1'">
+        <input type="button" class="uma-genre-button" value="先行" onclick="location.href='../../../searchskilldetailmaster/6/2'">
+        <input type="button" class="uma-genre-button" value="差し" onclick="location.href='../../../searchskilldetailmaster/6/3'">
+        <input type="button" class="uma-genre-button" value="追込" onclick="location.href='../../../searchskilldetailmaster/6/4'">
+        <div>距離</div>
+        <input type="button" class="uma-genre-button" value="短距離" onclick="location.href='../../../searchskilldetailmaster/7/1'">
+        <input type="button" class="uma-genre-button" value="マイル" onclick="location.href='../../../searchskilldetailmaster/7/2'">
+        <input type="button" class="uma-genre-button" value="中距離" onclick="location.href='../../../searchskilldetailmaster/7/3'">
+        <input type="button" class="uma-genre-button" value="長距離" onclick="location.href='../../../searchskilldetailmaster/7/4'">
+        <div>フェーズ</div>
+        <input type="button" class="uma-genre-button" value="序盤" onclick="location.href='../../../searchskilldetailmaster/8/1'">
+        <input type="button" class="uma-genre-button" value="中盤" onclick="location.href='../../../searchskilldetailmaster/8/2'">
+        <input type="button" class="uma-genre-button" value="終盤" onclick="location.href='../../../searchskilldetailmaster/8/3'">
+        <input type="button" class="uma-genre-button" value="ダート" onclick="location.href='../../../searchskilldetailmaster/8/4'">
     </body>
 <html>
