@@ -559,12 +559,13 @@ def umaMasterLoad(request):
 # ////////////////
 # スキル詳細マスタ
 # ////////////////
-def umaSkillDetailMasterLoad(request):
+def umaSkillDetailMasterLoad(request, gereId, typeno2):
     returnArray = []
     returnMessageParams = []
     mongo = settingPymongo('rosterdb', 'app_roster_skilldetailmaster')
     # find = mongo.find(filter={'cardMasterId': 1})
-    find = mongo.find(sort=[('id', ASCENDING)])
+    find = mongo.find(filter={'gereId': gereId, 'genre2Id': typeno2})
+    # find = mongo.find(sort=[('id', ASCENDING)])
     count = find.count()
 
     for doc in find:
@@ -649,11 +650,12 @@ def umaSkillDetailMasterLoad(request):
 # ////////////////
 # スキル評価マスタ
 # ////////////////
-def umaSkillEvaluationMasterLoad(request):
+def umaSkillEvaluationMasterLoad(request, genreNo):
     returnArray = []
     returnMessageParams = []
     mongo = settingPymongo('rosterdb', 'app_roster_skillevaluationmaster')
     # find = mongo.find(filter={'cardMasterId': 1})
+    find = mongo.find(filter={'genreNo': genreNo})
     find = mongo.find(sort=[('id', ASCENDING)])
     count = find.count()
 
