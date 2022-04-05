@@ -659,7 +659,9 @@ def umaSkillEvaluationMasterLoad(request, genreNo):
     returnMessageParams = []
     mongo = settingPymongo('rosterdb', 'app_roster_skillevaluationmaster')
     # find = mongo.find(filter={'cardMasterId': 1})
-    if genreNo == 0:
+    if genreNo == 99:
+        find = mongo.find(sort=[('skillName', ASCENDING)])
+    elif genreNo == 0:
         find = mongo.find(sort=[('id', ASCENDING)])
     else:
         find = mongo.find(filter={'genreNo': genreNo})
