@@ -1,7 +1,7 @@
 # 参考 https://qiita.com/Edim/items/90ee83a5d385807f67a6
 
 from .models import Users, Attendances, Logs
-from .models import umaCardMaster, umaCardSkillMaster, umaCardMessageMaster, umaWhiteFactor
+from .models import umaCardMaster, umaCardSkillMaster, umaCardMessageMaster, umaWhiteFactor, umaMaster, SkillDetailMaster, SkillEvaluationMaster
 
 from rest_framework import serializers
 # うま用

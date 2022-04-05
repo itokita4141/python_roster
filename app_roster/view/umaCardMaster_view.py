@@ -46,7 +46,7 @@ def paginate_queryset(request, queryset, count):
 # うまツール関連
 # 〓========================
 from rest_framework import viewsets
-from app_roster.models import umaCardUniqueBonus, umaCardMaster, umaCardSkillMaster, umaCardMessageMaster, umaWhiteFactor
+from app_roster.models import umaCardUniqueBonus, umaCardMaster, umaCardSkillMaster, umaCardMessageMaster, umaWhiteFactor, umaWhiteFactor, umaMaster, SkillDetailMaster, SkillEvaluationMaster
 # from app_roster.seliarizers import umaCardMasterSerializer
 from pymongo import MongoClient
 sys.path.append("app_roster/db/mongodb/config")
@@ -457,9 +457,238 @@ def umaWhiteFactorLoad(request):
         returnArray = {'whiteFactorMaster': returnMessageParams, 'count': count}
     return render(request, 'SearchWhiteFactorView.html', returnArray)
 
+# ////////////////
+# ウママスタ
+# ////////////////
+def umaMasterLoad(request):
+    returnArray = []
+    returnMessageParams = []
+    mongo = settingPymongo('rosterdb', 'app_roster_umamaster')
+    # find = mongo.find(filter={'cardMasterId': 1})
+    find = mongo.find(sort=[('id', ASCENDING), ('rarity', ASCENDING)])
+    count = find.count()
+
+    for doc in find:
+        # 空白対策
+        doc.setdefault('id', '')
+        doc.setdefault('rarity', '')
+        doc.setdefault('umaName', '')
+        doc.setdefault('turf', '')
+        doc.setdefault('dirt', '')
+        doc.setdefault('short', '')
+        doc.setdefault('mile', '')
+        doc.setdefault('mid', '')
+        doc.setdefault('long', '')
+        doc.setdefault('escape', '')
+        doc.setdefault('preceding', '')
+        doc.setdefault('insert', '')
+        doc.setdefault('drivein', '')
+        doc.setdefault('speed', '')
+        doc.setdefault('stamina', '')
+        doc.setdefault('power', '')
+        doc.setdefault('guts', '')
+        doc.setdefault('wise', '')
+        doc.setdefault('star3uniqueSkill', '')
+        doc.setdefault('uniqueSkill', '')
+        doc.setdefault('defaultSkill1', '')
+        doc.setdefault('defaultSkill2', '')
+        doc.setdefault('defaultSkill3', '')
+        doc.setdefault('awakeningLevel2', '')
+        doc.setdefault('awakeningLevel3', '')
+        doc.setdefault('awakeningLevel4', '')
+        doc.setdefault('awakeningLevel5', '')
+        doc.setdefault('nurturingSkill1', '')
+        doc.setdefault('nurturingSkill2', '')
+        doc.setdefault('nurturingSkill3', '')
+        doc.setdefault('nurturingSkill4', '')
+        doc.setdefault('nurturingSkill5', '')
+        doc.setdefault('nurturingSkill6', '')
+        doc.setdefault('nurturingSkill7', '')
+        doc.setdefault('nurturingSkill8', '')
+        doc.setdefault('nurturingSkill9', '')
+        doc.setdefault('nurturingSkill10', '')
+        doc.setdefault('nurturingSkill11', '')
+        doc.setdefault('nurturingSkill12', '')
+
+        # スキルマスタ配列格納
+        returnMessageParams.append(
+            {'id': doc['id'],
+             'rarity': doc['rarity'],
+             'umaName': doc['umaName'],
+             'turf': doc['turf'],
+             'dirt': doc['dirt'],
+             'short': doc['short'],
+             'mile': doc['mile'],
+             'mid': doc['mid'],
+             'long': doc['long'],
+             'escape': doc['escape'],
+             'preceding': doc['preceding'],
+             'insert': doc['insert'],
+             'drivein': doc['drivein'],
+             'speed': doc['speed'],
+             'stamina': doc['stamina'],
+             'power': doc['power'],
+             'guts': doc['guts'],
+             'wise': doc['wise'],
+             'star3uniqueSkill': doc['star3uniqueSkill'],
+             'uniqueSkill': doc['uniqueSkill'],
+             'defaultSkill1': doc['defaultSkill1'],
+             'defaultSkill2': doc['defaultSkill2'],
+             'defaultSkill3': doc['defaultSkill3'],
+             'awakeningLevel2': doc['awakeningLevel2'],
+             'awakeningLevel3': doc['awakeningLevel3'],
+             'awakeningLevel4': doc['awakeningLevel4'],
+             'awakeningLevel5': doc['awakeningLevel5'],
+             'nurturingSkill1': doc['nurturingSkill1'],
+             'nurturingSkill2': doc['nurturingSkill2'],
+             'nurturingSkill3': doc['nurturingSkill3'],
+             'nurturingSkill4': doc['nurturingSkill4'],
+             'nurturingSkill5': doc['nurturingSkill5'],
+             'nurturingSkill6': doc['nurturingSkill6'],
+             'nurturingSkill7': doc['nurturingSkill7'],
+             'nurturingSkill8': doc['nurturingSkill8'],
+             'nurturingSkill9': doc['nurturingSkill9'],
+             'nurturingSkill10': doc['nurturingSkill10'],
+             'nurturingSkill11': doc['nurturingSkill11'],
+             'nurturingSkill12': doc['nurturingSkill12']
+             }
+        )
+        returnArray = {'umaMaster': returnMessageParams, 'count': count}
+    return render(request, 'SearchUmaMasterView.html', returnArray)
+
+# ////////////////
+# スキル詳細マスタ
+# ////////////////
+def umaSkillDetailMasterLoad(request):
+    returnArray = []
+    returnMessageParams = []
+    mongo = settingPymongo('rosterdb', 'app_roster_skilldetailmaster')
+    # find = mongo.find(filter={'cardMasterId': 1})
+    find = mongo.find(sort=[('id', ASCENDING)])
+    count = find.count()
+
+    for doc in find:
+        # 空白対策
+        doc.setdefault('id', '')
+        doc.setdefault('genreName', '')
+        doc.setdefault('gereId', '')
+        doc.setdefault('genre2Name', '')
+        doc.setdefault('genre2Id', '')
+        doc.setdefault('branchNo', '')
+        doc.setdefault('kindNo', '')
+        doc.setdefault('skillName', '')
+        doc.setdefault('explanation', '')
+        doc.setdefault('category', '')
+        doc.setdefault('rarity', '')
+        doc.setdefault('activeCondition1', '')
+        doc.setdefault('activeCondition2', '')
+        doc.setdefault('activeCondition3', '')
+        doc.setdefault('activeCondition4', '')
+        doc.setdefault('activeCondition5', '')
+        doc.setdefault('activeCondition6', '')
+        doc.setdefault('activeCondition7', '')
+        doc.setdefault('activeCondition8', '')
+        doc.setdefault('activeCondition9', '')
+        doc.setdefault('activeCondition10', '')
+        doc.setdefault('effect1', '')
+        doc.setdefault('effect2', '')
+        doc.setdefault('effect3', '')
+        doc.setdefault('effect4', '')
+        doc.setdefault('effect5', '')
+        doc.setdefault('effect6', '')
+        doc.setdefault('effect7', '')
+        doc.setdefault('effect8', '')
+        doc.setdefault('effect9', '')
+        doc.setdefault('effect10', '')
+        doc.setdefault('wisepoint', '')
+        doc.setdefault('getpoint', '')
+        doc.setdefault('evaluationPoint', '')
+
+        # スキルマスタ配列格納
+        returnMessageParams.append(
+            {'id': doc['id'],
+             'genreName': doc['genreName'],
+             'gereId': doc['gereId'],
+             'genre2Name': doc['genre2Name'],
+             'genre2Id': doc['genre2Id'],
+             'branchNo': doc['branchNo'],
+             'kindNo': doc['kindNo'],
+             'skillName': doc['skillName'],
+             'explanation': doc['explanation'],
+             'category': doc['category'],
+             'rarity': doc['rarity'],
+             'activeCondition1': doc['activeCondition1'],
+             'activeCondition2': doc['activeCondition2'],
+             'activeCondition3': doc['activeCondition3'],
+             'activeCondition4': doc['activeCondition4'],
+             'activeCondition5': doc['activeCondition5'],
+             'activeCondition6': doc['activeCondition6'],
+             'activeCondition7': doc['activeCondition7'],
+             'activeCondition8': doc['activeCondition8'],
+             'activeCondition9': doc['activeCondition9'],
+             'activeCondition10': doc['activeCondition10'],
+             'effect1': doc['effect1'],
+             'effect2': doc['effect2'],
+             'effect3': doc['effect3'],
+             'effect4': doc['effect4'],
+             'effect5': doc['effect5'],
+             'effect6': doc['effect6'],
+             'effect7': doc['effect7'],
+             'effect8': doc['effect8'],
+             'effect9': doc['effect9'],
+             'effect10': doc['effect10'],
+             'wisepoint': doc['wisepoint'],
+             'getpoint': doc['getpoint'],
+             'evaluationPoint': doc['evaluationPoint']
+             }
+        )
+        returnArray = {'umaCardSkillDetailMaster': returnMessageParams, 'count': count}
+    return render(request, 'SearchSkillDetailMasterView.html', returnArray)
 
 
+# ////////////////
+# スキル評価マスタ
+# ////////////////
+def umaSkillEvaluationMasterLoad(request):
+    returnArray = []
+    returnMessageParams = []
+    mongo = settingPymongo('rosterdb', 'app_roster_skillevaluationmaster')
+    # find = mongo.find(filter={'cardMasterId': 1})
+    find = mongo.find(sort=[('id', ASCENDING)])
+    count = find.count()
 
+    for doc in find:
+        # 空白対策
+        doc.setdefault('id', '')
+        doc.setdefault('genreNo', '')
+        doc.setdefault('genreName', '')
+        doc.setdefault('skillName', '')
+        doc.setdefault('champEvaluation', '')
+        doc.setdefault('teamEvaluation', '')
+        doc.setdefault('type', '')
+        doc.setdefault('anotherSkill', '')
+        doc.setdefault('effect', '')
+        doc.setdefault('EvaluationSentence', '')
+        doc.setdefault('needPint', '')
+        doc.setdefault('evaluationPoint', '')
+        doc.setdefault('evaluationEfficiency', '')
 
-
-
+        # スキルマスタ配列格納
+        returnMessageParams.append(
+            {'id': doc['id'],
+             'genreNo': doc['genreNo'],
+             'genreName': doc['genreName'],
+             'skillName': doc['skillName'],
+             'champEvaluation': doc['champEvaluation'],
+             'teamEvaluation': doc['teamEvaluation'],
+             'type': doc['type'],
+             'anotherSkill': doc['anotherSkill'],
+             'effect': doc['effect'],
+             'EvaluationSentence': doc['EvaluationSentence'],
+             'needPint': doc['needPint'],
+             'evaluationPoint': doc['evaluationPoint'],
+             'evaluationEfficiency': doc['evaluationEfficiency']
+             }
+        )
+        returnArray = {'umaSkillEvaluationMaster': returnMessageParams, 'count': count}
+    return render(request, 'SearchSkillEvaluationMasterView.html', returnArray)

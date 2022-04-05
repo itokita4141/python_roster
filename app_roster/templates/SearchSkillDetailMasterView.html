@@ -1,0 +1,155 @@
+{% load static %}
+<!doctype HTML>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/uma_main.css' %}">
+        <meta name="viewport" content="width=device-width, user-scale=yes, initial-scale=1.0, maximum-scale=5.0" />
+    </head>
+    <body>
+        <!--パッシブスキル	1	スピード	1-->
+        <!--パッシブスキル	1	スタミナ	2-->
+        <!--パッシブスキル	1	パワー	3-->
+        <!--パッシブスキル	1	勝負根性	4-->
+        <!--パッシブスキル	1	賢さ	5-->
+        <!--パッシブスキル	1	複合	6-->
+        <!--位置設定	2	目標速度	1-->
+        <!--位置設定	2	加速度設定	2-->
+        <!--位置設定	2	横移動速度	3-->
+        <!--位置設定	2	スタート	4-->
+        <!--位置設定	2	視野	5-->
+        <!--回復	3	持久力	1-->
+        <!--デバフ	4	現在速度	1-->
+        <!--デバフ	4	加速度	2-->
+        <!--デバフ	4	かかり時間	3-->
+        <!--デバフ	4	持久力	4-->
+        <!--デバフ	4	視野	5-->
+        <!--スキル種別	5	継承固有	1-->
+        <!--スキル種別	5	アオハル呼吸	2-->
+        <!--スキル種別	5	継承固有	3-->
+        <!--作戦	6	逃げ	1-->
+        <!--作戦	6	先行	2-->
+        <!--作戦	6	差し	3-->
+        <!--作戦	6	追込	4-->
+        <!--距離	7	短距離	1-->
+        <!--距離	7	マイル	2-->
+        <!--距離	7	中距離	3-->
+        <!--距離	7	長距離	4-->
+        <!--フェーズ	8	序盤	1-->
+        <!--フェーズ	8	中盤	2-->
+        <!--フェーズ	8	終盤	3-->
+        <!--フェーズ	8	ダート	4-->
+        <input type="button" class="uma-back-button" value="戻る" onclick="location.href='../../umacomptool'">
+        <input type="button" class="uma-typeselect-button" value="パッシブスキル(スピード)" onclick="location.href='../../searchcarddetailmaster/1/1'">
+        <input type="button" class="uma-typeselect-button" value="パッシブスキル(スタミナ)" onclick="location.href='../../searchcarddetailmaster/1/2'">
+        <input type="button" class="uma-typeselect-button" value="パッシブスキル(パワー)" onclick="location.href='../../searchcarddetailmaster/1/3'">
+        <input type="button" class="uma-typeselect-button" value="パッシブスキル(勝負根性)" onclick="location.href='../../searchcarddetailmaster/1/4'">
+        <input type="button" class="uma-typeselect-button" value="パッシブスキル(賢さ)" onclick="location.href='../../searchcarddetailmaster/1/5'">
+        <input type="button" class="uma-typeselect-button" value="パッシブスキル(複合)" onclick="location.href='../../searchcarddetailmaster/1/6'">
+        <input type="button" class="uma-typeselect-button" value="位置設定(標速度)" onclick="location.href='../../searchcarddetailmaster/2/1'">
+        <input type="button" class="uma-typeselect-button" value="位置設定(速度設定)" onclick="location.href='../../searchcarddetailmaster/2/2'">
+        <input type="button" class="uma-typeselect-button" value="位置設定(移動速度)" onclick="location.href='../../searchcarddetailmaster/2/3'">
+        <input type="button" class="uma-typeselect-button" value="位置設定(タート)" onclick="location.href='../../searchcarddetailmaster/2/4'">
+        <input type="button" class="uma-typeselect-button" value="位置設定(視野)" onclick="location.href='../../searchcarddetailmaster/2/5'">
+        <input type="button" class="uma-typeselect-button" value="回復(持久力)" onclick="location.href='../../searchcarddetailmaster/3/1'">
+        <input type="button" class="uma-typeselect-button" value="デバフ(現在速度)" onclick="location.href='../../searchcarddetailmaster/4/1'">
+        <input type="button" class="uma-typeselect-button" value="デバフ(加速度)" onclick="location.href='../../searchcarddetailmaster/4/2'">
+        <input type="button" class="uma-typeselect-button" value="デバフ(かかり時間)" onclick="location.href='../../searchcarddetailmaster/4/3'">
+        <input type="button" class="uma-typeselect-button" value="デバフ(持久力)" onclick="location.href='../../searchcarddetailmaster/4/4'">
+        <input type="button" class="uma-typeselect-button" value="デバフ(視野)" onclick="location.href='../../searchcarddetailmaster/4/5'">
+        <input type="button" class="uma-typeselect-button" value="スキル種別(継承固有)" onclick="location.href='../../searchcarddetailmaster/5/1'">
+        <input type="button" class="uma-typeselect-button" value="スキル種別(アオハル呼吸)" onclick="location.href='../../searchcarddetailmaster/5/2'">
+        <input type="button" class="uma-typeselect-button" value="スキル種別(継承固有)" onclick="location.href='../../searchcarddetailmaster/5/3'">
+        <input type="button" class="uma-typeselect-button" value="作戦(逃げ)" onclick="location.href='../../searchcarddetailmaster/6/1'">
+        <input type="button" class="uma-typeselect-button" value="作戦(先行)" onclick="location.href='../../searchcarddetailmaster/6/2'">
+        <input type="button" class="uma-typeselect-button" value="作戦(差し)" onclick="location.href='../../searchcarddetailmaster/6/3'">
+        <input type="button" class="uma-typeselect-button" value="作戦(追込)" onclick="location.href='../../searchcarddetailmaster/6/4'">
+        <input type="button" class="uma-typeselect-button" value="距離(短距離)" onclick="location.href='../../searchcarddetailmaster/7/1'">
+        <input type="button" class="uma-typeselect-button" value="距離(マイル)" onclick="location.href='../../searchcarddetailmaster/7/2'">
+        <input type="button" class="uma-typeselect-button" value="距離(中距離)" onclick="location.href='../../searchcarddetailmaster/7/3'">
+        <input type="button" class="uma-typeselect-button" value="距離(長距離)" onclick="location.href='../../searchcarddetailmaster/7/4'">
+        <input type="button" class="uma-typeselect-button" value="フェーズ(序盤)" onclick="location.href='../../searchcarddetailmaster/8/1'">
+        <input type="button" class="uma-typeselect-button" value="フェーズ(中盤)" onclick="location.href='../../searchcarddetailmaster/8/2'">
+        <input type="button" class="uma-typeselect-button" value="フェーズ(終盤)" onclick="location.href='../../searchcarddetailmaster/8/3'">
+        <input type="button" class="uma-typeselect-button" value="フェーズ(ダート)" onclick="location.href='../../searchcarddetailmaster/8/4'">
+        
+        <h3>スキル詳細画面(全{{ count }}件)</h3>
+        <div class="tablefix">
+            <table>
+                <tr>
+                    <th nowrap >ジャンル１</th>
+                    <th nowrap >ジャンル２</th>
+                    <th nowrap >枝番</th>
+                    <th nowrap >種類</th>
+                    <th nowrap >スキル名</th>
+                    <th nowrap >説明文</th>
+                    <th nowrap >カテゴリ</th>
+                    <th nowrap >レアリティ</th>
+                    <th nowrap >条件１</th>
+                    <th nowrap >条件２</th>
+                    <th nowrap >条件３</th>
+                    <th nowrap >条件４</th>
+                    <th nowrap >条件５</th>
+                    <th nowrap >条件６</th>
+                    <th nowrap >条件７</th>
+                    <th nowrap >条件８</th>
+                    <th nowrap >条件９</th>
+                    <th nowrap >条件１０</th>
+                    <th nowrap >効果量１</th>
+                    <th nowrap >効果量２</th>
+                    <th nowrap >効果量３</th>
+                    <th nowrap >効果量４</th>
+                    <th nowrap >効果量５</th>
+                    <th nowrap >効果量６</th>
+                    <th nowrap >効果量７</th>
+                    <th nowrap >効果量８</th>
+                    <th nowrap >効果量9</th>
+                    <th nowrap >効果量10</th>
+                    <th nowrap >賢さ判定</th>
+                    <th nowrap >取得ポイント</th>
+                    <th nowrap >評価点</th>
+                    <th nowrap >ID</th>
+                    <th nowrap >ジャンル1id</th>
+                    <th nowrap >ジャンル2id</th>
+                </tr>
+                {% for cdm in cardMaster %}
+                <tr>
+                    <td nowrap>{{ cdm.genreName }}</td>
+                    <td nowrap>{{ cdm.genre2Name }}</td>
+                    <td nowrap>{{ cdm.branchNo }}</td>
+                    <td nowrap>{{ cdm.kindNo }}</td>
+                    <td nowrap>{{ cdm.skillName }}</td>
+                    <td nowrap>{{ cdm.explanation }}</td>
+                    <td nowrap>{{ cdm.category }}</td>
+                    <td nowrap>{{ cdm.rarity }}</td>
+                    <td nowrap>{{ cdm.activeCondition1 }}</td>
+                    <td nowrap>{{ cdm.activeCondition2 }}</td>
+                    <td nowrap>{{ cdm.activeCondition3 }}</td>
+                    <td nowrap>{{ cdm.activeCondition4 }}</td>
+                    <td nowrap>{{ cdm.activeCondition5 }}</td>
+                    <td nowrap>{{ cdm.activeCondition6 }}</td>
+                    <td nowrap>{{ cdm.activeCondition7 }}</td>
+                    <td nowrap>{{ cdm.activeCondition8 }}</td>
+                    <td nowrap>{{ cdm.activeCondition9 }}</td>
+                    <td nowrap>{{ cdm.activeCondition10 }}</td>
+                    <td nowrap>{{ cdm.effect1 }}</td>
+                    <td nowrap>{{ cdm.effect2 }}</td>
+                    <td nowrap>{{ cdm.effect3 }}</td>
+                    <td nowrap>{{ cdm.effect4 }}</td>
+                    <td nowrap>{{ cdm.effect5 }}</td>
+                    <td nowrap>{{ cdm.effect6 }}</td>
+                    <td nowrap>{{ cdm.effect7 }}</td>
+                    <td nowrap>{{ cdm.effect8 }}</td>
+                    <td nowrap>{{ cdm.effect9 }}</td>
+                    <td nowrap>{{ cdm.effect10 }}</td>
+                    <td nowrap>{{ cdm.wisepoint }}</td>
+                    <td nowrap>{{ cdm.getpoint }}</td>
+                    <td nowrap>{{ cdm.evaluationPoint }}</td>
+                    <td nowrap>{{ cdm.id }}</td>
+                    <td nowrap>{{ cdm.gereId }}</td>
+                    <td nowrap>{{ cdm.genre2Id }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </body>
+<html>

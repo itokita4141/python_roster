@@ -23,7 +23,7 @@ from attendances import *
 # うまツール関連
 # 〓========================
 from rest_framework import viewsets
-from .models import umaCardMaster, umaCardSkillMaster, umaCardMessageMaster, umaWhiteFactor
+from .models import umaCardMaster, umaCardSkillMaster, umaCardMessageMaster, umaWhiteFactor, umaWhiteFactor, umaMaster, SkillDetailMaster, SkillEvaluationMaster
 # from app_roster.seliarizers import umaCardMasterSerializer
 from pymongo import MongoClient
 sys.path.append("app_roster/db/mongodb/config")

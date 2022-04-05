@@ -34,17 +34,23 @@ urlpatterns = [
     # メニュー画面
     path('umacomptool/', UmaCompToolView.as_view(), name="umacomptool"),
     # カードマスタ
-    path('searchcardmaster/<int:typeno>/',umaCardMasterLoad,name="searchcardmaster"),
+    path('searchcardmaster/<int:typeno>/', umaCardMasterLoad, name="searchcardmaster"),
     # カードスキルマスタ
-    path('cardskillmaster/<int:typeno>/',umaCardSkillMasterLoad,name="cardskillmaster"),
+    path('cardskillmaster/<int:typeno>/', umaCardSkillMasterLoad, name="cardskillmaster"),
     # カードメッセージマスタ
-    path('searchcardmessegemaster/<int:typeno>/',umaCardMessageMasterLoad,name="searchcardmessegemaster"),
+    path('searchcardmessegemaster/<int:typeno>/', umaCardMessageMasterLoad, name="searchcardmessegemaster"),
     # スキルマスタ
-    path('searchskillmaster/<int:typeno>/',umaSkillMasterLoad,name="searchskillmaster"),
+    path('searchskillmaster/<int:typeno>/', umaSkillMasterLoad, name="searchskillmaster"),
     # 固有ボーナスマスタ
-    path('searchuniquebonusmaster/<int:typeno>/',umaCardUniqueBonusLoad,name="searchuniquebonusmaster"),
+    path('searchuniquebonusmaster/<int:typeno>/', umaCardUniqueBonusLoad, name="searchuniquebonusmaster"),
     # 白因子マスタ
-    path('searchwhitefactormaster/',umaWhiteFactorLoad,name="searchwhitefactormaster"),
+    path('searchwhitefactormaster/', umaWhiteFactorLoad, name="searchwhitefactormaster"),
+    # 育成ウママスタ
+    path('searchumamaster/',umaMasterLoad, name="searchwhitefactormaster"),
+    # スキル詳細マスタ
+    path('searchskilldetailmaster/',umaSkillDetailMasterLoad, name="searchwhitefactormaster"),
+    # スキル評価マスタ
+    path('seearchcardevaluationmaster/',umaSkillEvaluationMasterLoad, name="searchwhitefactormaster"),
     # =========管理画面=========
     path('admin/', admin.site.urls),
     # =========mongo管理画面用=========

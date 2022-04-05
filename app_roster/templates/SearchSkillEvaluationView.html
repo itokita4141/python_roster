@@ -1,0 +1,69 @@
+{% load static %}
+<!doctype HTML>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/uma_main.css' %}">
+        <meta name="viewport" content="width=device-width, user-scale=yes, initial-scale=1.0, maximum-scale=5.0" />
+    </head>
+    <body>
+        <!--1	通常スキル-->
+        <!--2	回復スキル-->
+        <!--3	妨害スキル-->
+        <!--4	緑スキル-->
+        <!--5	金スキル-->
+        <!--6	金水スキル-->
+        <!--7	金赤スキル-->
+        <!--8	金緑スキル-->
+        <!--9	固有スキル-->
+        <!--10	固有回復スキル-->
+        <input type="button" class="uma-back-button" value="戻る" onclick="location.href='../../umacomptool'">
+        <input type="button" class="uma-typeselect-button" value="通常スキル" onclick="location.href='../../searchskillevaluationmaster/1'">
+        <input type="button" class="uma-typeselect-button" value="回復スキル" onclick="location.href='../../searchskillevaluationmaster/2'">
+        <input type="button" class="uma-typeselect-button" value="妨害スキル" onclick="location.href='../../searchskillevaluationmaster/3'">
+        <input type="button" class="uma-typeselect-button" value="緑スキル" onclick="location.href='../../searchskillevaluationmaster/4'">
+        <input type="button" class="uma-typeselect-button" value="金スキル" onclick="location.href='../../searchskillevaluationmaster/5'">
+        <input type="button" class="uma-typeselect-button" value="金水スキル" onclick="location.href='../../searchskillevaluationmaster/6'">
+        <input type="button" class="uma-typeselect-button" value="金赤スキル" onclick="location.href='../../searchskillevaluationmaster/7'">
+        <input type="button" class="uma-typeselect-button" value="金緑スキル" onclick="location.href='../../searchskillevaluationmaster/8'">
+        <input type="button" class="uma-typeselect-button" value="固有スキル" onclick="location.href='../../searchskillevaluationmaster/9'">
+        <input type="button" class="uma-typeselect-button" value="固有回復スキル" onclick="location.href='../../searchskillevaluationmaster/10'">
+
+        <h3>カード評価マスタ検索画面(全{{ count }}件)</h3>
+        <div class="tablefix">
+            <table>
+                <tr>
+                    <th nowrap >ID</th>
+                    <th nowrap >ジャンル番号</th>
+                    <th nowrap >種類</th>
+                    <th nowrap >スキル</th>
+                    <th nowrap >チャンミ評価</th>
+                    <th nowrap >競技場評価</th>
+                    <th nowrap >種類</th>
+                    <th nowrap >上位スキル</th>
+                    <th nowrap >効果</th>
+                    <th nowrap >評価文</th>
+                    <th nowrap >必要Pt</th>
+                    <th nowrap >評価点</th>
+                    <th nowrap >評価効率</th>
+                </tr>
+                {% for cdm in cardMaster %}
+                <tr>
+                    <td nowrap>{{ cdm.id }}</td>
+                    <td nowrap>{{ cdm.genreNo }}</td>
+                    <td nowrap>{{ cdm.genreName }}</td>
+                    <td nowrap>{{ cdm.skillName }}</td>
+                    <td nowrap>{{ cdm.champEvaluation }}</td>
+                    <td nowrap>{{ cdm.teamEvaluation }}</td>
+                    <td nowrap>{{ cdm.type }}</td>
+                    <td nowrap>{{ cdm.anotherSkill }}</td>
+                    <td nowrap>{{ cdm.effect }}</td>
+                    <td nowrap>{{ cdm.EvaluationSentence }}</td>
+                    <td nowrap>{{ cdm.needPint }}</td>
+                    <td nowrap>{{ cdm.evaluationPoint }}</td>
+                    <td nowrap>{{ cdm.evaluationEfficiency }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </body>
+<html>

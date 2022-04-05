@@ -1,0 +1,100 @@
+{% load static %}
+<!doctype HTML>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/uma_main.css' %}">
+        <meta name="viewport" content="width=device-width, user-scale=yes, initial-scale=1.0, maximum-scale=5.0" />
+    </head>
+    <body>
+        <input type="button" class="uma-back-button" value="戻る" onclick="location.href='../../umacomptool'">
+        <h3>ウママスタ検索画面(全{{ count }}件)</h3>
+        <div class="tablefix">
+            <table>
+                <tr>
+                    <th nowrap >星</th>
+                    <th nowrap >名前</th>
+                    <th nowrap >覚醒Lv2</th>
+                    <th nowrap >覚醒Lv3</th>
+                    <th nowrap >覚醒Lv4</th>
+                    <th nowrap >覚醒Lv5</th>
+                    <th nowrap >バ適正</th>
+                    <th nowrap >ダート補正</th>
+                    <th nowrap >距離適正</th>
+                    <th nowrap >マイル適正</th>
+                    <th nowrap >中距離適正</th>
+                    <th nowrap >長距離適正</th>
+                    <th nowrap >逃げて規制</th>
+                    <th nowrap >先行適正</th>
+                    <th nowrap >差し適正</th>
+                    <th nowrap >追込適正</th>
+                    <th nowrap >成長スピード</th>
+                    <th nowrap >成長スタミナ</th>
+                    <th nowrap >成長パワー</th>
+                    <th nowrap >成長根性</th>
+                    <th nowrap >成長賢さ</th>
+                    <th nowrap >★3固有</th>
+                    <th nowrap >固有</th>
+                    <th nowrap >初期</th>
+                    <th nowrap >初期</th>
+                    <th nowrap >初期</th>
+                    <th nowrap >育成1</th>
+                    <th nowrap >育成2</th>
+                    <th nowrap >育成3</th>
+                    <th nowrap >育成4</th>
+                    <th nowrap >育成5</th>
+                    <th nowrap >育成6</th>
+                    <th nowrap >育成7</th>
+                    <th nowrap >育成8</th>
+                    <th nowrap >育成9</th>
+                    <th nowrap >育成10</th>
+                    <th nowrap >育成11</th>
+                    <th nowrap >育成12</th>
+                    <th nowrap >ID</th>
+                </tr>
+                {% for cdm in cardMaster %}
+                <tr>
+                    <td nowrap>{{ cdm.rarity }}</td>
+                    <td nowrap>{{ cdm.umaName }}</td>
+                    <td nowrap>{{ cdm.awakeningLevel2 }}</td>
+                    <td nowrap>{{ cdm.awakeningLevel3 }}</td>
+                    <td nowrap>{{ cdm.awakeningLevel4 }}</td>
+                    <td nowrap>{{ cdm.awakeningLevel5 }}</td>
+                    <td nowrap>{{ cdm.turf }}</td>
+                    <td nowrap>{{ cdm.dirt }}</td>
+                    <td nowrap>{{ cdm.short }}</td>
+                    <td nowrap>{{ cdm.mile }}</td>
+                    <td nowrap>{{ cdm.mid }}</td>
+                    <td nowrap>{{ cdm.long }}</td>
+                    <td nowrap>{{ cdm.escape }}</td>
+                    <td nowrap>{{ cdm.preceding }}</td>
+                    <td nowrap>{{ cdm.insert }}</td>
+                    <td nowrap>{{ cdm.drivein }}</td>
+                    <td nowrap>{{ cdm.speed }}</td>
+                    <td nowrap>{{ cdm.stamina }}</td>
+                    <td nowrap>{{ cdm.power }}</td>
+                    <td nowrap>{{ cdm.guts }}</td>
+                    <td nowrap>{{ cdm.wise }}</td>
+                    <td nowrap>{{ cdm.star3uniqueSkill }}</td>
+                    <td nowrap>{{ cdm.uniqueSkill }}</td>
+                    <td nowrap>{{ cdm.defaultSkill1 }}</td>
+                    <td nowrap>{{ cdm.defaultSkill2 }}</td>
+                    <td nowrap>{{ cdm.defaultSkill3 }}</td>
+                    <td nowrap>{{ cdm.nurturingSkill1 }}</td>
+                    <td nowrap>{{ cdm.nurturingSkill2 }}</td>
+                    <td nowrap>{{ cdm.nurturingSkill3 }}</td>
+                    <td nowrap>{{ cdm.nurturingSkill4 }}</td>
+                    <td nowrap>{{ cdm.nurturingSkill5 }}</td>
+                    <td nowrap>{{ cdm.nurturingSkill6 }}</td>
+                    <td nowrap>{{ cdm.nurturingSkill7 }}</td>
+                    <td nowrap>{{ cdm.nurturingSkill8 }}</td>
+                    <td nowrap>{{ cdm.nurturingSkill9 }}</td>
+                    <td nowrap>{{ cdm.nurturingSkill10 }}</td>
+                    <td nowrap>{{ cdm.nurturingSkill11 }}</td>
+                    <td nowrap>{{ cdm.nurturingSkill12 }}</td>
+                    <td nowrap>{{ cdm.id }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </body>
+<html>
