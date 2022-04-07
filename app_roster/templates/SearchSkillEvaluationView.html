@@ -18,14 +18,13 @@
         <!--10	固有回復スキル-->
         <input type="button" class="uma-back-button" value="戻る" onclick="location.href='../../umacomptool'">
 
-        <h3>カード評価マスタ検索画面(全{{ count }}件)</h3>
+        <h3>スキル評価マスタ検索画面(全{{ count }}件)</h3>
         <div class="tablefix">
             <table>
                 <tr>
                     <th nowrap >種類</th>
                     <th nowrap >スキル</th>
                     <th nowrap >チャンミ評価</th>
-                    <th nowrap >競技場評価</th>
                     <th nowrap >種類</th>
                     <th nowrap >上位スキル</th>
                     <th nowrap >効果</th>
@@ -36,13 +35,13 @@
                     <th nowrap >ふりがな</th>
                     <th nowrap >ID</th>
                     <th nowrap >ジャンル番号</th>
+                    <th nowrap >競技場評価</th>
                 </tr>
                 {% for cdm in umaSkillEvaluationMaster %}
                 <tr>
                     <td nowrap>{{ cdm.genreName }}</td>
                     <td nowrap>{{ cdm.skillName }}</td>
                     <td nowrap>{{ cdm.champEvaluation }}</td>
-                    <td nowrap>{{ cdm.teamEvaluation }}</td>
                     <td nowrap>{{ cdm.type }}</td>
                     <td nowrap>{{ cdm.anotherSkill }}</td>
                     <td nowrap>{{ cdm.effect }}</td>
@@ -53,6 +52,7 @@
                     <td nowrap>{{ cdm.hurigana }}</td>
                     <td nowrap>{{ cdm.id }}</td>
                     <td nowrap>{{ cdm.genreNo }}</td>
+                    <td nowrap>{{ cdm.teamEvaluation }}</td>
                 </tr>
                 {% endfor %}
             </table>
