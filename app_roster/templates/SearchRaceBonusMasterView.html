@@ -1,0 +1,34 @@
+{% load static %}
+<!doctype HTML>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/uma_main.css' %}">
+        <meta name="viewport" content="width=device-width, user-scale=yes, initial-scale=1.0, maximum-scale=5.0" />
+    </head>
+    <body>
+        <input type="button" class="uma-back-button" value="戻る" onclick="location.href='../../umacomptool'">
+        <input type="button" class="uma-genre-button" value="ID順" onclick="location.href='../../searchracebonusnmaster/0'">
+        <input type="button" class="uma-genre-button" value="フリガナ順" onclick="location.href='../../searchracebonusnmaster/99'">
+        <h3>レースボーナスマスタ検索画面(全{{ count }}件)</h3>
+        <div class="tablefix">
+            <table>
+                <tr>
+                    <th nowrap >ID</th>
+                    <th nowrap >レースボーナス</th>
+                    <th nowrap >ボーナス名称</th>
+                    <th nowrap >内容</th>
+                    <th nowrap >ふりがな</th>
+                </tr>
+                {% for cdm in umaRaceBonusMaster %}
+                <tr>
+                    <td nowrap>{{ cdm.raceBonus }}</td>
+                    <td nowrap>{{ cdm.bonusName }}</td>
+                    <td nowrap>{{ cdm.contents }}</td>
+                    <td nowrap>{{ cdm.hurigana }}</td>
+                    <td nowrap>{{ cdm.id }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </body>
+<html>

@@ -261,64 +261,73 @@ class umaMaster(models.Model):
 # スキル詳細マスタ
 class SkillDetailMaster(models.Model):
     id = models.BigAutoField(auto_created=False, primary_key=False, serialize=False, verbose_name='ID'),  # id
-    genreName = models.CharField(max_length=100, null=False,primary_key=False),   # ジャンル１
-    gereId = models.CharField(max_length=100, null=False,primary_key=False),   # ジャンル1id
-    genre2Name = models.CharField(max_length=100, null=False,primary_key=False),   # ジャンル２
-    genre2Id = models.CharField(max_length=100, null=False,primary_key=False),   # ジャンル2id
-    branchNo = models.CharField(max_length=100, null=False,primary_key=False),   # 枝番
-    kindNo = models.CharField(max_length=100, null=False,primary_key=False),   # 種類
-    skillName = models.CharField(max_length=100, null=False,primary_key=False),   # スキル名
-    explanation = models.CharField(max_length=100, null=False,primary_key=False),   # 説明文
-    category = models.CharField(max_length=100, null=False,primary_key=False),   # カテゴリ
-    rarity = models.CharField(max_length=100, null=False,primary_key=False),   # レアリティ
-    activeCondition1 = models.CharField(max_length=100, null=False,primary_key=False),   # 条件１
-    activeCondition2 = models.CharField(max_length=100, null=False,primary_key=False),   # 条件２
-    activeCondition3 = models.CharField(max_length=100, null=False,primary_key=False),   # 条件３
-    activeCondition4 = models.CharField(max_length=100, null=False,primary_key=False),   # 条件４
-    activeCondition5 = models.CharField(max_length=100, null=False,primary_key=False),   # 条件５
-    activeCondition6 = models.CharField(max_length=100, null=False,primary_key=False),   # 条件６
-    activeCondition7 = models.CharField(max_length=100, null=False,primary_key=False),   # 条件７
-    activeCondition8 = models.CharField(max_length=100, null=False,primary_key=False),   # 条件８
-    activeCondition9 = models.CharField(max_length=100, null=False,primary_key=False),   # 条件９
-    activeCondition10 = models.CharField(max_length=100, null=False,primary_key=False),   # 条件１０
-    effect1 = models.CharField(max_length=100, null=False,primary_key=False),   # 効果量１
-    effect2 = models.CharField(max_length=100, null=False,primary_key=False),   # 効果量２
-    effect3 = models.CharField(max_length=100, null=False,primary_key=False),   # 効果量３
-    effect4 = models.CharField(max_length=100, null=False,primary_key=False),   # 効果量４
-    effect5 = models.CharField(max_length=100, null=False,primary_key=False),   # 効果量５
-    effect6 = models.CharField(max_length=100, null=False,primary_key=False),   # 効果量６
-    effect7 = models.CharField(max_length=100, null=False,primary_key=False),   # 効果量７
-    effect8 = models.CharField(max_length=100, null=False,primary_key=False),   # 効果量８
-    effect9 = models.CharField(max_length=100, null=False,primary_key=False),   # 効果量9
-    effect10 = models.CharField(max_length=100, null=False,primary_key=False),   # 効果量10
-    wisepoint = models.CharField(max_length=100, null=False,primary_key=False),   # 賢さ判定
-    getpoint = models.CharField(max_length=100, null=False,primary_key=False),   # 取得ポイント
-    evaluationPoint = models.CharField(max_length=100, null=False,primary_key=False),   # 評価点
-    updateTime = models.DateField(null=False),                                              # 更新時間
-    addTime = models.BooleanField(null=True),                                               # 追加時間
+    genreName = models.CharField(max_length=100, null=False,primary_key=False),                           # ジャンル１
+    gereId = models.CharField(max_length=100, null=False,primary_key=False),                              # ジャンル1id
+    genre2Name = models.CharField(max_length=100, null=False,primary_key=False),                          # ジャンル２
+    genre2Id = models.CharField(max_length=100, null=False,primary_key=False),                            # ジャンル2id
+    branchNo = models.CharField(max_length=100, null=False,primary_key=False),                            # 枝番
+    kindNo = models.CharField(max_length=100, null=False,primary_key=False),                              # 種類
+    skillName = models.CharField(max_length=100, null=False,primary_key=False),                           # スキル名
+    explanation = models.CharField(max_length=100, null=False,primary_key=False),                         # 説明文
+    category = models.CharField(max_length=100, null=False,primary_key=False),                            # カテゴリ
+    rarity = models.CharField(max_length=100, null=False,primary_key=False),                              # レアリティ
+    activeCondition1 = models.CharField(max_length=100, null=False,primary_key=False),                    # 条件１
+    activeCondition2 = models.CharField(max_length=100, null=False,primary_key=False),                    # 条件２
+    activeCondition3 = models.CharField(max_length=100, null=False,primary_key=False),                    # 条件３
+    activeCondition4 = models.CharField(max_length=100, null=False,primary_key=False),                    # 条件４
+    activeCondition5 = models.CharField(max_length=100, null=False,primary_key=False),                    # 条件５
+    activeCondition6 = models.CharField(max_length=100, null=False,primary_key=False),                    # 条件６
+    activeCondition7 = models.CharField(max_length=100, null=False,primary_key=False),                    # 条件７
+    activeCondition8 = models.CharField(max_length=100, null=False,primary_key=False),                    # 条件８
+    activeCondition9 = models.CharField(max_length=100, null=False,primary_key=False),                    # 条件９
+    activeCondition10 = models.CharField(max_length=100, null=False,primary_key=False),                   # 条件１０
+    effect1 = models.CharField(max_length=100, null=False,primary_key=False),                             # 効果量１
+    effect2 = models.CharField(max_length=100, null=False,primary_key=False),                             # 効果量２
+    effect3 = models.CharField(max_length=100, null=False,primary_key=False),                             # 効果量３
+    effect4 = models.CharField(max_length=100, null=False,primary_key=False),                             # 効果量４
+    effect5 = models.CharField(max_length=100, null=False,primary_key=False),                             # 効果量５
+    effect6 = models.CharField(max_length=100, null=False,primary_key=False),                             # 効果量６
+    effect7 = models.CharField(max_length=100, null=False,primary_key=False),                             # 効果量７
+    effect8 = models.CharField(max_length=100, null=False,primary_key=False),                             # 効果量８
+    effect9 = models.CharField(max_length=100, null=False,primary_key=False),                             # 効果量9
+    effect10 = models.CharField(max_length=100, null=False,primary_key=False),                            # 効果量10
+    wisepoint = models.CharField(max_length=100, null=False,primary_key=False),                           # 賢さ判定
+    getpoint = models.CharField(max_length=100, null=False,primary_key=False),                            # 取得ポイント
+    evaluationPoint = models.CharField(max_length=100, null=False,primary_key=False),                     # 評価点
+    updateTime = models.DateField(null=False),                                                            # 更新時間
+    addTime = models.BooleanField(null=True),                                                             # 追加時間
 
     def __str__(self):
         return str(self.__dict__)
 
 # スキル評価マスタ
 class SkillEvaluationMaster(models.Model):
-    id = models.CharField(max_length=100, null=False,primary_key=False),   # ID
-    genreNo = models.CharField(max_length=100, null=False,primary_key=False),   # ジャンル番号
-    genreName = models.CharField(max_length=100, null=False,primary_key=False),   # 種類
-    skillName = models.CharField(max_length=100, null=False,primary_key=False),   # スキル
-    champEvaluation = models.CharField(max_length=100, null=False,primary_key=False),   # チャンミ評価
-    teamEvaluation = models.CharField(max_length=100, null=False,primary_key=False),   # 競技場評価
-    type = models.CharField(max_length=100, null=False,primary_key=False),   # 種類
-    anotherSkill = models.CharField(max_length=100, null=False,primary_key=False),   # 上位スキル
-    effect = models.CharField(max_length=100, null=False,primary_key=False),   # 効果
+    id = models.CharField(max_length=100, null=False,primary_key=False),                   # ID
+    genreNo = models.CharField(max_length=100, null=False,primary_key=False),              # ジャンル番号
+    genreName = models.CharField(max_length=100, null=False,primary_key=False),            # 種類
+    skillName = models.CharField(max_length=100, null=False,primary_key=False),            # スキル
+    champEvaluation = models.CharField(max_length=100, null=False,primary_key=False),      # チャンミ評価
+    teamEvaluation = models.CharField(max_length=100, null=False,primary_key=False),       # 競技場評価
+    type = models.CharField(max_length=100, null=False,primary_key=False),                 # 種類
+    anotherSkill = models.CharField(max_length=100, null=False,primary_key=False),         # 上位スキル
+    effect = models.CharField(max_length=100, null=False,primary_key=False),               # 効果
     EvaluationSentence = models.CharField(max_length=100, null=False,primary_key=False),   # 評価文
-    needPint = models.CharField(max_length=100, null=False,primary_key=False),   # 必要Pt
-    evaluationPoint = models.CharField(max_length=100, null=False,primary_key=False),   # 評価点
-    evaluationEfficiency = models.CharField(max_length=100, null=False,primary_key=False),   # 評価効率
-    updateTime = models.DateField(null=False),                                              # 更新時間
-    addTime = models.BooleanField(null=True),                                               # 追加時間
+    needPint = models.CharField(max_length=100, null=False,primary_key=False),             # 必要Pt
+    evaluationPoint = models.CharField(max_length=100, null=False,primary_key=False),      # 評価点
+    evaluationEfficiency = models.CharField(max_length=100, null=False,primary_key=False), # 評価効率
+    updateTime = models.DateField(null=False),                                             # 更新時間
+    addTime = models.BooleanField(null=True),                                              # 追加時間
 
     def __str__(self):
         return str(self.__dict__)
 
+# レースボーナスマスタ
+class RaceBonuMaster(models.Model):
+    id = models.BigAutoField(auto_created=False, primary_key=False, serialize=False, verbose_name='ID'),  # ID
+    raceBonus = models.CharField(max_length=100, null=False),                                             # レースボーナス
+    bonusName = models.CharField(max_length=100, null=False),                                             # ボーナス名称
+    contents = models.CharField(max_length=100, null=False),                                              # 内容
+    hurigana = models.CharField(max_length=100, null=False),                                              # ふりがな
 
+    def __str__(self):
+        return str(self.__dict__)

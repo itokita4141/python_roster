@@ -35,6 +35,7 @@
                     <th nowrap >必要Pt</th>
                     <th nowrap >評価点</th>
                     <th nowrap >評価効率</th>
+                    <th nowrap >ふりがな</th>
                 </tr>
                 {% for cdm in umaSkillEvaluationMaster %}
                 <tr>
@@ -51,6 +52,7 @@
                     <td nowrap>{{ cdm.needPint }}</td>
                     <td nowrap>{{ cdm.evaluationPoint }}</td>
                     <td nowrap>{{ cdm.evaluationEfficiency }}</td>
+                    <td nowrap>{{ cdm.hurigana }}</td>
                 </tr>
                 {% endfor %}
             </table>

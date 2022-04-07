@@ -660,7 +660,7 @@ def umaSkillEvaluationMasterLoad(request, genreNo):
     mongo = settingPymongo('rosterdb', 'app_roster_skillevaluationmaster')
     # find = mongo.find(filter={'cardMasterId': 1})
     if genreNo == 99:
-        find = mongo.find(sort=[('skillName', ASCENDING)])
+        find = mongo.find(sort=[('hurigana', ASCENDING)])
     elif genreNo == 0:
         find = mongo.find(sort=[('id', ASCENDING)])
     else:
@@ -683,6 +683,7 @@ def umaSkillEvaluationMasterLoad(request, genreNo):
         doc.setdefault('needPint', '')
         doc.setdefault('evaluationPoint', '')
         doc.setdefault('evaluationEfficiency', '')
+        doc.setdefault('hurigana', '')
 
         # スキルマスタ配列格納
         returnMessageParams.append(
@@ -698,8 +699,47 @@ def umaSkillEvaluationMasterLoad(request, genreNo):
              'EvaluationSentence': doc['EvaluationSentence'],
              'needPint': doc['needPint'],
              'evaluationPoint': doc['evaluationPoint'],
-             'evaluationEfficiency': doc['evaluationEfficiency']
+             'evaluationEfficiency': doc['evaluationEfficiency'],
+             'hurigana': doc['hurigana']
              }
         )
         returnArray = {'umaSkillEvaluationMaster': returnMessageParams, 'count': count}
     return render(request, 'SearchSkillEvaluationView.html', returnArray)
+
+# ////////////////
+# レースボーナスマスタ
+# ////////////////
+def umaRaceBonusMasterLoad(request, genreNo):
+    returnArray = []
+    returnMessageParams = []
+    mongo = settingPymongo('rosterdb', 'app_roster_racebonumaster')
+    # find = mongo.find(filter={'cardMasterId': 1})
+    if genreNo == 99:
+        find = mongo.find(sort=[('hurigana', ASCENDING)])
+    elif genreNo == 0:
+        find = mongo.find(sort=[('id', ASCENDING)])
+    else:
+        find = mongo.find(filter={'genreNo': genreNo})
+    # find = mongo.find(sort=[('id', ASCENDING)])
+    count = find.count()
+
+    for doc in find:
+        # 空白対策
+        doc.setdefault('id', '')
+        doc.setdefault('raceBonus', '')
+        doc.setdefault('bonusName', '')
+        doc.setdefault('contents', '')
+        doc.setdefault('hurigana', '')
+
+        # スキルマスタ配列格納
+        returnMessageParams.append(
+            {'id': doc['id'],
+             'raceBonus': doc['raceBonus'],
+             'bonusName': doc['bonusName'],
+             'contents': doc['contents'],
+             'hurigana': doc['hurigana']
+             }
+        )
+        returnArray = {'umaRaceBonusMaster': returnMessageParams, 'count': count}
+    return render(request, 'SearchRaceBonusMasterView.html', returnArray)
+
