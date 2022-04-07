@@ -22,8 +22,6 @@
         <div class="tablefix">
             <table>
                 <tr>
-                    <th nowrap >ID</th>
-                    <th nowrap >ジャンル番号</th>
                     <th nowrap >種類</th>
                     <th nowrap >スキル</th>
                     <th nowrap >チャンミ評価</th>
@@ -36,11 +34,11 @@
                     <th nowrap >評価点</th>
                     <th nowrap >評価効率</th>
                     <th nowrap >ふりがな</th>
+                    <th nowrap >ID</th>
+                    <th nowrap >ジャンル番号</th>
                 </tr>
                 {% for cdm in umaSkillEvaluationMaster %}
                 <tr>
-                    <td nowrap>{{ cdm.id }}</td>
-                    <td nowrap>{{ cdm.genreNo }}</td>
                     <td nowrap>{{ cdm.genreName }}</td>
                     <td nowrap>{{ cdm.skillName }}</td>
                     <td nowrap>{{ cdm.champEvaluation }}</td>
@@ -53,6 +51,8 @@
                     <td nowrap>{{ cdm.evaluationPoint }}</td>
                     <td nowrap>{{ cdm.evaluationEfficiency }}</td>
                     <td nowrap>{{ cdm.hurigana }}</td>
+                    <td nowrap>{{ cdm.id }}</td>
+                    <td nowrap>{{ cdm.genreNo }}</td>
                 </tr>
                 {% endfor %}
             </table>
