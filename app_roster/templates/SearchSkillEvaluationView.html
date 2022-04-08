@@ -22,12 +22,10 @@
         <div class="tablefix">
             <table>
                 <tr>
-                    <th nowrap >種類</th>
                     <th nowrap >スキル</th>
                     <th nowrap >評</th>
-                    <th nowrap >上位スキル</th>
-                    <th nowrap >効果</th>
                     <th nowrap >評価文</th>
+                    <th nowrap >効果</th>
                     <th nowrap >必要Pt</th>
                     <th nowrap >評価点</th>
                     <th nowrap >評価効率</th>
@@ -36,15 +34,15 @@
                     <th nowrap >ジャンル番号</th>
                     <th nowrap >競技場評価</th>
                     <th nowrap >種類</th>
+                    <th nowrap >上位スキル</th>
+                    <th nowrap >種類</th>
                 </tr>
                 {% for cdm in umaSkillEvaluationMaster %}
                 <tr>
-                    <td nowrap>{{ cdm.genreName }}</td>
                     <td nowrap>{{ cdm.skillName }}</td>
                     <td nowrap>{{ cdm.champEvaluation }}</td>
-                    <td nowrap>{{ cdm.anotherSkill }}</td>
-                    <td nowrap>{{ cdm.effect }}</td>
                     <td nowrap>{{ cdm.EvaluationSentence }}</td>
+                    <td nowrap>{{ cdm.effect }}</td>
                     <td nowrap>{{ cdm.needPint }}</td>
                     <td nowrap>{{ cdm.evaluationPoint }}</td>
                     <td nowrap>{{ cdm.evaluationEfficiency }}</td>
@@ -53,6 +51,8 @@
                     <td nowrap>{{ cdm.genreNo }}</td>
                     <td nowrap>{{ cdm.teamEvaluation }}</td>
                     <td nowrap>{{ cdm.type }}</td>
+                    <td nowrap>{{ cdm.anotherSkill }}</td>
+                    <td nowrap>{{ cdm.genreName }}</td>
                 </tr>
                 {% endfor %}
             </table>
