@@ -46,8 +46,6 @@
                 <tr>
                     <th nowrap >ジャンル１</th>
                     <th nowrap >ジャンル２</th>
-                    <th nowrap >枝番</th>
-                    <th nowrap >種類</th>
                     <th nowrap >スキル名</th>
                     <th nowrap >説明文</th>
                     <th nowrap >カテゴリ</th>
@@ -78,13 +76,13 @@
                     <th nowrap >ID</th>
                     <th nowrap >ジャンル1id</th>
                     <th nowrap >ジャンル2id</th>
+                    <th nowrap >枝番</th>
+                    <th nowrap >種類</th>
                 </tr>
                 {% for cdm in umaCardSkillDetailMaster %}
                 <tr>
                     <td nowrap>{{ cdm.genreName }}</td>
                     <td nowrap>{{ cdm.genre2Name }}</td>
-                    <td nowrap>{{ cdm.branchNo }}</td>
-                    <td nowrap>{{ cdm.kindNo }}</td>
                     <td nowrap>{{ cdm.skillName }}</td>
                     <td nowrap>{{ cdm.explanation }}</td>
                     <td nowrap>{{ cdm.category }}</td>
@@ -115,6 +113,8 @@
                     <td nowrap>{{ cdm.id }}</td>
                     <td nowrap>{{ cdm.gereId }}</td>
                     <td nowrap>{{ cdm.genre2Id }}</td>
+                    <td nowrap>{{ cdm.branchNo }}</td>
+                    <td nowrap>{{ cdm.kindNo }}</td>
                 </tr>
                 {% endfor %}
             </table>
