@@ -25,7 +25,6 @@
                     <th nowrap >種類</th>
                     <th nowrap >スキル</th>
                     <th nowrap >評</th>
-                    <th nowrap >種類</th>
                     <th nowrap >上位スキル</th>
                     <th nowrap >効果</th>
                     <th nowrap >評価文</th>
@@ -36,13 +35,13 @@
                     <th nowrap >ID</th>
                     <th nowrap >ジャンル番号</th>
                     <th nowrap >競技場評価</th>
+                    <th nowrap >種類</th>
                 </tr>
                 {% for cdm in umaSkillEvaluationMaster %}
                 <tr>
                     <td nowrap>{{ cdm.genreName }}</td>
                     <td nowrap>{{ cdm.skillName }}</td>
                     <td nowrap>{{ cdm.champEvaluation }}</td>
-                    <td nowrap>{{ cdm.type }}</td>
                     <td nowrap>{{ cdm.anotherSkill }}</td>
                     <td nowrap>{{ cdm.effect }}</td>
                     <td nowrap>{{ cdm.EvaluationSentence }}</td>
@@ -53,6 +52,7 @@
                     <td nowrap>{{ cdm.id }}</td>
                     <td nowrap>{{ cdm.genreNo }}</td>
                     <td nowrap>{{ cdm.teamEvaluation }}</td>
+                    <td nowrap>{{ cdm.type }}</td>
                 </tr>
                 {% endfor %}
             </table>
