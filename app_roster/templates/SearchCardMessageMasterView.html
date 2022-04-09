@@ -4,6 +4,15 @@
     <head>
         <link rel="stylesheet" type="text/css" href="{% static 'css/uma_main.css' %}">
         <meta name="viewport" content="width=device-width, user-scale=yes, initial-scale=1.0, maximum-scale=5.0" />
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+        <script type="text/javascript" src="{% static 'js/jquery_cardskillmaster.js' %}"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <script type="text/javascript" src="{% static 'js/multifilter.min.js' %}"></script>
+        <script>
+            $(function () {
+                $('.filter').multifilter();
+            });
+        </script>
     </head>
     <body>
         <input type="button" class="uma-back-button" value="戻る" onclick="location.href='../../umacomptool'">
@@ -14,66 +23,78 @@
         <input type="button" class="uma-typeselect-button" value="賢さ"    onclick="location.href='../../searchcardmessegemaster/5'">
         <input type="button" class="uma-typeselect-button" value="友人"    onclick="location.href='../../searchcardmessegemaster/6'">
         <h1>カードスキルマスタ検索画面({{ count }}件)</h1>
+        <div class="toggle_button">
+            <span class = "toggle_text">検索切り替え</span>
+            <input id="toggle" name="toggle" class="toggle_input" type='checkbox' style="display:none" />
+            <label for="toggle" class="toggle_label"/>
+        </div>
         <div class="tablefix">
+            <div class='filter-container'>
+                <input id="title_buttom" autocomplete='off' class='filter' name='画像' placeholder='タイトル' data-col='画像' />
+                <input id="select_type_buttom" autocomplete='off' class='filter' name='カード名称' placeholder='選択肢タイプ' data-col='カード名称' />
+            </div>
             <table border="1px">
-                <th nowrap>カード種別</th>
-                <th nowrap nowrap >画像</th>
-                <th nowrap>カード名称</th>
-                <th nowrap>イベントタイプ</th>
-                <th nowrap>タイトル</th>
-                <th nowrap>選択肢タイプ</th>
-                <th nowrap>結果</th>
-                <th nowrap>結果1</th>
-                <th nowrap>結果2</th>
-                <th nowrap>結果3</th>
-                <th nowrap>結果4</th>
-                <th nowrap>結果5</th>
-                <th nowrap>結果6</th>
-                <th nowrap>結果7</th>
-                <th nowrap>結果8</th>
-                <th nowrap>結果9</th>
-                <th nowrap>結果10</th>
-                <th nowrap>ID</th>
-                <th nowrap>カードメッセージマスタid</th>
-                <th nowrap>カード種別</th>
-                <th nowrap>カードID</th>
-                <th nowrap>タイプNO</th>
-                <th nowrap>メッセージID</th>
-                <th nowrap>メッセージイベントID</th>
-                <th nowrap>イベントタイプID</th>
-    
-                {% for cdm in cardMessageMaster %}
-                <tr>
-                    {% ifchanged cdm.cardid %}
-                    <td nowrap rowspan={{ cdm.cardIdCount }}>{{ cdm.cardTypeName }}</td>
-                    <td nowrap rowspan={{ cdm.cardIdCount }}><img src="{% static cdm.url %}" width="100" height="150" ></td>
-                    <td nowrap rowspan={{ cdm.cardIdCount }}>{{ cdm.cardName }}</td>
-                    {% else %}
-                    {% endifchanged %}
-                    <td nowrap>{{ cdm.eventType }}</td>
-                    <td nowrap>{{ cdm.title }}</td>
-                    <td nowrap>{{ cdm.selectType }}</td>
-                    <td nowrap>{{ cdm.result }}</td>
-                    <td nowrap>{{ cdm.result1 }}</td>
-                    <td nowrap>{{ cdm.result2 }}</td>
-                    <td nowrap>{{ cdm.result3 }}</td>
-                    <td nowrap>{{ cdm.result4 }}</td>
-                    <td nowrap>{{ cdm.result5 }}</td>
-                    <td nowrap>{{ cdm.result6 }}</td>
-                    <td nowrap>{{ cdm.result7 }}</td>
-                    <td nowrap>{{ cdm.result8 }}</td>
-                    <td nowrap>{{ cdm.result9 }}</td>
-                    <td nowrap>{{ cdm.result10 }}</td>
-                    <td nowrap>{{ cdm.id }}</td>
-                    <td nowrap>{{ cdm.cardMessageMasterId }}</td>
-                    <td nowrap>{{ cdm.cardTypeNo }}</td>
-                    <td nowrap>{{ cdm.cardid }}</td>
-                    <td nowrap>{{ cdm.type }}</td>
-                    <td nowrap>{{ cdm.messageId }}</td>
-                    <td nowrap>{{ cdm.messageEventId }}</td>
-                    <td nowrap>{{ cdm.eventTypeId }}</td>
-                </tr>
-                {% endfor %}
+                <thead>
+                    <th id="cardTypeName" nowrap>カード種別</th>
+                    <th id="image" nowrap nowrap >画像</th>
+                    <th id="cardName" nowrap>カード名称</th>
+                    <th nowrap>イベントタイプ</th>
+                    <th nowrap>タイトル</th>
+                    <th nowrap>選択肢タイプ</th>
+                    <th nowrap>結果</th>
+                    <th nowrap>結果1</th>
+                    <th nowrap>結果2</th>
+                    <th nowrap>結果3</th>
+                    <th nowrap>結果4</th>
+                    <th nowrap>結果5</th>
+                    <th nowrap>結果6</th>
+                    <th nowrap>結果7</th>
+                    <th nowrap>結果8</th>
+                    <th nowrap>結果9</th>
+                    <th nowrap>結果10</th>
+                    <th nowrap>ID</th>
+                    <th nowrap>カードメッセージマスタid</th>
+                    <th nowrap>カード種別</th>
+                    <th nowrap>カードID</th>
+                    <th nowrap>タイプNO</th>
+                    <th nowrap>メッセージID</th>
+                    <th nowrap>メッセージイベントID</th>
+                    <th nowrap>イベントタイプID</th>
+                </thead>
+                <tbody>
+                    {% for cdm in cardMessageMaster %}
+                    <tr>
+                        {% ifchanged cdm.cardid %}
+                        <td id="cardTypeName" nnowrap rowspan={{ cdm.cardIdCount }}>{{ cdm.cardTypeName }}</td>
+                        <td id="image" nowrap rowspan={{ cdm.cardIdCount }}><img src="{% static cdm.url %}" width="100" height="150" ></td>
+                        <td id="cardName" nowrap rowspan={{ cdm.cardIdCount }}>{{ cdm.cardName }}</td>
+                        {% else %}
+                        {% endifchanged %}
+                        <td nowrap>{{ cdm.eventType }}</td>
+                        <td nowrap>{{ cdm.title }}</td>
+                        <td nowrap>{{ cdm.selectType }}</td>
+                        <td nowrap>{{ cdm.result }}</td>
+                        <td nowrap>{{ cdm.result1 }}</td>
+                        <td nowrap>{{ cdm.result2 }}</td>
+                        <td nowrap>{{ cdm.result3 }}</td>
+                        <td nowrap>{{ cdm.result4 }}</td>
+                        <td nowrap>{{ cdm.result5 }}</td>
+                        <td nowrap>{{ cdm.result6 }}</td>
+                        <td nowrap>{{ cdm.result7 }}</td>
+                        <td nowrap>{{ cdm.result8 }}</td>
+                        <td nowrap>{{ cdm.result9 }}</td>
+                        <td nowrap>{{ cdm.result10 }}</td>
+                        <td nowrap>{{ cdm.id }}</td>
+                        <td nowrap>{{ cdm.cardMessageMasterId }}</td>
+                        <td nowrap>{{ cdm.cardTypeNo }}</td>
+                        <td nowrap>{{ cdm.cardid }}</td>
+                        <td nowrap>{{ cdm.type }}</td>
+                        <td nowrap>{{ cdm.messageId }}</td>
+                        <td nowrap>{{ cdm.messageEventId }}</td>
+                        <td nowrap>{{ cdm.eventTypeId }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
             </table>
         </div>
     </body>
