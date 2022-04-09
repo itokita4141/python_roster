@@ -4,6 +4,13 @@
     <head>
         <link rel="stylesheet" type="text/css" href="{% static 'css/uma_main.css' %}">
         <meta name="viewport" content="width=device-width, user-scale=yes, initial-scale=1.0, maximum-scale=5.0" />
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <script type="text/javascript" src="{% static 'js/multifilter.min.js' %}"></script>
+        <script>
+            $(function () {
+                $('.filter').multifilter();
+            });
+        </script>
     </head>
     <body>
         <!--1	通常スキル-->
@@ -17,45 +24,51 @@
         <!--9	固有スキル-->
         <!--10	固有回復スキル-->
         <input type="button" class="uma-back-button" value="戻る" onclick="location.href='../../umacomptool'">
-
         <h3>スキル評価マスタ検索画面(全{{ count }}件)</h3>
-        <div class="tablefix">
-            <table>
-                <tr>
-                    <th nowrap >スキル</th>
-                    <th nowrap >評</th>
-                    <th nowrap >評価文</th>
-                    <th nowrap >効果</th>
-                    <th nowrap >必要Pt</th>
-                    <th nowrap >評価点</th>
-                    <th nowrap >評価効率</th>
-                    <th nowrap >ふりがな</th>
-                    <th nowrap >ID</th>
-                    <th nowrap >ジャンル番号</th>
-                    <th nowrap >競技場評価</th>
-                    <th nowrap >種類</th>
-                    <th nowrap >上位スキル</th>
-                    <th nowrap >種類</th>
-                </tr>
-                {% for cdm in umaSkillEvaluationMaster %}
-                <tr>
-                    <td nowrap>{{ cdm.skillName }}</td>
-                    <td nowrap>{{ cdm.champEvaluation }}</td>
-                    <td nowrap>{{ cdm.EvaluationSentence }}</td>
-                    <td nowrap>{{ cdm.effect }}</td>
-                    <td nowrap>{{ cdm.needPint }}</td>
-                    <td nowrap>{{ cdm.evaluationPoint }}</td>
-                    <td nowrap>{{ cdm.evaluationEfficiency }}</td>
-                    <td nowrap>{{ cdm.hurigana }}</td>
-                    <td nowrap>{{ cdm.id }}</td>
-                    <td nowrap>{{ cdm.genreNo }}</td>
-                    <td nowrap>{{ cdm.teamEvaluation }}</td>
-                    <td nowrap>{{ cdm.type }}</td>
-                    <td nowrap>{{ cdm.anotherSkill }}</td>
-                    <td nowrap>{{ cdm.genreName }}</td>
-                </tr>
-                {% endfor %}
-            </table>
+        <div class="table-wrapper">
+            <div class="tablefix">
+                <div class='filter-container'>
+                    <input autocomplete='off' class='filter' name='スキル' placeholder='スキル' data-col='スキル' />
+                </div>
+                <table>
+                    <thead>
+                        <th nowrap >スキル</th>
+                        <th nowrap >評</th>
+                        <th nowrap >評価文</th>
+                        <th nowrap >効果</th>
+                        <th nowrap >必要Pt</th>
+                        <th nowrap >評価点</th>
+                        <th nowrap >評価効率</th>
+                        <th nowrap >ふりがな</th>
+                        <th nowrap >ID</th>
+                        <th nowrap >ジャンル番号</th>
+                        <th nowrap >競技場評価</th>
+                        <th nowrap >種類</th>
+                        <th nowrap >上位スキル</th>
+                        <th nowrap >種類</th>
+                    </thead>
+                    <tbody>
+                        {% for cdm in umaSkillEvaluationMaster %}
+                        <tr>
+                            <td nowrap>{{ cdm.skillName }}</td>
+                            <td nowrap>{{ cdm.champEvaluation }}</td>
+                            <td nowrap>{{ cdm.EvaluationSentence }}</td>
+                            <td nowrap>{{ cdm.effect }}</td>
+                            <td nowrap>{{ cdm.needPint }}</td>
+                            <td nowrap>{{ cdm.evaluationPoint }}</td>
+                            <td nowrap>{{ cdm.evaluationEfficiency }}</td>
+                            <td nowrap>{{ cdm.hurigana }}</td>
+                            <td nowrap>{{ cdm.id }}</td>
+                            <td nowrap>{{ cdm.genreNo }}</td>
+                            <td nowrap>{{ cdm.teamEvaluation }}</td>
+                            <td nowrap>{{ cdm.type }}</td>
+                            <td nowrap>{{ cdm.anotherSkill }}</td>
+                            <td nowrap>{{ cdm.genreName }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
     
         <br/>

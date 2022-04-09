@@ -4,6 +4,13 @@
     <head>
         <link rel="stylesheet" type="text/css" href="{% static 'css/uma_main.css' %}">
         <meta name="viewport" content="width=device-width, user-scale=yes, initial-scale=1.0, maximum-scale=5.0" />
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <script type="text/javascript" src="{% static 'js/multifilter.min.js' %}"></script>
+        <script>
+            $(function () {
+                $('.filter').multifilter();
+            });
+        </script>
     </head>
     <body>
         <!--パッシブスキル	1	スピード	1-->
@@ -39,11 +46,13 @@
         <!--フェーズ	8	終盤	3-->
         <!--フェーズ	8	ダート	4-->
         <input type="button" class="uma-back-button" value="戻る" onclick="location.href='../../../umacomptool'">
-        
         <h3>スキル詳細画面(全{{ count }}件)</h3>
         <div class="tablefix">
+            <div class='filter-container'>
+                <input autocomplete='off' class='filter' name='スキル名' placeholder='スキル名' data-col='スキル名' />
+            </div>
             <table>
-                <tr>
+                <thead>
                     <th nowrap >ジャンル１</th>
                     <th nowrap >ジャンル２</th>
                     <th nowrap >スキル名</th>
@@ -78,45 +87,47 @@
                     <th nowrap >ジャンル2id</th>
                     <th nowrap >枝番</th>
                     <th nowrap >種類</th>
-                </tr>
+                </thead>
+                <tbody>
                 {% for cdm in umaCardSkillDetailMaster %}
-                <tr>
-                    <td nowrap>{{ cdm.genreName }}</td>
-                    <td nowrap>{{ cdm.genre2Name }}</td>
-                    <td nowrap>{{ cdm.skillName }}</td>
-                    <td nowrap>{{ cdm.explanation }}</td>
-                    <td nowrap>{{ cdm.category }}</td>
-                    <td nowrap>{{ cdm.rarity }}</td>
-                    <td nowrap>{{ cdm.activeCondition1 }}</td>
-                    <td nowrap>{{ cdm.activeCondition2 }}</td>
-                    <td nowrap>{{ cdm.activeCondition3 }}</td>
-                    <td nowrap>{{ cdm.activeCondition4 }}</td>
-                    <td nowrap>{{ cdm.activeCondition5 }}</td>
-                    <td nowrap>{{ cdm.activeCondition6 }}</td>
-                    <td nowrap>{{ cdm.activeCondition7 }}</td>
-                    <td nowrap>{{ cdm.activeCondition8 }}</td>
-                    <td nowrap>{{ cdm.activeCondition9 }}</td>
-                    <td nowrap>{{ cdm.activeCondition10 }}</td>
-                    <td nowrap>{{ cdm.effect1 }}</td>
-                    <td nowrap>{{ cdm.effect2 }}</td>
-                    <td nowrap>{{ cdm.effect3 }}</td>
-                    <td nowrap>{{ cdm.effect4 }}</td>
-                    <td nowrap>{{ cdm.effect5 }}</td>
-                    <td nowrap>{{ cdm.effect6 }}</td>
-                    <td nowrap>{{ cdm.effect7 }}</td>
-                    <td nowrap>{{ cdm.effect8 }}</td>
-                    <td nowrap>{{ cdm.effect9 }}</td>
-                    <td nowrap>{{ cdm.effect10 }}</td>
-                    <td nowrap>{{ cdm.wisepoint }}</td>
-                    <td nowrap>{{ cdm.getpoint }}</td>
-                    <td nowrap>{{ cdm.evaluationPoint }}</td>
-                    <td nowrap>{{ cdm.id }}</td>
-                    <td nowrap>{{ cdm.gereId }}</td>
-                    <td nowrap>{{ cdm.genre2Id }}</td>
-                    <td nowrap>{{ cdm.branchNo }}</td>
-                    <td nowrap>{{ cdm.kindNo }}</td>
-                </tr>
+                    <tr>
+                        <td nowrap>{{ cdm.genreName }}</td>
+                        <td nowrap>{{ cdm.genre2Name }}</td>
+                        <td nowrap>{{ cdm.skillName }}</td>
+                        <td nowrap>{{ cdm.explanation }}</td>
+                        <td nowrap>{{ cdm.category }}</td>
+                        <td nowrap>{{ cdm.rarity }}</td>
+                        <td nowrap>{{ cdm.activeCondition1 }}</td>
+                        <td nowrap>{{ cdm.activeCondition2 }}</td>
+                        <td nowrap>{{ cdm.activeCondition3 }}</td>
+                        <td nowrap>{{ cdm.activeCondition4 }}</td>
+                        <td nowrap>{{ cdm.activeCondition5 }}</td>
+                        <td nowrap>{{ cdm.activeCondition6 }}</td>
+                        <td nowrap>{{ cdm.activeCondition7 }}</td>
+                        <td nowrap>{{ cdm.activeCondition8 }}</td>
+                        <td nowrap>{{ cdm.activeCondition9 }}</td>
+                        <td nowrap>{{ cdm.activeCondition10 }}</td>
+                        <td nowrap>{{ cdm.effect1 }}</td>
+                        <td nowrap>{{ cdm.effect2 }}</td>
+                        <td nowrap>{{ cdm.effect3 }}</td>
+                        <td nowrap>{{ cdm.effect4 }}</td>
+                        <td nowrap>{{ cdm.effect5 }}</td>
+                        <td nowrap>{{ cdm.effect6 }}</td>
+                        <td nowrap>{{ cdm.effect7 }}</td>
+                        <td nowrap>{{ cdm.effect8 }}</td>
+                        <td nowrap>{{ cdm.effect9 }}</td>
+                        <td nowrap>{{ cdm.effect10 }}</td>
+                        <td nowrap>{{ cdm.wisepoint }}</td>
+                        <td nowrap>{{ cdm.getpoint }}</td>
+                        <td nowrap>{{ cdm.evaluationPoint }}</td>
+                        <td nowrap>{{ cdm.id }}</td>
+                        <td nowrap>{{ cdm.gereId }}</td>
+                        <td nowrap>{{ cdm.genre2Id }}</td>
+                        <td nowrap>{{ cdm.branchNo }}</td>
+                        <td nowrap>{{ cdm.kindNo }}</td>
+                    </tr>
                 {% endfor %}
+                </tbody>
             </table>
         </div>
     

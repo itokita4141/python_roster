@@ -1,9 +1,17 @@
 {% load static %}
+
 <!doctype HTML>
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="{% static 'css/uma_main.css' %}">
         <meta name="viewport" content="width=device-width, user-scale=yes, initial-scale=1.0, maximum-scale=5.0" />
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <script type="text/javascript" src="{% static 'js/multifilter.min.js' %}"></script>
+        <script>
+            $(function () {
+                $('.filter').multifilter();
+            });
+        </script>
     </head>
     <body>
         <input type="button" class="uma-back-button"       value="戻る"    onclick="location.href='../../umacomptool'">
@@ -14,38 +22,44 @@
         <input type="button" class="uma-typeselect-button" value="賢さ"    onclick="location.href='../../cardskillmaster/5'">
         <input type="button" class="uma-typeselect-button" value="友人"    onclick="location.href='../../cardskillmaster/6'">
         <h1>カードスキルマスタ検索画面({{ count }}件)</h1>
-        <div class="tablefix">
-            <table border="1px">
-                <th nowrap>タイプ名称</th>
-                <th nowrap >カード名称</th>
-                <th nowrap >画像</th>
-                <th nowrap>イベントタイプ</th>
-                <th nowrap>スキル名称</th>
-                <th nowrap>スキル内容</th>
-                <th nowrap>ソート順</th>
-                <th nowrap>イベントタイプ</th>
-                <th nowrap>同一カード数</th>
 
-                {% for cdm in cardSkillMaster %}
-                <tr>
-<!--                    <td nowrap rowspan={{ cdm.cardIdCount }}>{{ cdm.typeName }}</td>-->
-<!--                    <td nowrap rowspan={{ cdm.cardIdCount }}>{{ cdm.cardName }}</td>-->
-                    {% ifchanged cdm.cardId %}
-                    <td nowrap rowspan={{ cdm.cardIdCount }}>{{ cdm.typeName }}</td>
-                    <td nowrap rowspan={{ cdm.cardIdCount }}>{{ cdm.cardName }}</td>
-                    <td nowrap rowspan={{ cdm.cardIdCount }}><img src="{% static cdm.url %}" width="75" height="100" ></td>
-<!--                    <td nowrap rowspan={{ cdm.cardIdCount }}></td>-->
-                    {% else %}
-                    {% endifchanged %}
-                    <td nowrap>{{ cdm.eventTypeName }}</td>
-                    <td nowrap>{{ cdm.skillName }}</td>
-                    <td nowrap>{{ cdm.skillContents }}</td>
-                    <td nowrap>{{ cdm.sortNum }}</td>
-                    <td nowrap>{{ cdm.eventType }}</td>
-                    <td nowrap>{{ cdm.cardIdCount }}</td>
-                </tr>
-                {% endfor %}
-            </table>
+        <div class="table-wrapper">
+            <div class="tablefix">
+<!--                <div class='filter-container'>-->
+<!--                    <input autocomplete='off' class='filter' name='タイプ名称' placeholder='タイプ名称' data-col='タイプ名称' />-->
+<!--                </div>-->
+                <table class="table" border="1px">
+                    <thead>
+                            <th nowrap>タイプ名称</th>
+                            <th nowrap >カード名称</th>
+                            <th nowrap >画像</th>
+                            <th nowrap>イベントタイプ</th>
+                            <th nowrap>スキル名称</th>
+                            <th nowrap>スキル内容</th>
+                            <th nowrap>ソート順</th>
+                            <th nowrap>イベントタイプ</th>
+                            <th nowrap>同一カード数</th>
+                    </thead>
+                    <tbody>
+                        {% for cdm in cardSkillMaster %}
+                        <tr>
+                            {% ifchanged cdm.cardId %}
+                            <td nowrap rowspan={{ cdm.cardIdCount }}>{{ cdm.typeName }}</td>
+                            <td nowrap rowspan={{ cdm.cardIdCount }}>{{ cdm.cardName }}</td>
+                            <td nowrap rowspan={{ cdm.cardIdCount }}><img src="{% static cdm.url %}" width="75" height="100" ></td>
+                            {% else %}
+                            {% endifchanged %}
+                            <td nowrap>{{ cdm.eventTypeName }}</td>
+                            <td nowrap>{{ cdm.skillName }}</td>
+                            <td nowrap>{{ cdm.skillContents }}</td>
+                            <td nowrap>{{ cdm.sortNum }}</td>
+                            <td nowrap>{{ cdm.eventType }}</td>
+                            <td nowrap>{{ cdm.cardIdCount }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <!--paging処理-->
