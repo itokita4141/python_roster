@@ -251,10 +251,12 @@ def umaCardMessageMasterLoad(request, typeno):
     returnMessageParams = []
     mongo = settingPymongo('rosterdb', 'app_roster_umacardmessagemaster')
     # find = mongo.find(filter={'cardMasterId': 1})
-    if typeno == 98:
-        f = mongo.find(filter={'$or' : [{'cardTypeNo': 1}, {'cardTypeNo': 3}, {'cardTypeNo': 5}]})
-    elif typeno == 99:
-        f = mongo.find(filter={'$or' : [{'cardTypeNo': 2}, {'cardTypeNo': 4}, {'cardTypeNo': 6}]})
+    if typeno == 99:
+        f = mongo.find(filter={'$or' : [{'cardTypeNo': 1}, {'cardTypeNo': 5}]})
+    elif typeno == 98:
+        f = mongo.find(filter={'$or' : [{'cardTypeNo': 3}, {'cardTypeNo': 4}]})
+    elif typeno == 97:
+        f = mongo.find(filter={'$or' : [{'cardTypeNo': 2}, {'cardTypeNo': 6}]})
     else:
         f = mongo.find(filter={'cardTypeNo': typeno})
 

@@ -2,9 +2,10 @@ jQuery(function($){
     // ready
     jQuery(document).ready(function(){
         displayFlag = $("#displayFlag").text();
-        if(displayFlag != 99){
+        if(displayFlag == 1 || displayFlag == 2 || displayFlag == 3 || displayFlag == 4 || displayFlag == 5 || displayFlag == 6){
             $('#select_type_buttom').hide();
             $('#title_buttom').hide();
+            $('#card_type_name').hide();
         }
     });
 
