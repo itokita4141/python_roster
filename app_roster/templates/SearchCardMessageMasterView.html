@@ -16,29 +16,41 @@
     </head>
     <body>
         <input type="button" class="uma-back-button" value="戻る" onclick="location.href='../../umacomptool'">
+        <input type="button" class="uma-typeselect-button" value="全て" onclick="location.href='../../searchcardmessegemaster/99'">
         <input type="button" class="uma-typeselect-button" value="スピード" onclick="location.href='../../searchcardmessegemaster/1'">
         <input type="button" class="uma-typeselect-button" value="スタミナ" onclick="location.href='../../searchcardmessegemaster/2'">
         <input type="button" class="uma-typeselect-button" value="パワー"   onclick="location.href='../../searchcardmessegemaster/3'">
         <input type="button" class="uma-typeselect-button" value="勝負根性" onclick="location.href='../../searchcardmessegemaster/4'">
         <input type="button" class="uma-typeselect-button" value="賢さ"    onclick="location.href='../../searchcardmessegemaster/5'">
         <input type="button" class="uma-typeselect-button" value="友人"    onclick="location.href='../../searchcardmessegemaster/6'">
-        <h1>カードスキルマスタ検索画面({{ count }}件)</h1>
+        <h1>カードメッセージマスタ検索画面({{ count }}件)</h1>
+        {% if displayFlag == 99 %}
+        <div id="displayFlag" style="display:none">{{ displayFlag }}</div>
+        {% else %}
         <div class="toggle_button">
             <span class = "toggle_text">検索切り替え</span>
             <input id="toggle" name="toggle" class="toggle_input" type='checkbox' style="display:none" />
             <label for="toggle" class="toggle_label"/>
         </div>
+        {% endif %}
         <div class="tablefix">
             <div class='filter-container'>
-                <input id="title_buttom" autocomplete='off' class='filter' name='画像' placeholder='タイトル' data-col='画像' />
-                <input id="select_type_buttom" autocomplete='off' class='filter' name='カード名称' placeholder='選択肢タイプ' data-col='カード名称' />
+                {% if displayFlag == 99 %}
+                    <input id="title_buttom" autocomplete='off' class='filter' name='タイトル' placeholder='タイトル' data-col='タイトル' />
+                    <input id="select_type_buttom" autocomplete='off' class='filter' name='選択肢タイプ' placeholder='選択肢タイプ' data-col='選択肢タイプ' />
+                    <input id="title_buttom" autocomplete='off' class='filter' name='カード名称' placeholder='カード名称' data-col='カード名称' />
+                {% else %}
+                    <input id="title_buttom" autocomplete='off' class='filter' name='カード種別' placeholder='タイトル' data-col='カード種別' />
+                    <input id="select_type_buttom" autocomplete='off' class='filter' name='画像' placeholder='選択肢タイプ' data-col='画像' />
+                {% endif %}
             </div>
             <table border="1px">
                 <thead>
                     <th id="cardTypeName" nowrap>カード種別</th>
+                    {% if displayFlag != 99 %}
                     <th id="image" nowrap nowrap >画像</th>
+                    {% endif %}
                     <th id="cardName" nowrap>カード名称</th>
-                    <th nowrap>イベントタイプ</th>
                     <th nowrap>タイトル</th>
                     <th nowrap>選択肢タイプ</th>
                     <th nowrap>結果</th>
@@ -60,17 +72,22 @@
                     <th nowrap>メッセージID</th>
                     <th nowrap>メッセージイベントID</th>
                     <th nowrap>イベントタイプID</th>
+                    <th nowrap>イベントタイプ</th>
                 </thead>
                 <tbody>
                     {% for cdm in cardMessageMaster %}
                     <tr>
-                        {% ifchanged cdm.cardid %}
-                        <td id="cardTypeName" nnowrap rowspan={{ cdm.cardIdCount }}>{{ cdm.cardTypeName }}</td>
-                        <td id="image" nowrap rowspan={{ cdm.cardIdCount }}><img src="{% static cdm.url %}" width="100" height="150" ></td>
-                        <td id="cardName" nowrap rowspan={{ cdm.cardIdCount }}>{{ cdm.cardName }}</td>
+                        {% if displayFlag != 99 %}
+                            {% ifchanged cdm.cardid %}
+                            <td id="cardTypeName" nnowrap rowspan={{ cdm.cardIdCount }}>{{ cdm.cardTypeName }}</td>
+                            <td id="image" nowrap rowspan={{ cdm.cardIdCount }}><img src="{% static cdm.url %}" width="100" height="150" ></td>
+                            <td id="cardName" nowrap rowspan={{ cdm.cardIdCount }}>{{ cdm.cardName }}</td>
+                            {% else %}
+                            {% endifchanged %}
                         {% else %}
-                        {% endifchanged %}
-                        <td nowrap>{{ cdm.eventType }}</td>
+                            <td id="cardTypeName" nnowrap> {{ cdm.cardTypeName }}</td>
+                            <td id="cardName">{{ cdm.cardName }}</td>
+                        {% endif %}
                         <td nowrap>{{ cdm.title }}</td>
                         <td nowrap>{{ cdm.selectType }}</td>
                         <td nowrap>{{ cdm.result }}</td>
@@ -92,6 +109,7 @@
                         <td nowrap>{{ cdm.messageId }}</td>
                         <td nowrap>{{ cdm.messageEventId }}</td>
                         <td nowrap>{{ cdm.eventTypeId }}</td>
+                        <td nowrap>{{ cdm.eventType }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>

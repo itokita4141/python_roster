@@ -1,8 +1,11 @@
 jQuery(function($){
     // ready
     jQuery(document).ready(function(){
-        $('#select_type_buttom').hide();
-        $('#title_buttom').hide();
+        displayFlag = $("#displayFlag").text();
+        if(displayFlag != 99){
+            $('#select_type_buttom').hide();
+            $('#title_buttom').hide();
+        }
     });
 
     $('input[name="toggle"]').change(function() {

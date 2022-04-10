@@ -251,7 +251,11 @@ def umaCardMessageMasterLoad(request, typeno):
     returnMessageParams = []
     mongo = settingPymongo('rosterdb', 'app_roster_umacardmessagemaster')
     # find = mongo.find(filter={'cardMasterId': 1})
-    f = mongo.find(filter={'cardTypeNo': typeno})
+    if typeno == 99:
+        f = mongo.find()
+    else:
+        f = mongo.find(filter={'cardTypeNo': typeno})
+
     # find = mongo.find(sort=[('cardId', ASCENDING),('messageId', ASCENDING)])
     findAnother = copy.deepcopy(f)
     count = f.count()
@@ -319,7 +323,7 @@ def umaCardMessageMasterLoad(request, typeno):
              'cardIdCount': cardIdCount
              }
         )
-        returnArray = {'cardMessageMaster': returnMessageParams, 'count': count}
+        returnArray = {'cardMessageMaster': returnMessageParams, 'count': count, 'displayFlag': typeno}
     return render(request, 'SearchCardMessageMasterView.html', returnArray)
 
 #////////////////
