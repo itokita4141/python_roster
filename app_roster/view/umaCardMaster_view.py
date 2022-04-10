@@ -264,7 +264,7 @@ def umaCardMessageMasterLoad(request, typeno):
     cardIdCount = 0
     beforeCardId = 0
 
-    for doc in f.sort([('cardid', ASCENDING), ('messageId', ASCENDING)]):
+    for doc in f.sort([('cardTypeNo', ASCENDING), ('cardid', ASCENDING), ('messageId', ASCENDING)]):
         # 空白対策
         # doc.setdefault('id', '')
         # doc.setdefault('cardMessageMasterId', '')
