@@ -90,7 +90,7 @@ DATABASES = {
         "ENGINE": "djongo",
         "NAME": "rosterdb",
         "CLIENT": {
-            "host": "cluster0-shard-00-01.tx265.mongodb.net",
+            "host": "cluster0-shard-00-02.tx265.mongodb.net",
             "port": 27017,
             "username": "itokita41",
             "password": "itokita41pass",

@@ -46,7 +46,9 @@ def paginate_queryset(request, queryset, count):
 # うまツール関連
 # 〓========================
 from rest_framework import viewsets
-from app_roster.models import umaCardUniqueBonus, umaCardMaster, umaCardSkillMaster, umaCardMessageMaster, umaWhiteFactor, umaWhiteFactor, umaMaster, SkillDetailMaster, SkillEvaluationMaster
+# from app_roster.models import umaCardUniqueBonus, umaCardMaster, umaCardSkillMaster, umaCardMessageMaster, umaWhiteFactor, umaWhiteFactor, umaMaster, SkillDetailMaster, SkillEvaluationMasterm, umaMessegeMaster
+from app_roster.models import *
+
 # from app_roster.seliarizers import umaCardMasterSerializer
 from pymongo import MongoClient
 sys.path.append("app_roster/db/mongodb/config")
@@ -751,3 +753,44 @@ def umaRaceBonusMasterLoad(request, genreNo):
         returnArray = {'umaRaceBonusMaster': returnMessageParams, 'count': count}
     return render(request, 'SearchRaceBonusMasterView.html', returnArray)
 
+# ////////////////
+# うまメッセージ ボーナスマスタ
+# ////////////////
+def umaMessageMasterLoad(request):
+    returnArray = []
+    returnMessageParams = []
+    mongo = settingPymongo('rosterdb', 'app_roster_umamessegemaster')
+    # find = mongo.find(filter={'cardMasterId': 1})
+    # find = mongo.find(sort=[('type', type)])
+    # find = mongo.find(sort=[('id', ASCENDING)])
+    # find = mongo.find(sort=[('id', ASCENDING), ('type', ASCENDING)]).limit(100)
+    find = mongo.find(sort=[('id', ASCENDING), ('type', ASCENDING)])
+    count = find.count()
+
+    for doc in find:
+        # 空白対策
+        doc.setdefault('id', '')
+        doc.setdefault('type', '')
+        doc.setdefault('main', '')
+        doc.setdefault('genreId2', '')
+        doc.setdefault('genre2', '')
+        doc.setdefault('genreId3', '')
+        doc.setdefault('genre3', '')
+        doc.setdefault('select', '')
+        doc.setdefault('result', '')
+
+        # スキルマスタ配列格納
+        returnMessageParams.append(
+            {'id': doc['id'],
+             'type': doc['type'],
+             'main': doc['main'],
+             'genreId2': doc['genreId2'],
+             'genre2': doc['genre2'],
+             'genreId3': doc['genreId3'],
+             'genre3': doc['genre3'],
+             'select': doc['select'],
+             'result': doc['result']
+             }
+        )
+        returnArray = {'umaMessageMaster': returnMessageParams, 'count': count}
+    return render(request, 'SearchUmaMessageMasterView.html', returnArray)

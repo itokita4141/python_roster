@@ -51,9 +51,10 @@ urlpatterns = [
     path('searchskilldetailmaster/<int:gereId>/<int:gere2Id>/',umaSkillDetailMasterLoad, name="searchskilldetailmaster"),
     # スキル評価マスタ
     path('seearchcardevaluationmaster/<int:genreNo>/',umaSkillEvaluationMasterLoad, name="seearchcardevaluationmaster"),
-   # レースボーナスマスタ
+    # レースボーナスマスタ
     path('searchracebonusnmaster/<int:genreNo>/', umaRaceBonusMasterLoad, name="searchracebonusnmaster"),
-
+    # # うまメッセージマスタ
+    path('searchumamessagemaster/', umaMessageMasterLoad, name="searchumamessagemaster"),
 
     # =========管理画面=========
     path('admin/', admin.site.urls),

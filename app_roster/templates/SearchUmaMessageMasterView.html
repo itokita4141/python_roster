@@ -1,0 +1,61 @@
+{% load static %}
+<!doctype HTML>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/uma_main.css' %}">
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+        <script type="text/javascript" src="{% static 'js/jquery_umamesageMaster.js' %}"></script>
+        <meta name="viewport" content="width=device-width, user-scale=yes, initial-scale=1.0, maximum-scale=5.0" />
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <script type="text/javascript" src="{% static 'js/multifilter.min.js' %}"></script>
+        <script>
+            $(function () {
+                $('.filter').multifilter();
+            });
+        </script>
+    </head>
+    <body>
+        <input type="button" class="uma-back-button" value="戻る" onclick="location.href='../../umacomptool'">
+        <select id=”umaMessageSelectBox”>
+            {% for umm in umaMessageMaster %}
+            <option>{{ umm.main }}</option>
+            {% endfor %}
+        </select>
+        <h1>うまメッセージマスタ検索画面({{ count }}件)</h1>
+        <div class="tablefix">
+            <div class='filter-container'>
+                <input id="main" autocomplete='off' class='filter' name='馬名イベント名' placeholder='馬名イベント名' data-col='馬名イベント名' />
+                <input id="select" autocomplete='off' class='filter' name='タイトル' placeholder='タイトル' data-col='タイトル' />
+            </div>
+            <table border="1px">
+                <thead>
+                    <th>馬名イベント名</th>
+                    <th>タイトル</th>
+                    <th>選択</th>
+                    <th>結果</th>
+                    <th>ID</th>
+                    <th>ジャンルID１</th>
+                    <th>ジャンルID２</th>
+                    <th>ジャンルID３</th>
+                    <th>ジャンル２</th>
+                </thead>
+                
+                <tbody>
+                {% for umm in umaMessageMaster %}
+                <tr>
+                    <td>{{ umm.main }}</td>
+                    <td>{{ umm.genre3 }}</td>
+                    <td>{{ umm.select }}</td>
+                    <td>{{ umm.result }}</td>
+                    <td>{{ umm.id }}</td>
+                    <td>{{ umm.type }}</td>
+                    <td>{{ umm.genreId2 }}</td>
+                    <td>{{ umm.genreId3 }}</td>
+                    <td>{{ umm.genre2 }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>>
+    </body>
+<html>

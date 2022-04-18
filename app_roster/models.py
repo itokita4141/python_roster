@@ -331,3 +331,18 @@ class RaceBonuMaster(models.Model):
 
     def __str__(self):
         return str(self.__dict__)
+
+# うまマスタ
+class umaMessegeMaster(models.Model):
+    id = models.CharField(max_length=100, null=False, primary_key=False),  # ID
+    type = models.CharField(max_length=100, null=False),                  # ジャンルID１
+    main = models.CharField(max_length=100, null=False),                  # ジャンル１
+    genreId2 = models.CharField(max_length=100, null=False),              # ジャンルID２
+    genre2 = models.CharField(max_length=100, null=False),                # ジャンル２
+    genreId3 = models.CharField(max_length=100, null=False),              # ジャンルID３
+    genre3 = models.CharField(max_length=100, null=False),                # ジャンル３
+    select = models.CharField(max_length=100, null=False),                # 選択
+    result = models.CharField(max_length=100, null=False),                # 結果
+
+    def __str__(self):
+        return str(self.__dict__)

@@ -3,7 +3,7 @@ from pymongo import MongoClient
 class settingPymongo(object):
 
     def __init__(self, db_name, collection_name):
-        uri = 'mongodb://itokita41:itokita41pass@cluster0-shard-00-01.tx265.mongodb.net'
+        uri = 'mongodb://itokita41:itokita41pass@cluster0-shard-00-02.tx265.mongodb.net'
         self.client = MongoClient(uri,
                                   port=27017,
                                   ssl=True,
